@@ -70,6 +70,61 @@
     earlierItems.forEach(function (d) { d.addEventListener('toggle', syncEarlierBtn); });
   }
 
+  /* ---------- Projects carousel ---------- */
+  var track = document.getElementById('carouselTrack');
+  if (track) {
+    var slides = Array.prototype.slice.call(track.children);
+    var prevBtn = document.getElementById('carouselPrev');
+    var nextBtn = document.getElementById('carouselNext');
+    var countEl = document.getElementById('carouselCount');
+    var dotsBox = document.getElementById('carouselDots');
+    var current = 0;
+
+    var dots = slides.map(function (slide, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Project ' + (i + 1));
+      dot.addEventListener('click', function () { goTo(i); });
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+
+    function goTo(i) {
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: reduceMotion ? 'instant' : 'smooth' });
+    }
+
+    function update() {
+      var x = track.scrollLeft;
+      var best = Infinity;
+      slides.forEach(function (s, i) {
+        var d = Math.abs(s.offsetLeft - slides[0].offsetLeft - x);
+        if (d < best) { best = d; current = i; }
+      });
+      // The last card can't snap to the start edge, so treat "scrolled to the end" as the last card
+      if (x + track.clientWidth >= track.scrollWidth - 4) current = slides.length - 1;
+      countEl.textContent = (current + 1) + ' / ' + slides.length;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+      dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(i === current)); });
+    }
+
+    prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+    });
+    var ticking = false;
+    track.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () { update(); ticking = false; });
+    }, { passive: true });
+    update();
+  }
+
   /* ---------- Nav: scrolled state + active section ---------- */
   var nav = document.querySelector('.nav');
   function onScroll() { nav.classList.toggle('is-scrolled', window.scrollY > 8); }
@@ -106,7 +161,7 @@
     requestAnimationFrame(frame);
   }
 
-  var revealTargets = document.querySelectorAll('.section h2, .about__body, .job, .tile, .skillset, .creds__col, .gallery figure, .link-card, .stat, .sandbox__text, .term, .volunteer__card');
+  var revealTargets = document.querySelectorAll('.section h2, .about__body, .job, .tile, .skillset, .creds__col, .gallery figure, .link-card, .stat, .project, .volunteer__card');
   if ('IntersectionObserver' in window && !reduceMotion) {
     revealTargets.forEach(function (el) { el.classList.add('reveal'); });
     var revealObs = new IntersectionObserver(function (entries) {

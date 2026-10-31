@@ -1,50 +1,106 @@
 # personal-portfolio
 
-Personal portfolio of Manuel Gutiérrez Torrero: projects, milestones, achievements and personal info.
+Personal portfolio of **Manuel Gutiérrez Torrero**: Data & AI Architect · Staff Data Engineer.
 
-A static site (HTML + CSS + vanilla JS, no build step) served from `public/` with Cloudflare Workers static assets.
+**Live:** https://personal-portfolio.mgutierrezt.workers.dev
+
+A static, bilingual (EN/ES) single page: plain HTML, CSS and vanilla JS with no build step and no runtime dependencies. It is served from `public/` by Cloudflare Workers static assets.
+
+## Sections
+
+| Section | Content |
+|---|---|
+| Hero | Target roles, summary, key figures, CV download |
+| About | Profile and four focus areas |
+| Experience | Mercedes-Benz roles in detail; earlier career as expandable rows |
+| Impact | Selected achievements: GenAI, data volumes, lakehouse, Technical PO, team leadership, mentoring |
+| Skills | Current stack, certifications, education, languages |
+| My projects | Carousel of GitHub projects: Trading Advisor (live), RAG System (in progress), Architecture lab with Docker Compose on a VPS (coming soon) |
+| Beyond work | Personal photos and volunteering |
+| Contact | Email, LinkedIn, GitHub, Malt, CV |
 
 ## Structure
 
 ```
-public/
-  index.html     # all content (English, with Spanish in data-es attributes)
-  styles.css     # light/dark theme tokens + layout
-  main.js        # theme/lang toggles, scroll reveal, hero graph animation
-  assets/        # optimised images (webp/jpg)
-  _headers       # security + cache headers for Cloudflare
+public/                 # everything here is deployed
+  index.html            # all content; English in the markup, Spanish in data-es attributes
+  styles.css            # light/dark theme tokens and layout
+  main.js               # theme and language toggles, scroll reveal, hero graph, expand-all
   404.html
-resources/       # source material (CV, slides, photos), not deployed
-wrangler.jsonc   # Cloudflare config
+  _headers              # security and cache headers (Cloudflare)
+  assets/               # optimised images and the redacted CV
+tests/                  # node:test suite, no dependencies
+.github/
+  workflows/test.yml    # runs the tests on every PR and on main
+  CODEOWNERS
+resources/              # source material (CV, LinkedIn export, slides, photos); git-ignored
+wrangler.jsonc          # Cloudflare Worker config (name must stay "personal-portfolio")
+AGENTS.md               # content rules and context for AI agents
 ```
 
 ## Local preview
+
+Any static server pointed at `public/` works:
+
+```bash
+python -m http.server 8080 --directory public   # http://localhost:8080
+```
+
+To run it exactly as Cloudflare does, with `_headers` and the 404 page:
 
 ```bash
 npm install
 npm run dev        # http://localhost:8787
 ```
 
-Or just open `public/index.html` with any static server (`npx serve public`).
-
-## Deploy to Cloudflare
-
-**Option A — CLI**
+## Tests
 
 ```bash
-npx wrangler login
-npm run deploy
+npm test
 ```
 
-**Option B — Git integration (auto deploy on push)**
+Requires Node 22+ and has no dependencies. CI runs the same command on every pull request, so you can make the `test` check required in the `main` branch rules.
 
-1. Cloudflare dashboard → Workers & Pages → Create → Import a repository → pick this repo.
-2. Build command: *(empty)* · Deploy command: `npx wrangler deploy`.
-3. Add a custom domain under the Worker's *Settings → Domains & Routes*.
+| File | What it checks |
+|---|---|
+| `structure.test.mjs` | Required files exist; `wrangler.jsonc` serves `public/` with a 404 page; `main.js` parses; security headers; `resources/` is ignored and untracked; CODEOWNERS |
+| `links.test.mjs` | Every local `href`/`src`/`srcset` and CSS `url()` resolves; in-page anchors have targets; external links are HTTPS with `rel="noopener"`; profile links are present |
+| `content.test.mjs` | Title, description and `lang`; every `data-es` translation is filled in; elements used by `main.js` exist; images have `alt` and dimensions; no internal project names; team size wording |
+| `sensitive.test.mjs` | No phone numbers, unexpected emails, API keys, tokens or credentials in tracked files; no `.env`/`.dev.vars`; only web file types and no source documents in `public/`; the published CV matches the verified redacted version; asset size budget |
 
-If you prefer classic Cloudflare Pages instead, set the build output directory to `public` and leave the build command empty; `_headers` works the same.
+## Deployment
+
+Cloudflare **Workers Builds** is connected to this repo:
+
+- A merge to `main` deploys to production.
+- Every other branch and every PR gets a preview URL.
+- Build command: *(empty)*. Deploy command: `npx wrangler deploy`.
+
+To deploy by hand instead: `npx wrangler login`, then `npm run deploy`.
+
+**Custom domain:** in the Worker, go to *Settings → Domains & Routes → Add → Custom domain*. The domain must be on Cloudflare; the Free plan is enough.
+
+## Workflow
+
+`main` is protected and owned via CODEOWNERS. Work on a branch, open a PR, let the `test` check pass, then merge.
 
 ## Editing content
 
-- Text lives in `public/index.html`. To translate an element, put the Spanish version in its `data-es` attribute.
-- Photos: drop the originals in `resources/` and export web versions to `public/assets/` (e.g. `ffmpeg -i in.png -vf scale=640:-1 -quality 78 out.webp`).
+- **Text** lives in `public/index.html`. Every visible string has its Spanish version in a `data-es` attribute on the same element. Keep both languages in sync; the tests fail on an empty `data-es`.
+- **Images:** keep the originals in `resources/` and export web versions to `public/assets/`. Each asset must stay under 300 KB:
+  ```bash
+  ffmpeg -i resources/photo.png -vf scale=640:-1 -quality 78 public/assets/photo.webp
+  ```
+  Give every `<img>` an `alt`, `width` and `height`.
+- **Volunteering logos:** save them to `public/assets/` and replace the placeholder `<svg>` inside each `.volunteer__logo` with an `<img>`.
+- **Projects carousel:** each project is one card inside `#carouselTrack`. A live project is an `<a class="project" href="https://github.com/manu-gt-hub/<repo>" target="_blank" rel="noopener">`; a planned one is a `<div class="project is-soon">`. Dots and the counter are generated by `main.js`, so adding or removing a card needs no JS changes; update the `aria-label` "n of N" on each card.
+- **Architecture lab:** when the Docker Compose repo exists, turn its card into a link to the repo and remove `is-soon`. Never put the VPS credentials in this repo; share them on request.
+
+### Replacing the CV
+
+The CV in `public/assets/` must not contain the phone number, and its text has to be *removed*, not just covered. The PDF's text is glyph-encoded and can't be scanned reliably in CI, so the tests pin its SHA-256 instead.
+
+1. Redact the new CV, for example with PyMuPDF `add_redact_annot` and `apply_redactions`.
+2. Check that the phone number is gone from the extracted text.
+3. Replace `public/assets/Manuel-Gutierrez-Torrero-CV.pdf`.
+4. Update `CV_SHA256` in `tests/sensitive.test.mjs`.
