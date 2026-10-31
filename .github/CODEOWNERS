@@ -1,0 +1,2 @@
+# Default owner for everything in the repo; required reviewer when branch protection enforces code owners
+* @manu-gt-hub
