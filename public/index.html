@@ -53,7 +53,7 @@
         <a href="#experience" data-es="Experiencia">Experience</a>
         <a href="#impact" data-es="Impacto">Impact</a>
         <a href="#skills" data-es="Stack">Skills</a>
-        <a href="#sandbox">Sandbox</a>
+        <a href="#projects" data-es="Proyectos">Projects</a>
         <a href="#beyond" data-es="Más allá">Beyond</a>
       </nav>
       <div class="nav__actions">
@@ -407,37 +407,91 @@
       </div>
     </section>
 
-    <!-- ARCHITECTURE SANDBOX (WIP) -->
-    <section class="section" id="sandbox">
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
       <div class="wrap">
-        <p class="kicker mono">05 / sandbox</p>
-        <h2>Architecture sandbox</h2>
+        <div class="projects__head">
+          <div>
+            <p class="kicker mono">05 / <span data-es="proyectos">projects</span></p>
+            <h2 data-es="Mis proyectos">My projects</h2>
+          </div>
+          <div class="carousel__nav">
+            <span class="carousel__count mono" id="carouselCount" aria-live="polite">1 / 3</span>
+            <button class="carousel__btn" id="carouselPrev" type="button" aria-label="Previous project" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel__btn" id="carouselNext" type="button" aria-label="Next project">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
 
-        <div class="sandbox">
-          <div class="sandbox__text">
-            <p class="wip mono"><span class="wip__dot"></span> Work in progress</p>
-            <p class="sandbox__lead" data-es="Una arquitectura de referencia funcional para revisión técnica. Estoy construyendo un entorno basado en Docker, alojado en un VPS, que los perfiles técnicos podrán explorar en vivo.">A working reference architecture for technical review. I am building a Docker-based environment, hosted on a VPS, that technical reviewers will be able to explore live.</p>
-            <ul class="sandbox__list">
-              <li data-es="Arquitectura en contenedores con Docker, desplegada en un VPS">Containerised architecture with Docker, deployed on a VPS</li>
-              <li data-es="Acceso privado con usuario y contraseña para revisores técnicos">Private access with username &amp; password for technical reviewers</li>
-              <li data-es="Componentes, flujos de datos y decisiones de diseño documentados">Documented components, data flows and design decisions</li>
-            </ul>
-            <div class="sandbox__cta">
-              <a class="btn" href="mailto:manugt2018@gmail.com?subject=Architecture%20sandbox%20access" data-es="Solicitar acceso">Request access</a>
-              <!-- When the sandbox is live: set href to the VPS URL and remove aria-disabled -->
-              <a class="btn btn--ghost is-disabled" aria-disabled="true" tabindex="-1" data-es="Abrir sandbox · pronto">Open sandbox · soon</a>
+        <div class="carousel" aria-roledescription="carousel" aria-label="Projects">
+          <div class="carousel__track" id="carouselTrack" tabindex="0">
+
+            <!-- 1. Trading Advisor -->
+            <a class="project" href="https://github.com/manu-gt-hub/trading_advisor" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="Trading Advisor, 1 of 3">
+              <div class="project__preview project__preview--flow" aria-hidden="true">
+                <ol class="flow">
+                  <li><span class="mono">01</span><span data-es="Cotizaciones · Finnhub">Market data · Finnhub</span></li>
+                  <li class="flow__core"><span class="mono">02</span><span data-es="Motor técnico: tendencia · momentum · riesgo + régimen">Technical engine: trend · momentum · risk + regime</span></li>
+                  <li><span class="mono">03</span><span data-es="Auditoría LLM (solo BUY)">LLM audit (BUY only)</span></li>
+                  <li><span class="mono">04</span><span data-es="Filtros: R:R · noticias · correlación">Filters: R:R · news · correlation</span></li>
+                  <li><span class="mono">05</span><span data-es="Recomendaciones → Google Drive">Recommendations → Google Drive</span></li>
+                </ol>
+              </div>
+              <div class="project__body">
+                <p class="project__status mono"><span class="status status--live"></span><span data-es="Activo · ejecución diaria">Live · runs daily</span></p>
+                <h3>Trading Advisor</h3>
+                <p class="project__desc" data-es="Generador de señales bursátiles con un motor técnico determinista por capas como único decisor. El LLM solo audita las señales de compra. Se ejecuta a diario con GitHub Actions y publica los resultados en Google Drive.">Stock signal generator driven by a deterministic, layered technical engine that is the sole decision maker. The LLM only audits BUY signals. Runs daily on GitHub Actions and publishes results to Google Drive.</p>
+                <ul class="project__facts">
+                  <li><strong>93</strong> <span data-es="tests mockeados">mocked tests</span></li>
+                  <li><strong>5</strong> <span data-es="años de backtest sin look-ahead">years backtested, no look-ahead</span></li>
+                  <li><strong>58.8%</strong> <span data-es="win rate en NVDA (backtest)">win rate on NVDA (backtest)</span></li>
+                </ul>
+                <p class="chips"><span>Python</span><span>GitHub Actions</span><span>OpenAI</span><span>Finnhub</span><span>Google Drive API</span><span>Backtesting</span></p>
+                <p class="project__link mono" data-es="Ver repositorio ↗">View repository ↗</p>
+              </div>
+            </a>
+
+            <!-- 2. RAG system (in progress) -->
+            <a class="project" href="https://github.com/manu-gt-hub/rag_system" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="RAG System, 2 of 3">
+              <div class="project__preview project__preview--flow" aria-hidden="true">
+                <ol class="flow">
+                  <li><span class="mono">01</span><span data-es="Ingesta de documentos">Document ingestion</span></li>
+                  <li><span class="mono">02</span><span data-es="Chunking y embeddings">Chunking &amp; embeddings</span></li>
+                  <li class="flow__core"><span class="mono">03</span><span data-es="Recuperación semántica">Semantic retrieval</span></li>
+                  <li><span class="mono">04</span><span data-es="Respuesta del LLM con contexto">Grounded LLM answer</span></li>
+                </ol>
+              </div>
+              <div class="project__body">
+                <p class="project__status mono"><span class="status status--wip"></span><span data-es="En desarrollo">In progress</span></p>
+                <h3>RAG System</h3>
+                <p class="project__desc" data-es="Sistema de Retrieval-Augmented Generation: ingesta y fragmentación de documentos, búsqueda semántica y respuestas de un LLM fundamentadas en las fuentes recuperadas.">Retrieval-Augmented Generation system: document ingestion and chunking, semantic search, and LLM answers grounded in the retrieved sources.</p>
+                <p class="chips"><span>RAG</span><span>LLM</span><span>Embeddings</span><span>Vector search</span></p>
+                <p class="project__link mono" data-es="Ver repositorio ↗">View repository ↗</p>
+              </div>
+            </a>
+
+            <!-- 3. Architecture lab (coming soon). When live: turn into <a href="..." target="_blank" rel="noopener"> and drop is-soon -->
+            <div class="project is-soon" aria-roledescription="slide" aria-label="Architecture lab, 3 of 3">
+              <div class="project__preview project__preview--term" aria-hidden="true">
+                <pre class="mono"><span class="t-p">$</span> docker compose up -d
+<span class="t-m">[+] Building reference architecture…</span>
+<span class="t-w">⚠ status: coming soon</span>
+<span class="t-p">$</span> <span class="t-cursor"></span></pre>
+              </div>
+              <div class="project__body">
+                <p class="project__status mono"><span class="status status--soon"></span><span data-es="Próximamente">Coming soon</span></p>
+                <h3>Architecture lab</h3>
+                <p class="project__desc" data-es="Arquitectura de referencia con Docker Compose desplegada en un VPS, con acceso mediante usuario y contraseña para que perfiles técnicos puedan revisarla en vivo.">Reference architecture with Docker Compose, deployed on a VPS with username and password access so technical reviewers can explore it live.</p>
+                <p class="chips"><span>Docker Compose</span><span>VPS</span><span data-es="Acceso privado">Private access</span></p>
+                <p class="project__link mono" data-es="Repositorio próximamente">Repository coming soon</p>
+              </div>
             </div>
-          </div>
 
-          <div class="term" aria-hidden="true">
-            <div class="term__bar"><span></span><span></span><span></span><em class="mono">reviewer@sandbox</em></div>
-            <pre class="term__body mono"><span class="term__p">$</span> ssh reviewer@sandbox
-<span class="term__m">password: ••••••••••</span>
-<span class="term__p">$</span> docker compose up -d
-<span class="term__m">[+] Building architecture sandbox…</span>
-<span class="term__w">⚠ status: work in progress</span>
-<span class="term__p">$</span> <span class="term__cursor"></span></pre>
           </div>
+          <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Choose project"></div>
         </div>
       </div>
     </section>
