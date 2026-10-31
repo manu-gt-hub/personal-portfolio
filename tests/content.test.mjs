@@ -20,7 +20,8 @@ test('every translatable element has a Spanish version', () => {
 
 test('elements the scripts rely on are present', () => {
   for (const id of ['langToggle', 'themeToggle', 'graph', 'year', 'earlierToggle',
-    'carouselTrack', 'carouselPrev', 'carouselNext', 'carouselCount', 'carouselDots']) {
+    'carouselTrack', 'carouselPrev', 'carouselNext', 'carouselCount', 'carouselDots',
+    'photosTrack', 'photosPrev', 'photosNext', 'photosDots']) {
     assert.ok(html.includes(`id="${id}"`), `missing #${id}`);
   }
 });
