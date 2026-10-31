@@ -13,7 +13,7 @@ A static, bilingual (EN/ES) single page: plain HTML, CSS and vanilla JS with no 
 | Hero | Target roles, summary, key figures, CV download |
 | About | Profile and four focus areas |
 | Experience | Mercedes-Benz roles in detail; earlier career as expandable rows |
-| Impact | Selected achievements: GenAI, data volumes, lakehouse, Technical PO, team leadership, mentoring |
+| Impact | Selected achievements: GenAI, data volumes, lakehouse, Technical PO, team leadership |
 | Skills | Current stack, certifications, education, languages |
 | My projects | Carousel of GitHub projects: Trading Advisor (live), RAG System (in progress), Architecture lab with Docker Compose on a VPS (coming soon) |
 | Beyond work | Personal photos and volunteering |
