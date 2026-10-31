@@ -68,7 +68,7 @@ test('source documents are never published', () => {
 // The published CV had the phone number redacted (text removed, not covered).
 // Its text is glyph-encoded, so it can't be scanned reliably here: the hash pins
 // the verified file. If you replace the CV, redact it, verify it, then update this.
-const CV_SHA256 = 'e53da71b1c808069983d69a0aa74a7a94bc878b3aaab40e9765d2a3d3ab75cae';
+const CV_SHA256 = '91c37fd85c7c341a3e7d07cae04ba428ce9204569723989217525faac26ee34e';
 
 test('published CV is the verified redacted version', () => {
   const pdfs = publicFiles().filter((f) => f.endsWith('.pdf'));
