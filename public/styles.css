@@ -310,15 +310,10 @@ p { margin: 0 0 1rem; }
 }
 .tile--accent h3 { font-size: 1.6rem; }
 .tile--accent .tile__tag, .tile--accent > p:not(.tile__tag) { color: rgba(255,255,255,.88); }
-@media (min-width: 700px) { .tile--full { grid-column: 1 / -1; } }
 .tile > p.tile__big { font: 700 3rem/1 var(--display); letter-spacing: -0.04em; margin: .2rem 0 0; color: var(--accent); }
 .tile__list { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; gap: .55rem; color: var(--muted); font-size: .93rem; }
 .tile__list li { position: relative; padding-left: 1.3rem; }
 .tile__list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); font-size: .85rem; }
-.metrics { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin: 1rem 0; }
-@media (min-width: 760px) { .metrics--4 { grid-template-columns: repeat(4, 1fr); } }
-.metrics div { display: flex; flex-direction: column; gap: .2rem; color: var(--muted); font-size: .9rem; }
-.metrics__n { font: 700 2.4rem var(--display); color: var(--text); letter-spacing: -0.03em; }
 
 /* Skills */
 .skills { display: grid; gap: 1rem; }
