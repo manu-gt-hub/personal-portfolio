@@ -89,31 +89,51 @@
       return dot;
     });
 
+    function pos(i) { return slides[i].offsetLeft - slides[0].offsetLeft; }
+    // Positions closer than this count as the same, so no click moves the track by just a few pixels
+    var NEAR = 16;
+    function atEnd() { return track.scrollLeft + track.clientWidth >= track.scrollWidth - NEAR; }
+
     function goTo(i) {
       i = Math.max(0, Math.min(slides.length - 1, i));
-      track.scrollTo({ left: slides[i].offsetLeft - slides[0].offsetLeft, behavior: reduceMotion ? 'instant' : 'smooth' });
+      track.scrollTo({ left: pos(i), behavior: reduceMotion ? 'instant' : 'smooth' });
+    }
+
+    // Step from the actual scroll position, not from `current`: when several slides are visible,
+    // the slide before the "current" one may already be on screen and scrolling to it does nothing.
+    // Both ends wrap around.
+    function next() {
+      if (atEnd()) return goTo(0);
+      var x = track.scrollLeft;
+      for (var i = 0; i < slides.length; i++) if (pos(i) > x + NEAR) return goTo(i);
+      goTo(0);
+    }
+    function prev() {
+      var x = track.scrollLeft;
+      if (x <= NEAR) return goTo(slides.length - 1);
+      for (var i = slides.length - 1; i >= 0; i--) if (pos(i) < x - NEAR) return goTo(i);
+      goTo(0);
     }
 
     function update() {
       var x = track.scrollLeft;
       var best = Infinity;
       slides.forEach(function (s, i) {
-        var d = Math.abs(s.offsetLeft - slides[0].offsetLeft - x);
+        var d = Math.abs(pos(i) - x);
         if (d < best) { best = d; current = i; }
       });
       // The last slide can't snap to the start edge, so treat "scrolled to the end" as the last slide
-      if (x + track.clientWidth >= track.scrollWidth - 4) current = slides.length - 1;
+      if (atEnd()) current = slides.length - 1;
       if (countEl) countEl.textContent = (current + 1) + ' / ' + slides.length;
-      prevBtn.disabled = current === 0;
-      nextBtn.disabled = current === slides.length - 1;
       dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(i === current)); });
     }
 
-    prevBtn.addEventListener('click', function () { goTo(current - 1); });
-    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+    prevBtn.disabled = nextBtn.disabled = false;
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
     track.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); goTo(current + 1); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(current - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
     });
     var ticking = false;
     track.addEventListener('scroll', function () {
