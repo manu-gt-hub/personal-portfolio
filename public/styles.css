@@ -444,19 +444,16 @@ a.project:hover { transform: translateY(-4px); border-color: var(--sb-accent); b
 .volunteer__text small { color: var(--muted); }
 .volunteer__text em { font-style: normal; color: var(--accent); font-size: .74rem; margin-top: .2rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-/* Gallery */
-.gallery { display: grid; gap: 1rem; grid-template-columns: repeat(2, 1fr); }
-@media (min-width: 900px) { .gallery { grid-template-columns: repeat(4, 1fr); } }
-.gallery figure {
-  margin: 0; position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 5;
-  background: var(--chip);
-}
-.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
-.gallery figure:hover img { transform: scale(1.05); }
-.gallery figcaption {
-  position: absolute; inset: auto 0 0 0; padding: 2.5rem 1rem 1rem;
-  background: linear-gradient(to top, rgba(0,0,0,.72), transparent);
-  color: #fff; font-weight: 500; font-size: .92rem;
+/* Beyond work: photo carousel, reusing the projects carousel in the page theme */
+#beyond { overflow: hidden; }
+.photos { --sb-bg: var(--bg); --sb-text: var(--text); --sb-muted: var(--muted); --sb-line: var(--line); --sb-accent: var(--accent); }
+.photos__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.photos__head h2 { margin-bottom: 0; }
+.photos .carousel__track { gap: 1rem; }
+/* Photos keep their own aspect ratio at a shared height; the Egypt photo is only 302px tall, so stay close to that */
+.photos .carousel__track img {
+  flex: 0 0 auto; height: clamp(240px, 30vw, 340px); width: auto; max-width: 86vw;
+  object-fit: cover; border-radius: var(--radius); scroll-snap-align: start; background: var(--chip);
 }
 
 /* Contact */

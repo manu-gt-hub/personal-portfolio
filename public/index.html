@@ -485,12 +485,26 @@
     <section class="section" id="beyond">
       <div class="wrap">
         <p class="kicker mono">06 / <span data-es="más allá del código">beyond code</span></p>
-        <h2 data-es="Más allá del trabajo">Beyond work</h2>
-        <div class="gallery">
-          <figure><img src="/assets/diving.webp" loading="lazy" width="640" height="647" alt="Scuba diving"><figcaption data-es="Deporte, incluido el buceo">Sports, including scuba diving</figcaption></figure>
-          <figure><img src="/assets/travel.webp" loading="lazy" width="640" height="572" alt="Hiking by a mountain lake" style="object-position: 15% center"><figcaption data-es="Viajes y montaña">Travel and the mountains</figcaption></figure>
-          <figure><img src="/assets/motorcycles.webp" loading="lazy" width="592" height="430" alt="Motorcycle trip with friends"><figcaption data-es="Rutas en moto">Motorcycle touring</figcaption></figure>
-          <figure><img src="/assets/rubia.webp" loading="lazy" width="491" height="577" alt="Manuel with his dog Rubia"><figcaption data-es="Con Rubia, mi perra">With Rubia, my dog</figcaption></figure>
+        <div class="photos__head">
+          <h2 data-es="Más allá del trabajo">Beyond work</h2>
+          <div class="carousel__nav">
+            <button class="carousel__btn" id="photosPrev" type="button" aria-label="Previous photo" disabled>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+            </button>
+            <button class="carousel__btn" id="photosNext" type="button" aria-label="Next photo">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="photos" aria-roledescription="carousel" aria-label="Photos">
+          <div class="carousel__track" id="photosTrack" tabindex="0">
+            <img src="/assets/diving.webp" loading="lazy" width="640" height="647" alt="Scuba diving">
+            <img src="/assets/travel.webp" loading="lazy" width="640" height="572" alt="Hiking by a mountain lake">
+            <img src="/assets/egypt.webp" loading="lazy" width="338" height="302" alt="In front of the pyramids of Giza">
+            <img src="/assets/motorcycles.webp" loading="lazy" width="592" height="430" alt="Motorcycle trip with friends">
+            <img src="/assets/rubia.webp" loading="lazy" width="491" height="577" alt="Manuel with his dog Rubia">
+          </div>
+          <div class="carousel__dots" id="photosDots" role="tablist" aria-label="Choose photo"></div>
         </div>
         <h3 class="volunteer__title" data-es="Voluntariado">Volunteering</h3>
         <div class="volunteer">

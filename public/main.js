@@ -70,21 +70,22 @@
     earlierItems.forEach(function (d) { d.addEventListener('toggle', syncEarlierBtn); });
   }
 
-  /* ---------- Projects carousel ---------- */
-  var track = document.getElementById('carouselTrack');
-  if (track) {
+  /* ---------- Carousels (projects, photos) ---------- */
+  function carousel(prefix, itemLabel) {
+    var track = document.getElementById(prefix + 'Track');
+    if (!track) return;
     var slides = Array.prototype.slice.call(track.children);
-    var prevBtn = document.getElementById('carouselPrev');
-    var nextBtn = document.getElementById('carouselNext');
-    var countEl = document.getElementById('carouselCount');
-    var dotsBox = document.getElementById('carouselDots');
+    var prevBtn = document.getElementById(prefix + 'Prev');
+    var nextBtn = document.getElementById(prefix + 'Next');
+    var countEl = document.getElementById(prefix + 'Count');
+    var dotsBox = document.getElementById(prefix + 'Dots');
     var current = 0;
 
     var dots = slides.map(function (slide, i) {
       var dot = document.createElement('button');
       dot.type = 'button';
       dot.setAttribute('role', 'tab');
-      dot.setAttribute('aria-label', 'Project ' + (i + 1));
+      dot.setAttribute('aria-label', itemLabel + ' ' + (i + 1));
       dot.addEventListener('click', function () { goTo(i); });
       dotsBox.appendChild(dot);
       return dot;
@@ -102,9 +103,9 @@
         var d = Math.abs(s.offsetLeft - slides[0].offsetLeft - x);
         if (d < best) { best = d; current = i; }
       });
-      // The last card can't snap to the start edge, so treat "scrolled to the end" as the last card
+      // The last slide can't snap to the start edge, so treat "scrolled to the end" as the last slide
       if (x + track.clientWidth >= track.scrollWidth - 4) current = slides.length - 1;
-      countEl.textContent = (current + 1) + ' / ' + slides.length;
+      if (countEl) countEl.textContent = (current + 1) + ' / ' + slides.length;
       prevBtn.disabled = current === 0;
       nextBtn.disabled = current === slides.length - 1;
       dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(i === current)); });
@@ -124,6 +125,8 @@
     }, { passive: true });
     update();
   }
+  carousel('carousel', 'Project');
+  carousel('photos', 'Photo');
 
   /* ---------- Nav: scrolled state + active section ---------- */
   var nav = document.querySelector('.nav');
@@ -161,7 +164,7 @@
     requestAnimationFrame(frame);
   }
 
-  var revealTargets = document.querySelectorAll('.section h2, .about__body, .job, .tile, .skillset, .creds__col, .gallery figure, .link-card, .stat, .project, .volunteer__card');
+  var revealTargets = document.querySelectorAll('.section h2, .about__body, .job, .tile, .skillset, .creds__col, .photos, .link-card, .stat, .project, .volunteer__card');
   if ('IntersectionObserver' in window && !reduceMotion) {
     revealTargets.forEach(function (el) { el.classList.add('reveal'); });
     var revealObs = new IntersectionObserver(function (entries) {
