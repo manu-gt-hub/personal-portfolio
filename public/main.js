@@ -41,10 +41,8 @@
     langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
     langBtn.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
   }
-  // Saved choice wins; otherwise follow the browser language
-  var savedLang = stored('lang');
-  var initialLang = savedLang || (/^es\b/i.test(navigator.language || '') ? 'es' : 'en');
-  if (initialLang === 'es') applyLang('es');
+  // English by default; a saved choice from the toggle wins
+  if (stored('lang') === 'es') applyLang('es');
   langBtn.addEventListener('click', function () {
     var next = root.lang === 'es' ? 'en' : 'es';
     applyLang(next);
