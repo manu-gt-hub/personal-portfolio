@@ -31,6 +31,8 @@ test('wrangler.jsonc serves public/ as static assets with a 404 page', () => {
   assert.equal(cfg.assets?.directory, './public');
   assert.equal(cfg.assets?.not_found_handling, '404-page');
   assert.ok(existsSync(join(ROOT, cfg.assets.directory)), 'assets directory must exist');
+  // Workers Builds runs `wrangler preview` on non-production branches, which fails without it
+  assert.ok(cfg.previews, 'a "previews" block is required for branch preview builds');
 });
 
 test('main.js is valid JavaScript', () => {
