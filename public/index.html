@@ -439,41 +439,55 @@
               </div>
             </a>
 
-            <!-- 2. RAG system (in progress) -->
+            <!-- 2. RAG System -->
             <a class="project" href="https://github.com/manu-gt-hub/rag_system" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="RAG System, 2 of 3">
               <div class="project__preview project__preview--flow" aria-hidden="true">
                 <ol class="flow">
-                  <li><span class="mono">01</span><span data-es="Ingesta de documentos">Document ingestion</span></li>
-                  <li><span class="mono">02</span><span data-es="Chunking y embeddings">Chunking &amp; embeddings</span></li>
-                  <li class="flow__core"><span class="mono">03</span><span data-es="Recuperación semántica">Semantic retrieval</span></li>
-                  <li><span class="mono">04</span><span data-es="Respuesta del LLM con contexto">Grounded LLM answer</span></li>
+                  <li><span class="mono">01</span><span data-es="Catálogo JSON → documentos">Catalog JSON → documents</span></li>
+                  <li><span class="mono">02</span><span data-es="Embeddings → PostgreSQL + pgvector">Embeddings → PostgreSQL + pgvector</span></li>
+                  <li class="flow__core"><span class="mono">03</span><span data-es="Búsqueda híbrida: vectorial + texto completo (RRF)">Hybrid search: vector + full-text (RRF)</span></li>
+                  <li><span class="mono">04</span><span data-es="Recomendación del LLM solo con ese contexto">LLM recommendation from that context only</span></li>
+                  <li><span class="mono">05</span><span data-es="Evaluación por rúbricas en CI">Rubric-based evaluation in CI</span></li>
                 </ol>
               </div>
               <div class="project__body">
-                <p class="project__status mono"><span class="status status--wip"></span><span data-es="En desarrollo">In progress</span></p>
+                <p class="project__status mono"><span class="status status--live"></span><span data-es="Ejecutable · Docker Compose">Runnable · Docker Compose</span></p>
                 <h3>RAG System</h3>
-                <p class="project__desc" data-es="Sistema de Retrieval-Augmented Generation: ingesta y fragmentación de documentos, búsqueda semántica y respuestas de un LLM fundamentadas en las fuentes recuperadas.">Retrieval-Augmented Generation system: document ingestion and chunking, semantic search, and LLM answers grounded in the retrieved sources.</p>
-                <p class="chips"><span>RAG</span><span>LLM</span><span>Embeddings</span><span>Vector search</span></p>
+                <p class="project__desc" data-es="Chatbot que recomienda y responde preguntas sobre un catálogo personal de películas, series, libros, música, videojuegos y documentales. Búsqueda híbrida sobre PostgreSQL + pgvector y respuestas de OpenAI o Anthropic basadas solo en los documentos recuperados.">Chatbot that recommends and answers questions about a personal catalog of movies, series, books, music, video games and documentaries. Hybrid search on PostgreSQL + pgvector, with OpenAI or Anthropic answers grounded only in the retrieved documents.</p>
+                <ul class="project__facts">
+                  <li><strong>~2,400</strong> <span data-es="documentos indexados">documents indexed</span></li>
+                  <li><strong>6</strong> <span data-es="categorías de catálogo">catalog categories</span></li>
+                  <li><strong>&ge;70%</strong> <span data-es="umbral de acierto en CI">accuracy threshold in CI</span></li>
+                </ul>
+                <p class="chips"><span>Python</span><span>PostgreSQL</span><span>pgvector</span><span>Flask</span><span>OpenAI</span><span>Anthropic</span><span>Docker Compose</span><span>GitHub Actions</span></p>
                 <p class="project__link mono" data-es="Ver repositorio ↗">View repository ↗</p>
               </div>
             </a>
 
-            <!-- 3. Architecture lab (coming soon). When live: turn into <a href="..." target="_blank" rel="noopener"> and drop is-soon -->
-            <div class="project is-soon" aria-roledescription="slide" aria-label="Architecture lab, 3 of 3">
-              <div class="project__preview project__preview--term" aria-hidden="true">
-                <pre class="mono"><span class="t-p">$</span> docker compose up -d
-<span class="t-m">[+] Building reference architecture…</span>
-<span class="t-w">⚠ status: coming soon</span>
-<span class="t-p">$</span> <span class="t-cursor"></span></pre>
+            <!-- 3. LLMOps Platform -->
+            <a class="project" href="https://github.com/manu-gt-hub/llmops-platform" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="LLMOps Platform, 3 of 3">
+              <div class="project__preview project__preview--flow" aria-hidden="true">
+                <ol class="flow">
+                  <li><span class="mono">01</span><span data-es="Apps y agentes (SDK oficiales)">Apps &amp; agents (official SDKs)</span></li>
+                  <li class="flow__core"><span class="mono">02</span><span data-es="Gateway LLM: coste · presupuestos · trazas">LLM gateway: cost · budgets · traces</span></li>
+                  <li><span class="mono">03</span><span data-es="Proveedores: Anthropic · OpenAI">Providers: Anthropic · OpenAI</span></li>
+                  <li><span class="mono">04</span><span data-es="PostgreSQL · Prometheus · Tempo">PostgreSQL · Prometheus · Tempo</span></li>
+                  <li><span class="mono">05</span><span data-es="Grafana: FinOps · AgentOps · DevOps">Grafana: FinOps · AgentOps · DevOps</span></li>
+                </ol>
               </div>
               <div class="project__body">
-                <p class="project__status mono"><span class="status status--soon"></span><span data-es="Próximamente">Coming soon</span></p>
-                <h3>Architecture lab</h3>
-                <p class="project__desc" data-es="Arquitectura de referencia con Docker Compose desplegada en un VPS, con acceso mediante usuario y contraseña para que perfiles técnicos puedan revisarla en vivo.">Reference architecture with Docker Compose, deployed on a VPS with username and password access so technical reviewers can explore it live.</p>
-                <p class="chips"><span>Docker Compose</span><span>VPS</span><span data-es="Acceso privado">Private access</span></p>
-                <p class="project__link mono" data-es="Repositorio próximamente">Repository coming soon</p>
+                <p class="project__status mono"><span class="status status--live"></span><span data-es="Ejecutable · Docker Compose">Runnable · Docker Compose</span></p>
+                <h3>LLMOps Platform</h3>
+                <p class="project__desc" data-es="Plataforma de referencia con un gateway LLM entre las aplicaciones y los proveedores que convierte cada llamada en datos: tokens y coste por proyecto y modelo, presupuestos que bloquean el gasto, trazas de agentes con OpenTelemetry y la versión desplegada en cada momento.">Reference platform with an LLM gateway between apps and model providers that turns every call into data: tokens and cost by project and model, budgets that stop spending, OpenTelemetry traces of agent runs, and which release is deployed.</p>
+                <ul class="project__facts">
+                  <li><strong>4</strong> <span data-es="dashboards de Grafana como código">Grafana dashboards as code</span></li>
+                  <li><strong>0</strong> <span data-es="API keys para el CI de extremo a extremo">API keys needed for end-to-end CI</span></li>
+                  <li><strong>30</strong> <span data-es="días de datos demo">days of demo data</span></li>
+                </ul>
+                <p class="chips"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Prometheus</span><span>Grafana</span><span>OpenTelemetry</span><span>Docker Compose</span><span>GitHub Actions</span></p>
+                <p class="project__link mono" data-es="Ver repositorio ↗">View repository ↗</p>
               </div>
-            </div>
+            </a>
 
           </div>
           <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Choose project"></div>

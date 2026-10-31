@@ -50,8 +50,7 @@ Never invent figures, technologies or claims that aren't in these sources. If so
 - **Older technology** (Hadoop, Cloudera, Kafka, Kudu, Sqoop, .NET…) appears only inside the collapsed *Earlier career* rows, never in the main stack.
 - **No phone number anywhere.** The only email shown is the public contact address.
 - **Translations:** every visible string needs its Spanish version in a `data-es` attribute on the same element. Update both languages together.
-- **Projects:** the carousel lists Trading Advisor (live), RAG System (in progress; the repo may still be private) and an Architecture lab with Docker Compose on a VPS (not created yet). Describe only what the repos actually contain; read their README before writing a card.
-- **VPS credentials** for the Architecture lab never go in the repo.
+- **Projects:** the carousel lists Trading Advisor (live, runs daily), RAG System and LLMOps Platform (both runnable with Docker Compose, not deployed). Describe only what the repos actually contain; read their README before writing a card.
 
 ## Working on the repo
 

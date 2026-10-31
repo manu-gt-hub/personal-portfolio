@@ -37,7 +37,7 @@ test('images have alt text and explicit dimensions', () => {
 test('projects carousel links each live project to its GitHub repo in a new tab', () => {
   const slides = [...html.matchAll(/<(a|div) class="project[^"]*"[^>]*>/g)].map((m) => m[0]);
   assert.ok(slides.length >= 2, 'expected several projects so the carousel makes sense');
-  for (const repo of ['trading_advisor', 'rag_system']) {
+  for (const repo of ['trading_advisor', 'rag_system', 'llmops-platform']) {
     const card = slides.find((s) => s.includes(`github.com/manu-gt-hub/${repo}"`));
     assert.ok(card, `missing project card for ${repo}`);
     assert.match(card, /target="_blank"/, `${repo} should open in a new tab`);
