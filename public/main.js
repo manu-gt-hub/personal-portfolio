@@ -25,28 +25,32 @@
     store('theme', next);
   });
 
-  /* ---------- Language (EN default, ES via data-es) ---------- */
-  var langBtn = document.getElementById('langToggle');
+  /* ---------- Language (EN default, ES via data-es, IT via data-it) ---------- */
+  var langButtons = document.querySelectorAll('#langToggle [data-lang]');
   var titles = {
     en: 'Manuel Gutiérrez Torrero · Data & AI Architect',
-    es: 'Manuel Gutiérrez Torrero · Arquitecto de Datos e IA'
+    es: 'Manuel Gutiérrez Torrero · Arquitecto de Datos e IA',
+    it: 'Manuel Gutiérrez Torrero · Architetto Dati e IA'
   };
   function applyLang(lang) {
+    if (!titles[lang]) lang = 'en';
     document.querySelectorAll('[data-es]').forEach(function (el) {
       if (el.dataset.en === undefined) el.dataset.en = el.innerHTML;
-      el.innerHTML = lang === 'es' ? el.dataset.es : el.dataset.en;
+      el.innerHTML = el.dataset[lang] || el.dataset.en;
     });
     root.lang = lang;
     document.title = titles[lang];
-    langBtn.textContent = lang === 'es' ? 'EN' : 'ES';
-    langBtn.setAttribute('aria-label', lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+    langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
   }
-  // English by default; a saved choice from the toggle wins
-  if (stored('lang') === 'es') applyLang('es');
-  langBtn.addEventListener('click', function () {
-    var next = root.lang === 'es' ? 'en' : 'es';
-    applyLang(next);
-    store('lang', next);
+  // English by default; a saved choice from the switcher wins
+  var savedLang = stored('lang');
+  if (savedLang && savedLang !== 'en' && titles[savedLang]) applyLang(savedLang);
+  langButtons.forEach(function (b) {
+    b.addEventListener('click', function () {
+      applyLang(b.dataset.lang);
+      store('lang', root.lang);
+      if (earlierBtn) syncEarlierBtn();
+    });
   });
 
   /* ---------- Earlier career: expand / collapse all ---------- */
@@ -56,7 +60,8 @@
     var allOpen = Array.prototype.every.call(earlierItems, function (d) { return d.open; });
     earlierBtn.dataset.en = allOpen ? 'Collapse all' : 'Expand all';
     earlierBtn.dataset.es = allOpen ? 'Ocultar todo' : 'Ver todo';
-    earlierBtn.textContent = root.lang === 'es' ? earlierBtn.dataset.es : earlierBtn.dataset.en;
+    earlierBtn.dataset.it = allOpen ? 'Comprimi tutto' : 'Espandi tutto';
+    earlierBtn.textContent = earlierBtn.dataset[root.lang] || earlierBtn.dataset.en;
     earlierBtn.setAttribute('aria-expanded', String(allOpen));
   }
   if (earlierBtn) {

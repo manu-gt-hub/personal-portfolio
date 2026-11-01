@@ -100,6 +100,16 @@ p { margin: 0 0 1rem; }
   display: inline-grid; place-items: center;
 }
 .icon-btn { padding: 0; }
+.lang {
+  display: inline-flex; height: 36px; padding: 3px; gap: 2px;
+  border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
+}
+.lang button {
+  min-width: 30px; padding: 0 .45rem; border: 0; border-radius: 999px;
+  background: transparent; color: var(--muted); font: 500 .74rem var(--mono); cursor: pointer;
+}
+.lang button:hover { color: var(--text); }
+.lang button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
 .icon-btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 .icon-btn .i-moon { display: none; }
 :root[data-theme="dark"] .icon-btn .i-sun { display: none; }
@@ -182,8 +192,9 @@ p { margin: 0 0 1rem; }
 .badge__k { color: var(--accent); }
 @media (max-width: 420px) { .badge { left: 8px; } }
 
+.stats__title { position: relative; z-index: 1; margin: 3.5rem 0 .75rem; color: var(--muted); font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; }
 .stats {
-  position: relative; z-index: 1; margin: 3.5rem 0 0;
+  position: relative; z-index: 1; margin: 0;
   display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px;
   background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
 }
@@ -314,6 +325,12 @@ p { margin: 0 0 1rem; }
 .tile__list { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; gap: .55rem; color: var(--muted); font-size: .93rem; }
 .tile__list li { position: relative; padding-left: 1.3rem; }
 .tile__list li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-family: var(--mono); font-size: .85rem; }
+.tile__impact { margin-top: auto; padding-top: .9rem; border-top: 1px dashed var(--line); font-size: .9rem; }
+.tile__impact p { margin: 0; color: var(--text); }
+.tile__impact .tile__impact-k { color: var(--accent-2); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .3rem; }
+.tile--accent .tile__impact { border-top-color: rgba(255,255,255,.35); }
+.tile--accent .tile__impact p { color: #fff; }
+.tile--accent .tile__impact .tile__impact-k { color: rgba(255,255,255,.8); }
 
 /* Skills */
 .skills { display: grid; gap: 1rem; }
