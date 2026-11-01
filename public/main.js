@@ -11,7 +11,6 @@
     try { return localStorage.getItem(key); } catch (e) { return null; }
   }
 
-  document.getElementById('year').textContent = new Date().getFullYear();
 
   /* ---------- Theme ---------- */
   var themeBtn = document.getElementById('themeToggle');
@@ -41,6 +40,7 @@
     root.lang = lang;
     document.title = titles[lang];
     langButtons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+    syncSectionLabel();
   }
   // English by default; a saved choice from the switcher wins
   var savedLang = stored('lang');
@@ -157,8 +157,19 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Mobile menu: dropdown with the section links ---------- */
+  /* ---------- Mobile menu: section selector with the links as a dropdown ---------- */
   var menuBtn = document.getElementById('menuToggle');
+  // The selector shows the active section's link text (already translated); About until a section is reached
+  function syncSectionLabel() {
+    var label = document.getElementById('sectionLabel');
+    if (!label) return;
+    var active = document.querySelector('.nav__links a.is-active') || document.querySelector('.nav__links a');
+    label.innerHTML = active.innerHTML;
+  }
+  function markActive(href) {
+    navLinks.forEach(function (a) { a.classList.toggle('is-active', a.getAttribute('href') === href); });
+    syncSectionLabel();
+  }
   function setMenu(open) {
     nav.classList.toggle('is-menu-open', open);
     menuBtn.setAttribute('aria-expanded', String(open));
@@ -169,7 +180,10 @@
   });
   // Close after choosing a section, on Escape, or on a tap anywhere else
   document.getElementById('navLinks').addEventListener('click', function (e) {
-    if (e.target.closest('a')) setMenu(false);
+    var link = e.target.closest('a');
+    if (!link) return;
+    markActive(link.getAttribute('href'));
+    setMenu(false);
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && nav.classList.contains('is-menu-open')) { setMenu(false); menuBtn.focus(); }
@@ -182,10 +196,7 @@
   if ('IntersectionObserver' in window) {
     var sectionObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        navLinks.forEach(function (a) {
-          a.classList.toggle('is-active', a.getAttribute('href') === '#' + entry.target.id);
-        });
+        if (entry.isIntersecting) markActive('#' + entry.target.id);
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     document.querySelectorAll('main section[id]').forEach(function (s) { sectionObs.observe(s); });
