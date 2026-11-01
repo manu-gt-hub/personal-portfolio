@@ -144,16 +144,46 @@ p { margin: 0 0 1rem; }
   font: 700 .85rem var(--display);
 }
 .brand__name { display: none; }
-/* Below the two-column hero the large photo is hidden and a small one sits in the top bar instead */
+/* Below the two-column hero the large photo is hidden and the top bar carries it instead:
+   large and hanging below the bar at the top of the page, shrinking to an avatar once scrolled */
 .brand__photo { display: none; width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
 @media (max-width: 899px) {
   .brand__mark, .hero__photo { display: none; }
-  .brand__photo { display: block; }
+  .brand { align-self: flex-start; margin-top: 10px; transition: margin-top .25s; }
+  .brand__photo {
+    display: block; width: 96px; height: 96px; border-width: 2px; box-shadow: var(--shadow);
+    transition: width .25s, height .25s;
+  }
+  .nav.is-scrolled .brand { margin-top: 15px; }
+  .nav.is-scrolled .brand__photo { width: 34px; height: 34px; border-width: 1px; }
 }
 .nav__links { display: none; gap: 1.6rem; margin-left: auto; }
 .nav__links a { text-decoration: none; color: var(--muted); font-size: .92rem; transition: color .2s; }
 .nav__links a:hover, .nav__links a.is-active { color: var(--text); }
 .nav__actions { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
+/* Mobile: a selector under the top-bar controls shows the current section and opens the links as a dropdown */
+.nav__inner { position: relative; }
+.nav__section { display: none; }
+@media (max-width: 899px) {
+  .nav__section {
+    position: absolute; top: 66px; right: 16px;
+    display: inline-flex; align-items: center; gap: .45rem; height: 36px; padding: 0 .75rem 0 1rem;
+    border-radius: 999px; border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow);
+    color: var(--text); font: 500 .85rem var(--font); cursor: pointer;
+  }
+  .nav__section svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+  .nav.is-menu-open .nav__section svg { transform: rotate(180deg); }
+  .nav.is-menu-open .nav__links {
+    display: flex; flex-direction: column; gap: 0;
+    position: absolute; top: 108px; right: 16px; min-width: 200px; padding: .4rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+  }
+  .nav.is-menu-open .nav__links a { padding: .7rem .9rem; border-radius: 10px; color: var(--text); font-size: .95rem; }
+  .nav.is-menu-open .nav__links a:hover, .nav.is-menu-open .nav__links a.is-active { background: var(--accent-soft); color: var(--accent); }
+}
+@media (min-width: 640px) and (max-width: 899px) {
+  .nav__section, .nav.is-menu-open .nav__links { right: 28px; }
+}
 @media (min-width: 560px) { .brand__name { display: inline; } }
 @media (min-width: 900px) {
   .nav__links { display: flex; }
