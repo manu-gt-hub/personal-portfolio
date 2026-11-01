@@ -144,11 +144,18 @@ p { margin: 0 0 1rem; }
   font: 700 .85rem var(--display);
 }
 .brand__name { display: none; }
-/* Below the two-column hero the large photo is hidden and a small one sits in the top bar instead */
+/* Below the two-column hero the large photo is hidden and the top bar carries it instead:
+   large and hanging below the bar at the top of the page, shrinking to an avatar once scrolled */
 .brand__photo { display: none; width: 34px; height: 34px; border-radius: 50%; object-fit: cover; border: 1px solid var(--line); }
 @media (max-width: 899px) {
   .brand__mark, .hero__photo { display: none; }
-  .brand__photo { display: block; }
+  .brand { align-self: flex-start; margin-top: 10px; transition: margin-top .25s; }
+  .brand__photo {
+    display: block; width: 96px; height: 96px; border-width: 2px; box-shadow: var(--shadow);
+    transition: width .25s, height .25s;
+  }
+  .nav.is-scrolled .brand { margin-top: 15px; }
+  .nav.is-scrolled .brand__photo { width: 34px; height: 34px; border-width: 1px; }
 }
 .nav__links { display: none; gap: 1.6rem; margin-left: auto; }
 .nav__links a { text-decoration: none; color: var(--muted); font-size: .92rem; transition: color .2s; }
