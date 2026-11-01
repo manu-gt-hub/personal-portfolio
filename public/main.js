@@ -157,6 +157,27 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Mobile menu: dropdown with the section links ---------- */
+  var menuBtn = document.getElementById('menuToggle');
+  function setMenu(open) {
+    nav.classList.toggle('is-menu-open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+  }
+  menuBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    setMenu(!nav.classList.contains('is-menu-open'));
+  });
+  // Close after choosing a section, on Escape, or on a tap anywhere else
+  document.getElementById('navLinks').addEventListener('click', function (e) {
+    if (e.target.closest('a')) setMenu(false);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && nav.classList.contains('is-menu-open')) { setMenu(false); menuBtn.focus(); }
+  });
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('#navLinks')) setMenu(false);
+  });
+
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav__links a'));
   if ('IntersectionObserver' in window) {
     var sectionObs = new IntersectionObserver(function (entries) {

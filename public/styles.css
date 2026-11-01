@@ -161,6 +161,19 @@ p { margin: 0 0 1rem; }
 .nav__links a { text-decoration: none; color: var(--muted); font-size: .92rem; transition: color .2s; }
 .nav__links a:hover, .nav__links a.is-active { color: var(--text); }
 .nav__actions { display: flex; align-items: center; gap: .5rem; margin-left: auto; }
+/* Mobile: the section links live in a dropdown under the top-bar controls */
+.nav__inner { position: relative; }
+.nav__menu-btn { display: none; }
+@media (max-width: 899px) {
+  .nav__menu-btn { display: inline-grid; }
+  .nav.is-menu-open .nav__links {
+    display: flex; flex-direction: column; gap: 0;
+    position: absolute; top: 58px; right: 16px; min-width: 200px; padding: .4rem;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+  }
+  .nav.is-menu-open .nav__links a { padding: .7rem .9rem; border-radius: 10px; color: var(--text); font-size: .95rem; }
+  .nav.is-menu-open .nav__links a:hover, .nav.is-menu-open .nav__links a.is-active { background: var(--accent-soft); color: var(--accent); }
+}
 @media (min-width: 560px) { .brand__name { display: inline; } }
 @media (min-width: 900px) {
   .nav__links { display: flex; }

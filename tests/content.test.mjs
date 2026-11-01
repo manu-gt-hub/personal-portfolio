@@ -32,7 +32,7 @@ test('language switcher offers English, Spanish and Italian', () => {
 });
 
 test('elements the scripts rely on are present', () => {
-  for (const id of ['langToggle', 'themeToggle', 'graph', 'year', 'earlierToggle',
+  for (const id of ['langToggle', 'themeToggle', 'menuToggle', 'navLinks', 'graph', 'year', 'earlierToggle',
     'carouselTrack', 'carouselPrev', 'carouselNext', 'carouselCount', 'carouselDots',
     'photosTrack', 'photosPrev', 'photosNext', 'photosDots']) {
     assert.ok(html.includes(`id="${id}"`), `missing #${id}`);
