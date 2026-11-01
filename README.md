@@ -15,7 +15,7 @@ A static, trilingual (EN/ES/IT) single page: plain HTML, CSS and vanilla JS with
 | Experience | Mercedes-Benz roles in detail; earlier career as expandable rows |
 | Impact | Selected achievements: GenAI, data volumes, lakehouse, Technical PO, team leadership |
 | Skills | Current stack, certifications, education, languages |
-| My projects | Carousel of GitHub projects: Trading Advisor (live), RAG System and LLMOps Platform (runnable with Docker Compose) |
+| My projects | Carousel of GitHub projects: Trading Advisor (live), RAG System and LLMOps Platform (runnable with Docker Compose, tagged "Work in progress") |
 | Beyond work | Photo carousel (no captions) and volunteering |
 | Contact | Email, LinkedIn, GitHub, Malt, CV |
 

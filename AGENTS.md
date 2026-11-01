@@ -50,7 +50,7 @@ Never invent figures, technologies or claims that aren't in these sources. If so
 - **Older technology** (Hadoop, Cloudera, Kafka, Kudu, Sqoop, .NET…) appears only inside the collapsed *Earlier career* rows, never in the main stack.
 - **No phone number anywhere.** The only email shown is the public contact address.
 - **Translations:** every visible string needs its Spanish and Italian versions in `data-es` and `data-it` attributes on the same element. Update the three languages together.
-- **Projects:** the carousel lists Trading Advisor (live, runs daily), RAG System and LLMOps Platform (both runnable with Docker Compose, not deployed). Describe only what the repos actually contain; read their README before writing a card.
+- **Projects:** the carousel lists Trading Advisor (live, runs daily), RAG System and LLMOps Platform (both runnable with Docker Compose, not deployed, and tagged "Work in progress" until finished). Trading Advisor stays first in the carousel. Describe only what the repos actually contain; read their README before writing a card.
 
 ## Working on the repo
 
