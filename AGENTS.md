@@ -20,11 +20,11 @@ Context and rules for AI agents working on this repo. The README covers structur
 
 ## What this is
 
-A static, bilingual (EN/ES) portfolio in `public/`, deployed by Cloudflare Workers Builds on every merge to `main`. It has no build step and no dependencies; keep it that way unless asked.
+A static, trilingual (EN/ES/IT) portfolio, English by default, in `public/`, deployed by Cloudflare Workers Builds on every merge to `main`. It has no build step and no dependencies; keep it that way unless asked.
 
 ## Positioning
 
-- **Target roles:** Data Architect, Staff Data Engineer, Data & AI Architect. Frame achievements around architecture, data platforms, governance, technical leadership and generative AI.
+- **Target roles:** Staff Data Engineer – AI Engineering, Data & AI Architect. Frame achievements around architecture, data platforms, governance, technical leadership and generative AI.
 - **Do not position him as an ML engineer.** Leave out model-training and ML-engineering framing.
 - **Team leadership:** technical and methodological coordination of teams of approximately 8 people.
 - **Tone:** professional and specific. Avoid slogans and jokes in headings and stats.
@@ -49,12 +49,12 @@ Never invent figures, technologies or claims that aren't in these sources. If so
 - **Companies and clients may be named. Internal project names may not**, for example SHERPA, MPRS, NeTAMPS or Geoban. `tests/content.test.mjs` enforces this.
 - **Older technology** (Hadoop, Cloudera, Kafka, Kudu, Sqoop, .NET…) appears only inside the collapsed *Earlier career* rows, never in the main stack.
 - **No phone number anywhere.** The only email shown is the public contact address.
-- **Translations:** every visible string needs its Spanish version in a `data-es` attribute on the same element. Update both languages together.
+- **Translations:** every visible string needs its Spanish and Italian versions in `data-es` and `data-it` attributes on the same element. Update the three languages together.
 - **Projects:** the carousel lists Trading Advisor (live, runs daily), RAG System and LLMOps Platform (both runnable with Docker Compose, not deployed). Describe only what the repos actually contain; read their README before writing a card.
 
 ## Working on the repo
 
 - **Branches:** `main` is protected (CODEOWNERS). Work on a branch and open a PR.
 - **Tests:** run `npm test` before pushing. CI runs it too. Fix the cause, not the test, unless the rule itself changed.
-- **Visual changes:** check them at 1366px and 390px, in both themes and both languages.
+- **Visual changes:** check them at 1366px and 390px, in both themes and all three languages.
 - **Replacing the CV:** follow the redaction steps in the README and update `CV_SHA256`.

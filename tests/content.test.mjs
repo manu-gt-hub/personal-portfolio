@@ -1,4 +1,4 @@
-// Content rules: bilingual, accessible, and no internal project names.
+// Content rules: trilingual, accessible, and no internal project names.
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { attrValues, readPage } from './helpers.mjs';
@@ -16,6 +16,19 @@ test('every translatable element has a Spanish version', () => {
   const es = attrValues(html, 'data-es');
   assert.ok(es.length > 50, 'expected the page to be translated');
   es.forEach((value, i) => assert.ok(value.trim(), `empty data-es attribute #${i}`));
+});
+
+test('every translatable element also has an Italian version', () => {
+  const tags = html.match(/<[^>]*\sdata-es="[^"]*"[^>]*>/g);
+  for (const tag of tags) {
+    assert.match(tag, /\sdata-it="[^"]*\S[^"]*"/, `missing or empty data-it: ${tag.slice(0, 120)}`);
+  }
+});
+
+test('language switcher offers English, Spanish and Italian', () => {
+  for (const lang of ['en', 'es', 'it']) {
+    assert.match(html, new RegExp(`data-lang="${lang}"`), `no ${lang} button`);
+  }
 });
 
 test('elements the scripts rely on are present', () => {

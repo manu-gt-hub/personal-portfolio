@@ -40,7 +40,7 @@
   </script>
 </head>
 <body id="top">
-  <a class="skip" href="#main" data-es="Saltar al contenido">Skip to content</a>
+  <a class="skip" href="#main" data-es="Saltar al contenido" data-it="Vai al contenuto">Skip to content</a>
 
   <header class="nav">
     <div class="nav__inner">
@@ -49,20 +49,24 @@
         <span class="brand__name">Manuel Gutiérrez</span>
       </a>
       <nav class="nav__links" aria-label="Primary">
-        <a href="#about" data-es="Perfil">About</a>
-        <a href="#experience" data-es="Experiencia">Experience</a>
-        <a href="#impact" data-es="Impacto">Impact</a>
-        <a href="#skills" data-es="Stack">Skills</a>
-        <a href="#projects" data-es="Proyectos">Projects</a>
-        <a href="#beyond" data-es="Más allá">Beyond</a>
+        <a href="#about" data-es="Perfil" data-it="Profilo">About</a>
+        <a href="#experience" data-es="Experiencia" data-it="Esperienza">Experience</a>
+        <a href="#impact" data-es="Impacto" data-it="Impatto">Impact</a>
+        <a href="#skills" data-es="Stack" data-it="Stack">Skills</a>
+        <a href="#projects" data-es="Proyectos" data-it="Progetti">Projects</a>
+        <a href="#beyond" data-es="Más allá" data-it="Oltre">Beyond</a>
       </nav>
       <div class="nav__actions">
-        <button class="pill" id="langToggle" type="button" aria-label="Cambiar a español">ES</button>
+        <div class="lang" id="langToggle" role="group" aria-label="Language · Idioma · Lingua">
+          <button type="button" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+          <button type="button" data-lang="es" lang="es" aria-label="Español" aria-pressed="false">ES</button>
+          <button type="button" data-lang="it" lang="it" aria-label="Italiano" aria-pressed="false">IT</button>
+        </div>
         <button class="icon-btn" id="themeToggle" type="button" aria-label="Toggle dark mode">
           <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
           <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
         </button>
-        <a class="btn btn--sm" href="#contact" data-es="Contacto">Contact</a>
+        <a class="btn btn--sm" href="#contact" data-es="Contacto" data-it="Contatti">Contact</a>
       </div>
     </div>
   </header>
@@ -73,18 +77,18 @@
       <canvas class="hero__graph" id="graph" aria-hidden="true"></canvas>
       <div class="wrap hero__grid">
         <div class="hero__text">
-          <p class="eyebrow"><span class="dot"></span> <span data-es="Abierto a roles de Data Architect · Staff Data Engineer · Data &amp; AI Architect">Open to Data Architect · Staff Data Engineer · Data &amp; AI Architect roles</span></p>
+          <p class="eyebrow"><span class="dot"></span> <span data-es="Abierto a: roles de Staff Data Engineer – AI Engineering · Data &amp; AI Architect" data-it="Disponibile per: ruoli di Staff Data Engineer – AI Engineering · Data &amp; AI Architect">Open to: Staff Data Engineer – AI Engineering · Data &amp; AI Architect roles</span></p>
           <h1>Manuel<br>Gutiérrez Torrero</h1>
           <p class="hero__role">Data &amp; AI Architect · Staff Data Engineer</p>
-          <p class="hero__lead" data-es="Diseño arquitecturas lakehouse y de IA generativa de extremo a extremo sobre Databricks, Apache Spark y Azure: desde el diseño de la plataforma y el gobierno del dato con Unity Catalog hasta los estándares de ingeniería y los pipelines en producción. Además, coordino los equipos que las implementan.">
+          <p class="hero__lead" data-es="Diseño arquitecturas lakehouse y de IA generativa de extremo a extremo sobre Databricks, Apache Spark y Azure: desde el diseño de la plataforma y el gobierno del dato con Unity Catalog hasta los estándares de ingeniería y los pipelines en producción. Además, coordino los equipos que las implementan." data-it="Progetto architetture lakehouse e di IA generativa end-to-end su Databricks, Apache Spark e Azure: dal design della piattaforma e la data governance con Unity Catalog fino agli standard di ingegneria e alle pipeline in produzione. Coordino inoltre i team che le realizzano.">
             I design end-to-end lakehouse and generative AI architectures on Databricks, Apache Spark and Azure, from platform design and data governance with Unity Catalog to engineering standards and production pipelines. I also coordinate the teams that deliver them.
           </p>
           <div class="hero__cta">
-            <a class="btn" href="#contact" data-es="Contactar">Get in touch</a>
-            <a class="btn btn--ghost" href="/assets/Manuel-Gutierrez-Torrero-CV.pdf" download data-es="Descargar CV ↓">Download CV ↓</a>
+            <a class="btn" href="#contact" data-es="Contactar" data-it="Contattami">Get in touch</a>
+            <a class="btn btn--ghost" href="/assets/Manuel-Gutierrez-Torrero-CV.pdf" download data-es="Descargar CV ↓" data-it="Scarica il CV ↓">Download CV ↓</a>
             <a class="btn btn--ghost" href="https://www.linkedin.com/in/manuel-g-118a947a/" target="_blank" rel="noopener">LinkedIn ↗</a>
           </div>
-          <p class="hero__meta mono">📍 Alicante, ES · <span data-es="Remoto / Híbrido">Remote / Hybrid</span> · EN · ES · IT</p>
+          <p class="hero__meta mono">📍 Alicante, ES · <span data-es="Remoto / Híbrido" data-it="Remoto / Ibrido">Remote / Hybrid</span> · EN · ES · IT</p>
         </div>
         <figure class="hero__photo">
           <picture>
@@ -99,11 +103,12 @@
       </div>
 
       <div class="wrap">
+        <p class="stats__title mono" data-es="Trayectoria en cifras" data-it="Carriera in cifre">Career highlights</p>
         <dl class="stats">
-          <div class="stat"><dt class="stat__n" data-count="11">11+</dt><dd data-es="años en ingeniería de software">years in software engineering</dd></div>
-          <div class="stat"><dt class="stat__n" data-count="8">8+</dt><dd data-es="años en ingeniería de datos">years in data engineering</dd></div>
-          <div class="stat"><dt class="stat__n" data-count="8">~8M</dt><dd data-es="registros diarios procesados en batch">daily records processed in batch</dd></div>
-          <div class="stat"><dt class="stat__n" data-count="8">~8</dt><dd data-es="personas por equipo coordinado">people per coordinated team</dd></div>
+          <div class="stat"><dt class="stat__n" data-count="11">11+</dt><dd data-es="años en ingeniería de software" data-it="anni nell’ingegneria del software">years in software engineering</dd></div>
+          <div class="stat"><dt class="stat__n" data-count="8">8+</dt><dd data-es="años en ingeniería de datos" data-it="anni nella data engineering">years in data engineering</dd></div>
+          <div class="stat"><dt class="stat__n" data-count="8">~8M</dt><dd data-es="registros diarios procesados en batch para Carrefour" data-it="record giornalieri elaborati in batch per Carrefour">daily records processed in batch for Carrefour</dd></div>
+          <div class="stat"><dt class="stat__n" data-count="8">~8</dt><dd data-es="personas por equipo coordinado" data-it="persone per team coordinato">people per coordinated team</dd></div>
         </dl>
       </div>
     </section>
@@ -112,32 +117,32 @@
     <section class="section" id="about">
       <div class="wrap about">
         <div>
-          <p class="kicker mono">01 / <span data-es="perfil">about</span></p>
-          <h2 data-es="Plataformas de datos escalables y gobernadas">Scalable, governed data platforms</h2>
+          <p class="kicker mono">01 / <span data-es="perfil" data-it="profilo">about</span></p>
+          <h2 data-es="Plataformas de datos escalables y gobernadas" data-it="Piattaforme dati scalabili e governate">Scalable, governed data platforms</h2>
         </div>
         <div class="about__body">
-          <p data-es="Más de 11 años en ingeniería de software, más de 8 de ellos en datos. En Mercedes-Benz diseño arquitecturas lakehouse y de IA generativa sobre Databricks y Azure, y coordino equipos de aproximadamente 8 personas en el plano técnico y metodológico.">
+          <p data-es="Más de 11 años en ingeniería de software, más de 8 de ellos en datos. En Mercedes-Benz diseño arquitecturas lakehouse y de IA generativa sobre Databricks y Azure, y coordino equipos de aproximadamente 8 personas en el plano técnico y metodológico." data-it="Oltre 11 anni nell’ingegneria del software, di cui più di 8 nei dati. In Mercedes-Benz progetto architetture lakehouse e di IA generativa su Databricks e Azure e coordino team di circa 8 persone sul piano tecnico e metodologico.">
             11+ years in software engineering, 8+ of them in data. At Mercedes-Benz I design lakehouse and generative AI architectures on Databricks and Azure, and coordinate teams of approximately 8 people on both the technical and methodological side.
           </p>
-          <p data-es="Mi enfoque: decisiones de arquitectura escalables, gobernables y comprendidas por el equipo, siempre alineadas con las necesidades de negocio.">
+          <p data-es="Mi enfoque: decisiones de arquitectura escalables, gobernables y comprendidas por el equipo, siempre alineadas con las necesidades de negocio." data-it="Il mio approccio: decisioni architetturali scalabili, governabili e comprese dal team, sempre allineate alle esigenze di business.">
             My approach: architecture decisions that are scalable, governable and well understood by the team, always aligned with business needs.
           </p>
           <ul class="focus">
             <li>
-              <h3 data-es="Arquitectura lakehouse">Lakehouse architecture</h3>
-              <p data-es="Plataformas sobre Databricks, Delta Lake y Azure, con gobierno del dato en Unity Catalog.">Platforms on Databricks, Delta Lake and Azure, with data governance in Unity Catalog.</p>
+              <h3 data-es="Arquitectura lakehouse" data-it="Architettura lakehouse">Lakehouse architecture</h3>
+              <p data-es="Plataformas sobre Databricks, Delta Lake y Azure, con gobierno del dato en Unity Catalog." data-it="Piattaforme su Databricks, Delta Lake e Azure, con data governance in Unity Catalog.">Platforms on Databricks, Delta Lake and Azure, with data governance in Unity Catalog.</p>
             </li>
             <li>
-              <h3 data-es="Arquitectura de IA generativa">Generative AI architecture</h3>
-              <p data-es="Agentes de IA, RAG, harness engineering y agentic ops preparados para producción, sobre una base de datos gobernada.">Production-ready AI agents, RAG, harness engineering and agentic ops, built on a governed data foundation.</p>
+              <h3 data-es="Arquitectura de IA generativa" data-it="Architettura di IA generativa">Generative AI architecture</h3>
+              <p data-es="Agentes de IA, RAG, harness engineering y agentic ops preparados para producción, sobre una base de datos gobernada." data-it="Agenti di IA, RAG, harness engineering e agentic ops pronti per la produzione, su una base dati governata.">Production-ready AI agents, RAG, harness engineering and agentic ops, built on a governed data foundation.</p>
             </li>
             <li>
-              <h3 data-es="Estándares y organización de equipos">Standards &amp; team organisation</h3>
-              <p data-es="Estándares de ingeniería, calidad de datos, CI/CD, prácticas SAFe y Scrum, y roadmaps de reducción de deuda técnica.">Engineering standards, data quality, CI/CD, SAFe and Scrum practices, and technical-debt reduction roadmaps.</p>
+              <h3 data-es="Estándares y organización de equipos" data-it="Standard e organizzazione dei team">Standards &amp; team organisation</h3>
+              <p data-es="Estándares de ingeniería, calidad de datos, CI/CD, prácticas SAFe y Scrum, y roadmaps de reducción de deuda técnica." data-it="Standard di ingegneria, qualità dei dati, CI/CD, pratiche SAFe e Scrum e roadmap di riduzione del debito tecnico.">Engineering standards, data quality, CI/CD, SAFe and Scrum practices, and technical-debt reduction roadmaps.</p>
             </li>
             <li>
               <h3>Technical Product Owner</h3>
-              <p data-es="Traduzco necesidades de negocio en arquitectura, roadmap de producto y user stories, con entregas predecibles.">Translating business needs into architecture, product roadmap and user stories, with predictable delivery.</p>
+              <p data-es="Traduzco necesidades de negocio en arquitectura, roadmap de producto y user stories, con entregas predecibles." data-it="Traduco le esigenze di business in architettura, roadmap di prodotto e user story, con rilasci prevedibili.">Translating business needs into architecture, product roadmap and user stories, with predictable delivery.</p>
             </li>
           </ul>
         </div>
@@ -147,21 +152,21 @@
     <!-- EXPERIENCE -->
     <section class="section section--alt" id="experience">
       <div class="wrap">
-        <p class="kicker mono">02 / <span data-es="experiencia">experience</span></p>
-        <h2 data-es="Trayectoria">Career path</h2>
+        <p class="kicker mono">02 / <span data-es="experiencia" data-it="esperienza">experience</span></p>
+        <h2 data-es="Trayectoria" data-it="Percorso professionale">Career path</h2>
 
         <ol class="timeline">
           <li class="job job--current">
-            <div class="job__when mono">Dec 2023 — <span data-es="Actualidad">Present</span></div>
+            <div class="job__when mono">Dec 2023 — <span data-es="Actualidad" data-it="Oggi">Present</span></div>
             <div class="job__card">
               <h3>Tech Lead Data Engineer · Data &amp; AI</h3>
               <p class="job__org">Mercedes-Benz Group Services · Madrid</p>
               <ul>
-                <li data-es="Lidero iniciativas de Data Engineering e IA generativa, diseñando soluciones lakehouse escalables con Databricks, Spark y Azure.">Lead Data Engineering and Generative AI initiatives, designing scalable lakehouse solutions with Databricks, Spark and Azure.</li>
-                <li data-es="Procesamiento de datos para campañas mensuales de marketing de vehículos en varios mercados (aproximadamente 30–50K leads al mes).">Data processing for monthly multi-market vehicle marketing campaigns (approximately 30–50K leads per month).</li>
-                <li data-es="Coordinación técnica y metodológica de equipos de aproximadamente 8 personas: estándares de ingeniería, priorización del backlog y mejora continua de la entrega.">Technical and methodological coordination of teams of approximately 8 people: engineering standards, backlog prioritisation and continuous improvement of delivery.</li>
-                <li data-es="Impulso la adopción de IA generativa con agentes de IA, RAG y harness engineering para automatizar flujos y mejorar la productividad de ingeniería.">Drive generative AI adoption with AI agents, RAG and harness engineering to automate workflows and improve engineering productivity.</li>
-                <li data-es="Alineo negocio e ingeniería y reduzco la deuda técnica mediante priorización, mejoras específicas y roadmaps de ingeniería.">Align business and engineering, and reduce technical debt through prioritisation, targeted improvements and engineering roadmaps.</li>
+                <li data-es="Lidero iniciativas de Data Engineering e IA generativa, diseñando soluciones lakehouse escalables con Databricks, Spark y Azure." data-it="Guido iniziative di Data Engineering e IA generativa, progettando soluzioni lakehouse scalabili con Databricks, Spark e Azure.">Lead Data Engineering and Generative AI initiatives, designing scalable lakehouse solutions with Databricks, Spark and Azure.</li>
+                <li data-es="Procesamiento de datos para campañas mensuales de marketing de vehículos en varios mercados (aproximadamente 30–50K leads al mes)." data-it="Elaborazione dei dati per campagne mensili di marketing di veicoli su più mercati (circa 30–50K lead al mese).">Data processing for monthly multi-market vehicle marketing campaigns (approximately 30–50K leads per month).</li>
+                <li data-es="Coordinación técnica y metodológica de equipos de aproximadamente 8 personas: estándares de ingeniería, priorización del backlog y mejora continua de la entrega." data-it="Coordinamento tecnico e metodologico di team di circa 8 persone: standard di ingegneria, prioritizzazione del backlog e miglioramento continuo della delivery.">Technical and methodological coordination of teams of approximately 8 people: engineering standards, backlog prioritisation and continuous improvement of delivery.</li>
+                <li data-es="Impulso la adopción de IA generativa con agentes de IA, RAG y harness engineering para automatizar flujos y mejorar la productividad de ingeniería." data-it="Promuovo l’adozione dell’IA generativa con agenti di IA, RAG e harness engineering per automatizzare i flussi di lavoro e migliorare la produttività dell’ingegneria.">Drive generative AI adoption with AI agents, RAG and harness engineering to automate workflows and improve engineering productivity.</li>
+                <li data-es="Alineo negocio e ingeniería y reduzco la deuda técnica mediante priorización, mejoras específicas y roadmaps de ingeniería." data-it="Allineo business e ingegneria e riduco il debito tecnico tramite prioritizzazione, miglioramenti mirati e roadmap di ingegneria.">Align business and engineering, and reduce technical debt through prioritisation, targeted improvements and engineering roadmaps.</li>
               </ul>
               <p class="chips"><span>Databricks</span><span>Apache Spark</span><span>Unity Catalog</span><span>Delta Lake</span><span>Azure</span><span>AI Agents</span><span>RAG</span><span>Agentic Ops</span></p>
             </div>
@@ -172,10 +177,10 @@
               <h3>Technical Product Owner</h3>
               <p class="job__org">Mercedes-Benz Group Services · Madrid</p>
               <ul>
-                <li data-es="Traducción de requisitos de negocio en especificaciones técnicas, user stories y criterios de aceptación, junto a negocio, Data Engineering y desarrollo.">Translated business requirements into technical specifications, user stories and acceptance criteria with business, Data Engineering and development teams.</li>
-                <li data-es="Definición y priorización del Product Backlog, alineando necesidades de negocio con soluciones técnicas.">Defined and prioritised the Product Backlog, aligning business needs with technical solutions.</li>
-                <li data-es="Supervisión de la ingesta, transformación y calidad del dato en entornos Big Data para analítica escalable y fiable.">Oversaw data ingestion, transformation and quality in Big Data environments for scalable, reliable analytics.</li>
-                <li data-es="Soluciones Power BI: definición de KPIs, modelado de datos, diseño de dashboards y optimización del rendimiento de informes.">Power BI solutions: KPI definition, data modelling, dashboard design and report performance optimisation.</li>
+                <li data-es="Traducción de requisitos de negocio en especificaciones técnicas, user stories y criterios de aceptación, junto a negocio, Data Engineering y desarrollo." data-it="Traduzione dei requisiti di business in specifiche tecniche, user story e criteri di accettazione, insieme a business, Data Engineering e sviluppo.">Translated business requirements into technical specifications, user stories and acceptance criteria with business, Data Engineering and development teams.</li>
+                <li data-es="Definición y priorización del Product Backlog, alineando necesidades de negocio con soluciones técnicas." data-it="Definizione e prioritizzazione del Product Backlog, allineando le esigenze di business alle soluzioni tecniche.">Defined and prioritised the Product Backlog, aligning business needs with technical solutions.</li>
+                <li data-es="Supervisión de la ingesta, transformación y calidad del dato en entornos Big Data para analítica escalable y fiable." data-it="Supervisione di ingestione, trasformazione e qualità dei dati in ambienti Big Data per analytics scalabili e affidabili.">Oversaw data ingestion, transformation and quality in Big Data environments for scalable, reliable analytics.</li>
+                <li data-es="Soluciones Power BI: definición de KPIs, modelado de datos, diseño de dashboards y optimización del rendimiento de informes." data-it="Soluzioni Power BI: definizione dei KPI, modellazione dei dati, design di dashboard e ottimizzazione delle prestazioni dei report.">Power BI solutions: KPI definition, data modelling, dashboard design and report performance optimisation.</li>
               </ul>
               <p class="chips"><span>Product ownership</span><span>Power BI</span><span>Data modelling</span><span>Data quality</span><span>Backlog management</span></p>
             </div>
@@ -186,9 +191,9 @@
               <h3>Senior Cloud Data Engineer</h3>
               <p class="job__org">Mercedes-Benz Group Services · Madrid</p>
               <ul>
-                <li data-es="Diseño y desarrollo de soluciones de Data Engineering escalables para casos de uso de posventa.">Designed and built scalable Data Engineering solutions for after-sales use cases.</li>
-                <li data-es="Pipelines con Databricks, Apache Spark, Python, Azure Data Factory, ADLS y Delta Lake procesando unos 5M de registros al mes.">Pipelines with Databricks, Apache Spark, Python, Azure Data Factory, ADLS and Delta Lake processing ~5M records per month.</li>
-                <li data-es="CI/CD y entrega ágil con Azure DevOps y Jira, con stakeholders internacionales en inglés.">CI/CD and agile delivery with Azure DevOps and Jira, working with international stakeholders in English.</li>
+                <li data-es="Diseño y desarrollo de soluciones de Data Engineering escalables para casos de uso de posventa." data-it="Progettazione e sviluppo di soluzioni di Data Engineering scalabili per casi d’uso di post-vendita.">Designed and built scalable Data Engineering solutions for after-sales use cases.</li>
+                <li data-es="Pipelines con Databricks, Apache Spark, Python, Azure Data Factory, ADLS y Delta Lake procesando unos 5M de registros al mes." data-it="Pipeline con Databricks, Apache Spark, Python, Azure Data Factory, ADLS e Delta Lake che elaborano circa 5M di record al mese.">Pipelines with Databricks, Apache Spark, Python, Azure Data Factory, ADLS and Delta Lake processing ~5M records per month.</li>
+                <li data-es="CI/CD y entrega ágil con Azure DevOps y Jira, con stakeholders internacionales en inglés." data-it="CI/CD e delivery agile con Azure DevOps e Jira, con stakeholder internazionali in inglese.">CI/CD and agile delivery with Azure DevOps and Jira, working with international stakeholders in English.</li>
               </ul>
               <p class="chips"><span>Databricks</span><span>Spark</span><span>Python</span><span>Delta Lake</span><span>Data Factory</span><span>ADLS</span><span>Azure DevOps</span><span>CI/CD</span></p>
             </div>
@@ -197,23 +202,23 @@
 
         <div class="earlier">
           <div class="earlier__head">
-            <h3 class="earlier__title" data-es="Trayectoria anterior">Earlier career</h3>
-            <button class="pill earlier__toggle" id="earlierToggle" type="button" aria-expanded="false" data-es="Ver todo">Expand all</button>
+            <h3 class="earlier__title" data-es="Trayectoria anterior" data-it="Esperienze precedenti">Earlier career</h3>
+            <button class="pill earlier__toggle" id="earlierToggle" type="button" aria-expanded="false" data-es="Ver todo" data-it="Espandi tutto">Expand all</button>
           </div>
           <div class="earlier__list">
             <details class="earlier__item">
               <summary>
                 <span class="mono">2019 — 2021</span>
-                <span><strong data-es="Cofundador">Co-Founder</strong> · Real Stocks</span>
-                <span class="muted" data-es="Empresa de servicios tecnológicos: arquitectura de soluciones, entrega y finanzas.">Technology services business: solution architecture, delivery and finance.</span>
+                <span><strong data-es="Cofundador" data-it="Co-fondatore">Co-Founder</strong> · Real Stocks</span>
+                <span class="muted" data-es="Empresa de servicios tecnológicos: arquitectura de soluciones, entrega y finanzas." data-it="Azienda di servizi tecnologici: architettura delle soluzioni, delivery e finanza.">Technology services business: solution architecture, delivery and finance.</span>
                 <span class="earlier__chev" aria-hidden="true"></span>
               </summary>
               <div class="earlier__body">
                 <ul>
-                  <li data-es="Cofundé y gestioné una empresa de servicios tecnológicos: arquitectura de soluciones, entrega de proyectos, captación de clientes y operaciones financieras.">Co-founded and ran a technology services business: solution architecture, project delivery, customer acquisition and financial operations.</li>
-                  <li data-es="Gestión de proyectos con metodologías ágiles: Scrum y Kanban.">Managed projects with agile methodologies: Scrum and Kanban.</li>
-                  <li data-es="Definición y ejecución de estrategias de comunidad y relación con clientes.">Defined and executed community management and customer engagement strategies.</li>
-                  <li data-es="Control de facturación, costes y presupuesto.">Oversaw billing, costs and budget management.</li>
+                  <li data-es="Cofundé y gestioné una empresa de servicios tecnológicos: arquitectura de soluciones, entrega de proyectos, captación de clientes y operaciones financieras." data-it="Ho co-fondato e gestito un’azienda di servizi tecnologici: architettura delle soluzioni, delivery dei progetti, acquisizione clienti e operazioni finanziarie.">Co-founded and ran a technology services business: solution architecture, project delivery, customer acquisition and financial operations.</li>
+                  <li data-es="Gestión de proyectos con metodologías ágiles: Scrum y Kanban." data-it="Gestione di progetti con metodologie agili: Scrum e Kanban.">Managed projects with agile methodologies: Scrum and Kanban.</li>
+                  <li data-es="Definición y ejecución de estrategias de comunidad y relación con clientes." data-it="Definizione ed esecuzione di strategie di community e relazione con i clienti.">Defined and executed community management and customer engagement strategies.</li>
+                  <li data-es="Control de facturación, costes y presupuesto." data-it="Controllo di fatturazione, costi e budget.">Oversaw billing, costs and budget management.</li>
                 </ul>
                 <p class="chips"><span>Solution architecture</span><span>Scrum</span><span>Kanban</span><span>Budget management</span></p>
               </div>
@@ -223,15 +228,15 @@
               <summary>
                 <span class="mono">2019 — 2020</span>
                 <span><strong>Big Data Engineer</strong> · StratioBD</span>
-                <span class="muted" data-es="Procesamiento batch con Spark para Carrefour, ~8M registros al día.">Spark batch processing for Carrefour, ~8M records daily.</span>
+                <span class="muted" data-es="Procesamiento batch con Spark para Carrefour, ~8M registros al día." data-it="Elaborazione batch con Spark per Carrefour, ~8M record al giorno.">Spark batch processing for Carrefour, ~8M records daily.</span>
                 <span class="earlier__chev" aria-hidden="true"></span>
               </summary>
               <div class="earlier__body">
                 <ul>
-                  <li data-es="Soluciones de procesamiento batch Big Data para el programa de transformación técnica de Carrefour.">Big Data batch processing solutions for Carrefour&#39;s technical transformation programme.</li>
-                  <li data-es="Gestión de stock, análisis de vida útil de producto y previsión de gaps operativos, con unos 8M de registros al día.">Stock management, product shelf-life analysis and operational gap forecasting, at ~8M records per day.</li>
-                  <li data-es="Entornos Big Data distribuidos con Spark, Scala, Kafka, Kudu y Cloudera.">Distributed Big Data environments with Spark, Scala, Kafka, Kudu and Cloudera.</li>
-                  <li data-es="Prácticas Agile/Scrum y CI/CD con Jenkins, Git y Bitbucket.">Agile/Scrum practices and CI/CD with Jenkins, Git and Bitbucket.</li>
+                  <li data-es="Soluciones de procesamiento batch Big Data para el programa de transformación técnica de Carrefour." data-it="Soluzioni di elaborazione batch Big Data per il programma di trasformazione tecnologica di Carrefour.">Big Data batch processing solutions for Carrefour&#39;s technical transformation programme.</li>
+                  <li data-es="Gestión de stock, análisis de vida útil de producto y previsión de gaps operativos, con unos 8M de registros al día." data-it="Gestione delle scorte, analisi della shelf life dei prodotti e previsione dei gap operativi, con circa 8M di record al giorno.">Stock management, product shelf-life analysis and operational gap forecasting, at ~8M records per day.</li>
+                  <li data-es="Entornos Big Data distribuidos con Spark, Scala, Kafka, Kudu y Cloudera." data-it="Ambienti Big Data distribuiti con Spark, Scala, Kafka, Kudu e Cloudera.">Distributed Big Data environments with Spark, Scala, Kafka, Kudu and Cloudera.</li>
+                  <li data-es="Prácticas Agile/Scrum y CI/CD con Jenkins, Git y Bitbucket." data-it="Pratiche Agile/Scrum e CI/CD con Jenkins, Git e Bitbucket.">Agile/Scrum practices and CI/CD with Jenkins, Git and Bitbucket.</li>
                 </ul>
                 <p class="chips"><span>Spark</span><span>Scala</span><span>Kafka</span><span>Kudu</span><span>Cloudera</span><span>Jenkins</span><span>Scrum</span></p>
               </div>
@@ -241,14 +246,14 @@
               <summary>
                 <span class="mono">2018 — 2019</span>
                 <span><strong>Big Data Engineer</strong> · Strategy Big Data</span>
-                <span class="muted" data-es="Pipelines de datos para Ferrovial (I+D) y SGAE en Azure, AWS y Hadoop.">Data pipelines for Ferrovial (R&amp;D) and SGAE on Azure, AWS and Hadoop.</span>
+                <span class="muted" data-es="Pipelines de datos para Ferrovial (I+D) y SGAE en Azure, AWS y Hadoop." data-it="Pipeline di dati per Ferrovial (R&amp;S) e SGAE su Azure, AWS e Hadoop.">Data pipelines for Ferrovial (R&amp;D) and SGAE on Azure, AWS and Hadoop.</span>
                 <span class="earlier__chev" aria-hidden="true"></span>
               </summary>
               <div class="earlier__body">
                 <ul>
-                  <li data-es="Ferrovial, departamento de I+D (2018–2019): definición, procesamiento y formateo de los datos de entrada con Azure Data Factory, Python, U-SQL, Spark y ADLS, además de AWS Athena y Glue.">Ferrovial R&amp;D department (2018–2019): incoming data definition, processing and formatting with Azure Data Factory, Python, U-SQL, Spark and ADLS, plus AWS Athena and Glue.</li>
-                  <li data-es="SGAE (2018): plataforma de reporting y facturación anual con Scala, Spark y Python sobre HDFS, ingesta con Sqoop y Flume, orquestación con Airflow y visualización con Elasticsearch y Kibana.">SGAE (2018): reporting and annual billing platform with Scala, Spark and Python on HDFS, ingestion with Sqoop and Flume, orchestration with Airflow and visualisation with Elasticsearch and Kibana.</li>
-                  <li data-es="Equipos Scrum con GitHub, Docker y Linux, teniendo en cuenta el RGPD.">Scrum teams with GitHub, Docker and Linux, with GDPR in mind.</li>
+                  <li data-es="Ferrovial, departamento de I+D (2018–2019): definición, procesamiento y formateo de los datos de entrada con Azure Data Factory, Python, U-SQL, Spark y ADLS, además de AWS Athena y Glue." data-it="Ferrovial, reparto R&amp;S (2018–2019): definizione, elaborazione e formattazione dei dati in ingresso con Azure Data Factory, Python, U-SQL, Spark e ADLS, oltre ad AWS Athena e Glue.">Ferrovial R&amp;D department (2018–2019): incoming data definition, processing and formatting with Azure Data Factory, Python, U-SQL, Spark and ADLS, plus AWS Athena and Glue.</li>
+                  <li data-es="SGAE (2018): plataforma de reporting y facturación anual con Scala, Spark y Python sobre HDFS, ingesta con Sqoop y Flume, orquestación con Airflow y visualización con Elasticsearch y Kibana." data-it="SGAE (2018): piattaforma di reporting e fatturazione annuale con Scala, Spark e Python su HDFS, ingestione con Sqoop e Flume, orchestrazione con Airflow e visualizzazione con Elasticsearch e Kibana.">SGAE (2018): reporting and annual billing platform with Scala, Spark and Python on HDFS, ingestion with Sqoop and Flume, orchestration with Airflow and visualisation with Elasticsearch and Kibana.</li>
+                  <li data-es="Equipos Scrum con GitHub, Docker y Linux, teniendo en cuenta el RGPD." data-it="Team Scrum con GitHub, Docker e Linux, nel rispetto del GDPR.">Scrum teams with GitHub, Docker and Linux, with GDPR in mind.</li>
                 </ul>
                 <p class="chips"><span>Spark</span><span>Scala</span><span>Python</span><span>Data Factory</span><span>ADLS</span><span>AWS Athena</span><span>AWS Glue</span><span>HDFS</span><span>Airflow</span><span>Elasticsearch</span><span>Docker</span></p>
               </div>
@@ -258,13 +263,13 @@
               <summary>
                 <span class="mono">2017 — 2018</span>
                 <span><strong>.NET Fullstack Developer</strong> · Altran</span>
-                <span class="muted" data-es="Sistemas de planificación de misiones para Airbus Defence and Space.">Mission planning systems for Airbus Defence and Space.</span>
+                <span class="muted" data-es="Sistemas de planificación de misiones para Airbus Defence and Space." data-it="Sistemi di pianificazione delle missioni per Airbus Defence and Space.">Mission planning systems for Airbus Defence and Space.</span>
                 <span class="earlier__chev" aria-hidden="true"></span>
               </summary>
               <div class="earlier__body">
                 <ul>
-                  <li data-es="Consultor .NET en Airbus Defence and Space para sistemas de planificación de misiones de aeronaves.">.NET consultant at Airbus Defence and Space on aircraft mission planning systems.</li>
-                  <li data-es="Tareas de Scrum Master: organización de retrospectivas, gestión de reuniones, resolución de conflictos y revisión del backlog.">Scrum Master duties: retrospectives, meeting facilitation, conflict resolution and backlog review.</li>
+                  <li data-es="Consultor .NET en Airbus Defence and Space para sistemas de planificación de misiones de aeronaves." data-it="Consulente .NET presso Airbus Defence and Space per sistemi di pianificazione delle missioni di aeromobili.">.NET consultant at Airbus Defence and Space on aircraft mission planning systems.</li>
+                  <li data-es="Tareas de Scrum Master: organización de retrospectivas, gestión de reuniones, resolución de conflictos y revisión del backlog." data-it="Attività da Scrum Master: organizzazione delle retrospettive, gestione delle riunioni, risoluzione dei conflitti e revisione del backlog.">Scrum Master duties: retrospectives, meeting facilitation, conflict resolution and backlog review.</li>
                 </ul>
                 <p class="chips"><span>C#</span><span>.NET</span><span>WPF</span><span>MVVM</span><span>Prism</span><span>NHibernate</span><span>SQL Server</span><span>Oracle</span><span>TFS</span><span>Scrum</span></p>
               </div>
@@ -274,14 +279,14 @@
               <summary>
                 <span class="mono">2015 — 2017</span>
                 <span><strong>.NET Fullstack Developer</strong> · M2C Consulting</span>
-                <span class="muted" data-es="Aplicaciones y automatizaciones para Banco Santander.">Applications and automations for Santander bank.</span>
+                <span class="muted" data-es="Aplicaciones y automatizaciones para Banco Santander." data-it="Applicazioni e automazioni per Banco Santander.">Applications and automations for Santander bank.</span>
                 <span class="earlier__chev" aria-hidden="true"></span>
               </summary>
               <div class="earlier__body">
                 <ul>
-                  <li data-es="Análisis, desarrollo, despliegue y mantenimiento de aplicaciones de escritorio y automatizaciones web para el departamento de eficiencia de procesos de Banco Santander.">Analysis, development, deployment and maintenance of desktop apps and web automations for Santander bank&#39;s process efficiency department.</li>
-                  <li data-es="Automatizaciones de mainframe IBM 3270 e informes estadísticos.">IBM 3270 mainframe automations and statistical reports.</li>
-                  <li data-es="Proyectos de automatización de 3 a 6 meses, cubriendo el ciclo de vida completo.">Process automation projects of 3–6 months, covering the full lifecycle.</li>
+                  <li data-es="Análisis, desarrollo, despliegue y mantenimiento de aplicaciones de escritorio y automatizaciones web para el departamento de eficiencia de procesos de Banco Santander." data-it="Analisi, sviluppo, rilascio e manutenzione di applicazioni desktop e automazioni web per il reparto di efficienza dei processi di Banco Santander.">Analysis, development, deployment and maintenance of desktop apps and web automations for Santander bank&#39;s process efficiency department.</li>
+                  <li data-es="Automatizaciones de mainframe IBM 3270 e informes estadísticos." data-it="Automazioni su mainframe IBM 3270 e report statistici.">IBM 3270 mainframe automations and statistical reports.</li>
+                  <li data-es="Proyectos de automatización de 3 a 6 meses, cubriendo el ciclo de vida completo." data-it="Progetti di automazione da 3 a 6 mesi, coprendo l’intero ciclo di vita.">Process automation projects of 3–6 months, covering the full lifecycle.</li>
                 </ul>
                 <p class="chips"><span>C#</span><span>WPF</span><span>MVVM</span><span>Entity Framework</span><span>LINQ</span><span>SQL Server</span></p>
               </div>
@@ -294,48 +299,70 @@
     <!-- IMPACT -->
     <section class="section" id="impact">
       <div class="wrap">
-        <p class="kicker mono">03 / <span data-es="impacto">impact</span></p>
-        <h2 data-es="Logros destacados">Selected achievements</h2>
+        <p class="kicker mono">03 / <span data-es="impacto" data-it="impatto">impact</span></p>
+        <h2 data-es="Logros destacados" data-it="Risultati principali">Selected achievements</h2>
 
         <div class="bento">
           <article class="tile tile--wide tile--accent">
-            <p class="tile__tag mono" data-es="Arquitectura GenAI">GenAI architecture</p>
-            <h3 data-es="IA generativa en producción">Generative AI in production</h3>
-            <p data-es="Diseño y adopción de agentes de IA, RAG y harness engineering en iniciativas de datos y negocio, construidas sobre la plataforma lakehouse.">Design and adoption of AI agents, RAG and harness engineering across data and business initiatives, built on the lakehouse platform.</p>
+            <p class="tile__tag mono" data-es="Arquitectura GenAI" data-it="Architettura GenAI">GenAI architecture</p>
+            <h3 data-es="IA generativa en producción" data-it="IA generativa in produzione">Generative AI in production</h3>
+            <p data-es="Diseño y adopción de agentes de IA, RAG y harness engineering en iniciativas de datos y negocio, construidas sobre la plataforma lakehouse." data-it="Progettazione e adozione di agenti di IA, RAG e harness engineering in iniziative di dati e di business, costruite sulla piattaforma lakehouse.">Design and adoption of AI agents, RAG and harness engineering across data and business initiatives, built on the lakehouse platform.</p>
+            <p class="chips tile__chips"><span>AI Agents</span><span>RAG</span><span>Harness engineering</span><span>Agentic Ops</span><span>Databricks GenAI</span></p>
+            <p class="tile__cert mono"><span class="tile__cert-k" data-es="Certificado" data-it="Certificato">Certified</span> Databricks Generative AI Engineer Associate&nbsp;·&nbsp;2026</p>
+            <div class="tile__impact">
+              <p class="tile__impact-k mono" data-es="Impacto en negocio" data-it="Impatto sul business">Business impact</p>
+              <p data-es="Flujos de trabajo automatizados con agentes de IA: menos tiempo en tareas manuales y repetitivas, menos errores humanos y más productividad de ingeniería." data-it="Flussi di lavoro automatizzati con agenti di IA: meno tempo su attività manuali e ripetitive, meno errori umani e maggiore produttività dell’ingegneria.">Workflows automated with AI agents: less time on manual, repetitive tasks, fewer human errors and higher engineering productivity.</p>
+            </div>
           </article>
           <article class="tile">
-            <p class="tile__tag mono" data-es="Volumetría">Data volumes</p>
+            <p class="tile__tag mono" data-es="Volumetría" data-it="Volumi di dati">Data volumes</p>
             <p class="tile__big">~8M</p>
-            <h3 data-es="registros diarios procesados en batch">daily records processed in batch</h3>
+            <h3 data-es="registros diarios procesados en batch para Carrefour" data-it="record giornalieri elaborati in batch per Carrefour">daily records processed in batch for Carrefour</h3>
             <ul class="tile__list">
-              <li data-es="~5M registros/mes en el lakehouse de posventa">~5M records/month in the after-sales lakehouse</li>
-              <li data-es="30–50K leads/mes para campañas en varios mercados">30–50K leads/month for multi-market campaigns</li>
+              <li data-es="~5M registros/mes en el lakehouse de posventa de Mercedes-Benz" data-it="~5M record/mese nel lakehouse di post-vendita di Mercedes-Benz">~5M records/month in the Mercedes-Benz after-sales lakehouse</li>
+              <li data-es="30–50K leads/mes para campañas en varios mercados" data-it="30–50K lead/mese per campagne su più mercati">30–50K leads/month for multi-market campaigns</li>
             </ul>
+            <div class="tile__impact">
+              <p class="tile__impact-k mono" data-es="Impacto en negocio" data-it="Impatto sul business">Business impact</p>
+              <p data-es="Datos diarios para gestión de stock, análisis de caducidad de producto y previsión de desajustes operativos." data-it="Dati giornalieri per la gestione delle scorte, l’analisi della shelf life dei prodotti e la previsione dei gap operativi.">Daily data for stock management, product shelf-life analysis and operational gap forecasting.</p>
+            </div>
           </article>
           <article class="tile">
             <p class="tile__tag mono">Lakehouse</p>
-            <h3 data-es="Plataforma lakehouse gobernada">Governed lakehouse platform</h3>
-            <p data-es="Arquitecturas lakehouse escalables en Databricks con Delta Lake, Unity Catalog y CI/CD en Azure DevOps.">Scalable lakehouse architectures on Databricks with Delta Lake, Unity Catalog and CI/CD on Azure DevOps.</p>
+            <h3 data-es="Plataforma lakehouse gobernada" data-it="Piattaforma lakehouse governata">Governed lakehouse platform</h3>
+            <p data-es="Arquitecturas lakehouse escalables en Databricks con Delta Lake, Unity Catalog y CI/CD en Azure DevOps." data-it="Architetture lakehouse scalabili su Databricks con Delta Lake, Unity Catalog e CI/CD su Azure DevOps.">Scalable lakehouse architectures on Databricks with Delta Lake, Unity Catalog and CI/CD on Azure DevOps.</p>
+            <div class="tile__impact">
+              <p class="tile__impact-k mono" data-es="Impacto en negocio" data-it="Impatto sul business">Business impact</p>
+              <p data-es="Control de acceso centralizado y despliegues automatizados: menos riesgo operativo y de cumplimiento, y menos errores en las entregas." data-it="Controllo degli accessi centralizzato e rilasci automatizzati: minor rischio operativo e di compliance e meno errori nei rilasci.">Centralised access control and automated deployments: lower operational and compliance risk, fewer release errors.</p>
+            </div>
           </article>
 
           <article class="tile tile--wide">
             <p class="tile__tag mono">Technical Product Owner</p>
-            <h3 data-es="De los requisitos de negocio a la arquitectura">From business requirements to architecture</h3>
+            <h3 data-es="De los requisitos de negocio a la arquitectura" data-it="Dai requisiti di business all’architettura">From business requirements to architecture</h3>
             <ul class="tile__list">
-              <li data-es="Requisitos de negocio convertidos en especificaciones técnicas, user stories y criterios de aceptación">Business requirements turned into technical specs, user stories and acceptance criteria</li>
-              <li data-es="Definición y priorización del Product Backlog">Defined and prioritised the Product Backlog</li>
-              <li data-es="Supervisión de ingesta, transformación y calidad del dato">Oversaw data ingestion, transformation and quality</li>
-              <li data-es="Power BI: KPIs, modelado de datos y optimización de informes">Power BI: KPIs, data modelling and report optimisation</li>
+              <li data-es="Requisitos de negocio convertidos en especificaciones técnicas, user stories y criterios de aceptación" data-it="Requisiti di business tradotti in specifiche tecniche, user story e criteri di accettazione">Business requirements turned into technical specs, user stories and acceptance criteria</li>
+              <li data-es="Definición y priorización del Product Backlog" data-it="Definizione e prioritizzazione del Product Backlog">Defined and prioritised the Product Backlog</li>
+              <li data-es="Supervisión de ingesta, transformación y calidad del dato" data-it="Supervisione di ingestione, trasformazione e qualità dei dati">Oversaw data ingestion, transformation and quality</li>
+              <li data-es="Power BI: KPIs, modelado de datos y optimización de informes" data-it="Power BI: KPI, modellazione dei dati e ottimizzazione dei report">Power BI: KPIs, data modelling and report optimisation</li>
             </ul>
+            <div class="tile__impact">
+              <p class="tile__impact-k mono" data-es="Impacto en negocio" data-it="Impatto sul business">Business impact</p>
+              <p data-es="Necesidades comerciales traducidas a requisitos técnicos claros: entregas más predecibles y prioridades de negocio atendidas primero." data-it="Esigenze commerciali tradotte in requisiti tecnici chiari: rilasci più prevedibili e priorità di business affrontate per prime.">Commercial needs translated into clear technical requirements: more predictable delivery, with business priorities served first.</p>
+            </div>
           </article>
           <article class="tile tile--wide">
-            <p class="tile__tag mono" data-es="Liderazgo de equipos">Team leadership</p>
-            <h3 data-es="Coordinación de equipos de aprox. 8 personas">Coordination of teams of approx. 8 people</h3>
+            <p class="tile__tag mono" data-es="Liderazgo de equipos" data-it="Leadership dei team">Team leadership</p>
+            <h3 data-es="Coordinación de equipos de aprox. 8 personas" data-it="Coordinamento di team di circa 8 persone">Coordination of teams of approx. 8 people</h3>
             <ul class="tile__list">
-              <li data-es="Coordinación técnica: estándares de ingeniería, revisión de diseño y decisiones de arquitectura">Technical coordination: engineering standards, design review and architecture decisions</li>
-              <li data-es="Coordinación metodológica: refinamiento y priorización del backlog y prácticas de equipo con SAFe y Scrum">Methodological coordination: backlog refinement, prioritisation and team practices with SAFe and Scrum</li>
-              <li data-es="Roadmaps de reducción de deuda técnica integrados en la planificación">Technical-debt roadmaps built into planning</li>
+              <li data-es="Coordinación técnica: estándares de ingeniería, revisión de diseño y decisiones de arquitectura" data-it="Coordinamento tecnico: standard di ingegneria, revisione del design e decisioni architetturali">Technical coordination: engineering standards, design review and architecture decisions</li>
+              <li data-es="Coordinación metodológica: refinamiento y priorización del backlog y prácticas de equipo con SAFe y Scrum" data-it="Coordinamento metodologico: refinement e prioritizzazione del backlog e pratiche di team con SAFe e Scrum">Methodological coordination: backlog refinement, prioritisation and team practices with SAFe and Scrum</li>
+              <li data-es="Roadmaps de reducción de deuda técnica integrados en la planificación" data-it="Roadmap di riduzione del debito tecnico integrate nella pianificazione">Technical-debt roadmaps built into planning</li>
             </ul>
+            <div class="tile__impact">
+              <p class="tile__impact-k mono" data-es="Impacto en negocio" data-it="Impatto sul business">Business impact</p>
+              <p data-es="Deuda técnica reducida de forma continua y prácticas de entrega mejoradas: menos riesgo en producción y plazos más fiables." data-it="Riduzione continua del debito tecnico e pratiche di delivery migliori: meno rischi in produzione e tempi più affidabili.">Steady technical-debt reduction and better delivery practices: less production risk and more reliable timelines.</p>
+            </div>
           </article>
         </div>
       </div>
@@ -345,15 +372,15 @@
     <section class="section section--alt" id="skills">
       <div class="wrap">
         <p class="kicker mono">04 / stack</p>
-        <h2 data-es="Competencias técnicas">Technical expertise</h2>
+        <h2 data-es="Competencias técnicas" data-it="Competenze tecniche">Technical expertise</h2>
 
         <div class="skills">
           <div class="skillset">
-            <h3 data-es="Plataforma de datos">Data platform</h3>
+            <h3 data-es="Plataforma de datos" data-it="Piattaforma dati">Data platform</h3>
             <p class="chips chips--lg"><span class="hot">Databricks</span><span class="hot">Apache Spark</span><span class="hot">Delta Lake</span><span class="hot">Unity Catalog</span><span>Lakehouse</span><span>Data &amp; Cloud Architecture</span><span>Data modelling</span><span>Power BI</span><span>Python</span><span>SQL</span></p>
           </div>
           <div class="skillset">
-            <h3 data-es="IA generativa">Generative AI</h3>
+            <h3 data-es="IA generativa" data-it="IA generativa">Generative AI</h3>
             <p class="chips chips--lg"><span class="hot">AI Agents</span><span class="hot">RAG</span><span>Agentic Ops</span><span>Harness engineering</span><span>Claude Code</span><span>Databricks GenAI</span></p>
           </div>
           <div class="skillset">
@@ -361,14 +388,14 @@
             <p class="chips chips--lg"><span class="hot">Azure</span><span>ADLS</span><span>Data Factory</span><span>Azure DevOps</span><span>CI/CD</span><span>Docker</span><span>Git</span></p>
           </div>
           <div class="skillset">
-            <h3 data-es="Liderazgo y entrega">Leadership &amp; delivery</h3>
+            <h3 data-es="Liderazgo y entrega" data-it="Leadership e delivery">Leadership &amp; delivery</h3>
             <p class="chips chips--lg"><span>Engineering standards</span><span>Tech debt roadmaps</span><span>Backlog refinement</span><span>Product ownership</span><span>SAFe</span><span>Scrum</span></p>
           </div>
         </div>
 
         <div class="creds">
           <div class="creds__col">
-            <h3 data-es="Certificaciones">Certifications</h3>
+            <h3 data-es="Certificaciones" data-it="Certificazioni">Certifications</h3>
             <ul class="list">
               <li><span>Databricks Generative AI Engineer Associate</span><span class="mono">2026</span></li>
               <li><span>SAFe 5 Agilist</span><span class="mono">2022</span></li>
@@ -376,16 +403,16 @@
             </ul>
           </div>
           <div class="creds__col">
-            <h3 data-es="Formación">Education</h3>
+            <h3 data-es="Formación" data-it="Formazione">Education</h3>
             <ul class="list">
-              <li><span data-es="Técnico Superior en Desarrollo de Aplicaciones Multiplataforma · IES Juan XXIII">HND Multiplatform Application Development · IES Juan XXIII</span><span class="mono">2012–14</span></li>
-              <li><span data-es="Técnico Superior en Desarrollo de Productos Electrónicos · IES Prado Santo Domingo">HND Electronic Product Development · IES Prado Santo Domingo</span><span class="mono">2010–12</span></li>
+              <li><span data-es="Técnico Superior en Desarrollo de Aplicaciones Multiplataforma · IES Juan XXIII" data-it="Diploma tecnico superiore in Sviluppo di applicazioni multipiattaforma · IES Juan XXIII">HND Multiplatform Application Development · IES Juan XXIII</span><span class="mono">2012–14</span></li>
+              <li><span data-es="Técnico Superior en Desarrollo de Productos Electrónicos · IES Prado Santo Domingo" data-it="Diploma tecnico superiore in Sviluppo di prodotti elettronici · IES Prado Santo Domingo">HND Electronic Product Development · IES Prado Santo Domingo</span><span class="mono">2010–12</span></li>
             </ul>
-            <h3 data-es="Idiomas">Languages</h3>
+            <h3 data-es="Idiomas" data-it="Lingue">Languages</h3>
             <ul class="langs">
-              <li><span data-es="Español">Spanish</span><span class="meter" style="--v:5" aria-label="5/5"></span></li>
-              <li><span data-es="Inglés">English</span><span class="meter" style="--v:4.5" aria-label="4.5/5"></span></li>
-              <li><span data-es="Italiano">Italian</span><span class="meter" style="--v:4.5" aria-label="4.5/5"></span></li>
+              <li><span data-es="Español" data-it="Spagnolo">Spanish</span><span class="meter" style="--v:5" aria-label="5/5"></span></li>
+              <li><span data-es="Inglés" data-it="Inglese">English</span><span class="meter" style="--v:4.5" aria-label="4.5/5"></span></li>
+              <li><span data-es="Italiano" data-it="Italiano">Italian</span><span class="meter" style="--v:4.5" aria-label="4.5/5"></span></li>
             </ul>
           </div>
         </div>
@@ -397,8 +424,8 @@
       <div class="wrap">
         <div class="projects__head">
           <div>
-            <p class="kicker mono">05 / <span data-es="proyectos">projects</span></p>
-            <h2 data-es="Mis proyectos">My projects</h2>
+            <p class="kicker mono">05 / <span data-es="proyectos" data-it="progetti">projects</span></p>
+            <h2 data-es="Mis proyectos" data-it="I miei progetti">My projects</h2>
           </div>
           <div class="carousel__nav">
             <span class="carousel__count mono" id="carouselCount" aria-live="polite">1 / 3</span>
@@ -418,24 +445,24 @@
             <a class="project" href="https://github.com/manu-gt-hub/trading_advisor" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="Trading Advisor, 1 of 3">
               <div class="project__preview project__preview--flow" aria-hidden="true">
                 <ol class="flow">
-                  <li><span class="mono">01</span><span data-es="Cotizaciones · Finnhub">Market data · Finnhub</span></li>
-                  <li class="flow__core"><span class="mono">02</span><span data-es="Motor técnico: tendencia · momentum · riesgo + régimen">Technical engine: trend · momentum · risk + regime</span></li>
-                  <li><span class="mono">03</span><span data-es="Auditoría LLM (solo BUY)">LLM audit (BUY only)</span></li>
-                  <li><span class="mono">04</span><span data-es="Filtros: R:R · noticias · correlación">Filters: R:R · news · correlation</span></li>
-                  <li><span class="mono">05</span><span data-es="Recomendaciones → Google Drive">Recommendations → Google Drive</span></li>
+                  <li><span class="mono">01</span><span data-es="Cotizaciones · Finnhub" data-it="Quotazioni · Finnhub">Market data · Finnhub</span></li>
+                  <li class="flow__core"><span class="mono">02</span><span data-es="Motor técnico: tendencia · momentum · riesgo + régimen" data-it="Motore tecnico: trend · momentum · rischio + regime">Technical engine: trend · momentum · risk + regime</span></li>
+                  <li><span class="mono">03</span><span data-es="Auditoría LLM (solo BUY)" data-it="Audit LLM (solo BUY)">LLM audit (BUY only)</span></li>
+                  <li><span class="mono">04</span><span data-es="Filtros: R:R · noticias · correlación" data-it="Filtri: R:R · notizie · correlazione">Filters: R:R · news · correlation</span></li>
+                  <li><span class="mono">05</span><span data-es="Recomendaciones → Google Drive" data-it="Raccomandazioni → Google Drive">Recommendations → Google Drive</span></li>
                 </ol>
               </div>
               <div class="project__body">
-                <p class="project__status mono"><span class="status status--live"></span><span data-es="Activo · ejecución diaria">Live · runs daily</span></p>
+                <p class="project__status mono"><span class="status status--live"></span><span data-es="Activo · ejecución diaria" data-it="Attivo · esecuzione giornaliera">Live · runs daily</span></p>
                 <h3>Trading Advisor</h3>
-                <p class="project__desc" data-es="Generador de señales bursátiles con un motor técnico determinista por capas como único decisor. El LLM solo audita las señales de compra. Se ejecuta a diario con GitHub Actions y publica los resultados en Google Drive.">Stock signal generator driven by a deterministic, layered technical engine that is the sole decision maker. The LLM only audits BUY signals. Runs daily on GitHub Actions and publishes results to Google Drive.</p>
+                <p class="project__desc" data-es="Generador de señales bursátiles con un motor técnico determinista por capas como único decisor. El LLM solo audita las señales de compra. Se ejecuta a diario con GitHub Actions y publica los resultados en Google Drive." data-it="Generatore di segnali di borsa basato su un motore tecnico deterministico a livelli, unico decisore. L’LLM verifica solo i segnali di acquisto. Viene eseguito ogni giorno con GitHub Actions e pubblica i risultati su Google Drive.">Stock signal generator driven by a deterministic, layered technical engine that is the sole decision maker. The LLM only audits BUY signals. Runs daily on GitHub Actions and publishes results to Google Drive.</p>
                 <ul class="project__facts">
-                  <li><strong>93</strong> <span data-es="tests mockeados">mocked tests</span></li>
-                  <li><strong>5</strong> <span data-es="años de backtest sin look-ahead">years backtested, no look-ahead</span></li>
-                  <li><strong>58.8%</strong> <span data-es="win rate en NVDA (backtest)">win rate on NVDA (backtest)</span></li>
+                  <li><strong>93</strong> <span data-es="tests mockeados" data-it="test con mock">mocked tests</span></li>
+                  <li><strong>5</strong> <span data-es="años de backtest sin look-ahead" data-it="anni di backtest senza look-ahead">years backtested, no look-ahead</span></li>
+                  <li><strong>58.8%</strong> <span data-es="win rate en NVDA (backtest)" data-it="win rate su NVDA (backtest)">win rate on NVDA (backtest)</span></li>
                 </ul>
                 <p class="chips"><span>Python</span><span>GitHub Actions</span><span>OpenAI</span><span>Finnhub</span><span>Google Drive API</span><span>Backtesting</span></p>
-                <p class="project__link mono" data-es="Ver repositorio ↗">View repository ↗</p>
+                <p class="project__link mono" data-es="Ver repositorio ↗" data-it="Vedi il repository ↗">View repository ↗</p>
               </div>
             </a>
 
@@ -443,24 +470,24 @@
             <a class="project" href="https://github.com/manu-gt-hub/rag_system" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="RAG System, 2 of 3">
               <div class="project__preview project__preview--flow" aria-hidden="true">
                 <ol class="flow">
-                  <li><span class="mono">01</span><span data-es="Catálogo JSON → documentos">Catalog JSON → documents</span></li>
-                  <li><span class="mono">02</span><span data-es="Embeddings → PostgreSQL + pgvector">Embeddings → PostgreSQL + pgvector</span></li>
-                  <li class="flow__core"><span class="mono">03</span><span data-es="Búsqueda híbrida: vectorial + texto completo (RRF)">Hybrid search: vector + full-text (RRF)</span></li>
-                  <li><span class="mono">04</span><span data-es="Recomendación del LLM solo con ese contexto">LLM recommendation from that context only</span></li>
-                  <li><span class="mono">05</span><span data-es="Evaluación por rúbricas en CI">Rubric-based evaluation in CI</span></li>
+                  <li><span class="mono">01</span><span data-es="Catálogo JSON → documentos" data-it="Catalogo JSON → documenti">Catalog JSON → documents</span></li>
+                  <li><span class="mono">02</span><span data-es="Embeddings → PostgreSQL + pgvector" data-it="Embedding → PostgreSQL + pgvector">Embeddings → PostgreSQL + pgvector</span></li>
+                  <li class="flow__core"><span class="mono">03</span><span data-es="Búsqueda híbrida: vectorial + texto completo (RRF)" data-it="Ricerca ibrida: vettoriale + full-text (RRF)">Hybrid search: vector + full-text (RRF)</span></li>
+                  <li><span class="mono">04</span><span data-es="Recomendación del LLM solo con ese contexto" data-it="Raccomandazione dell’LLM solo da quel contesto">LLM recommendation from that context only</span></li>
+                  <li><span class="mono">05</span><span data-es="Evaluación por rúbricas en CI" data-it="Valutazione con rubriche in CI">Rubric-based evaluation in CI</span></li>
                 </ol>
               </div>
               <div class="project__body">
-                <p class="project__status mono"><span class="status status--live"></span><span data-es="Ejecutable · Docker Compose">Runnable · Docker Compose</span></p>
+                <p class="project__status mono"><span class="status status--live"></span><span data-es="Ejecutable · Docker Compose" data-it="Eseguibile · Docker Compose">Runnable · Docker Compose</span></p>
                 <h3>RAG System</h3>
-                <p class="project__desc" data-es="Chatbot que recomienda y responde preguntas sobre un catálogo personal de películas, series, libros, música, videojuegos y documentales. Búsqueda híbrida sobre PostgreSQL + pgvector y respuestas de OpenAI o Anthropic basadas solo en los documentos recuperados.">Chatbot that recommends and answers questions about a personal catalog of movies, series, books, music, video games and documentaries. Hybrid search on PostgreSQL + pgvector, with OpenAI or Anthropic answers grounded only in the retrieved documents.</p>
+                <p class="project__desc" data-es="Chatbot que recomienda y responde preguntas sobre un catálogo personal de películas, series, libros, música, videojuegos y documentales. Búsqueda híbrida sobre PostgreSQL + pgvector y respuestas de OpenAI o Anthropic basadas solo en los documentos recuperados." data-it="Chatbot che consiglia e risponde a domande su un catalogo personale di film, serie, libri, musica, videogiochi e documentari. Ricerca ibrida su PostgreSQL + pgvector e risposte di OpenAI o Anthropic basate solo sui documenti recuperati.">Chatbot that recommends and answers questions about a personal catalog of movies, series, books, music, video games and documentaries. Hybrid search on PostgreSQL + pgvector, with OpenAI or Anthropic answers grounded only in the retrieved documents.</p>
                 <ul class="project__facts">
-                  <li><strong>~2,400</strong> <span data-es="documentos indexados">documents indexed</span></li>
-                  <li><strong>6</strong> <span data-es="categorías de catálogo">catalog categories</span></li>
-                  <li><strong>&ge;70%</strong> <span data-es="umbral de acierto en CI">accuracy threshold in CI</span></li>
+                  <li><strong>~2,400</strong> <span data-es="documentos indexados" data-it="documenti indicizzati">documents indexed</span></li>
+                  <li><strong>6</strong> <span data-es="categorías de catálogo" data-it="categorie del catalogo">catalog categories</span></li>
+                  <li><strong>&ge;70%</strong> <span data-es="umbral de acierto en CI" data-it="soglia di accuratezza in CI">accuracy threshold in CI</span></li>
                 </ul>
                 <p class="chips"><span>Python</span><span>PostgreSQL</span><span>pgvector</span><span>Flask</span><span>OpenAI</span><span>Anthropic</span><span>Docker Compose</span><span>GitHub Actions</span></p>
-                <p class="project__link mono" data-es="Ver repositorio ↗">View repository ↗</p>
+                <p class="project__link mono" data-es="Ver repositorio ↗" data-it="Vedi il repository ↗">View repository ↗</p>
               </div>
             </a>
 
@@ -468,24 +495,24 @@
             <a class="project" href="https://github.com/manu-gt-hub/llmops-platform" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="LLMOps Platform, 3 of 3">
               <div class="project__preview project__preview--flow" aria-hidden="true">
                 <ol class="flow">
-                  <li><span class="mono">01</span><span data-es="Apps y agentes (SDK oficiales)">Apps &amp; agents (official SDKs)</span></li>
-                  <li class="flow__core"><span class="mono">02</span><span data-es="Gateway LLM: coste · presupuestos · trazas">LLM gateway: cost · budgets · traces</span></li>
-                  <li><span class="mono">03</span><span data-es="Proveedores: Anthropic · OpenAI">Providers: Anthropic · OpenAI</span></li>
-                  <li><span class="mono">04</span><span data-es="PostgreSQL · Prometheus · Tempo">PostgreSQL · Prometheus · Tempo</span></li>
-                  <li><span class="mono">05</span><span data-es="Grafana: FinOps · AgentOps · DevOps">Grafana: FinOps · AgentOps · DevOps</span></li>
+                  <li><span class="mono">01</span><span data-es="Apps y agentes (SDK oficiales)" data-it="App e agenti (SDK ufficiali)">Apps &amp; agents (official SDKs)</span></li>
+                  <li class="flow__core"><span class="mono">02</span><span data-es="Gateway LLM: coste · presupuestos · trazas" data-it="Gateway LLM: costi · budget · trace">LLM gateway: cost · budgets · traces</span></li>
+                  <li><span class="mono">03</span><span data-es="Proveedores: Anthropic · OpenAI" data-it="Provider: Anthropic · OpenAI">Providers: Anthropic · OpenAI</span></li>
+                  <li><span class="mono">04</span><span data-es="PostgreSQL · Prometheus · Tempo" data-it="PostgreSQL · Prometheus · Tempo">PostgreSQL · Prometheus · Tempo</span></li>
+                  <li><span class="mono">05</span><span data-es="Grafana: FinOps · AgentOps · DevOps" data-it="Grafana: FinOps · AgentOps · DevOps">Grafana: FinOps · AgentOps · DevOps</span></li>
                 </ol>
               </div>
               <div class="project__body">
-                <p class="project__status mono"><span class="status status--live"></span><span data-es="Ejecutable · Docker Compose">Runnable · Docker Compose</span></p>
+                <p class="project__status mono"><span class="status status--live"></span><span data-es="Ejecutable · Docker Compose" data-it="Eseguibile · Docker Compose">Runnable · Docker Compose</span></p>
                 <h3>LLMOps Platform</h3>
-                <p class="project__desc" data-es="Plataforma de referencia con un gateway LLM entre las aplicaciones y los proveedores que convierte cada llamada en datos: tokens y coste por proyecto y modelo, presupuestos que bloquean el gasto, trazas de agentes con OpenTelemetry y la versión desplegada en cada momento.">Reference platform with an LLM gateway between apps and model providers that turns every call into data: tokens and cost by project and model, budgets that stop spending, OpenTelemetry traces of agent runs, and which release is deployed.</p>
+                <p class="project__desc" data-es="Plataforma de referencia con un gateway LLM entre las aplicaciones y los proveedores que convierte cada llamada en datos: tokens y coste por proyecto y modelo, presupuestos que bloquean el gasto, trazas de agentes con OpenTelemetry y la versión desplegada en cada momento." data-it="Piattaforma di riferimento con un gateway LLM tra le applicazioni e i provider che trasforma ogni chiamata in dati: token e costi per progetto e modello, budget che bloccano la spesa, trace OpenTelemetry delle esecuzioni degli agenti e la release in produzione.">Reference platform with an LLM gateway between apps and model providers that turns every call into data: tokens and cost by project and model, budgets that stop spending, OpenTelemetry traces of agent runs, and which release is deployed.</p>
                 <ul class="project__facts">
-                  <li><strong>4</strong> <span data-es="dashboards de Grafana como código">Grafana dashboards as code</span></li>
-                  <li><strong>0</strong> <span data-es="API keys para el CI de extremo a extremo">API keys needed for end-to-end CI</span></li>
-                  <li><strong>30</strong> <span data-es="días de datos demo">days of demo data</span></li>
+                  <li><strong>4</strong> <span data-es="dashboards de Grafana como código" data-it="dashboard Grafana as code">Grafana dashboards as code</span></li>
+                  <li><strong>0</strong> <span data-es="API keys para el CI de extremo a extremo" data-it="API key necessarie per la CI end-to-end">API keys needed for end-to-end CI</span></li>
+                  <li><strong>30</strong> <span data-es="días de datos demo" data-it="giorni di dati demo">days of demo data</span></li>
                 </ul>
                 <p class="chips"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Prometheus</span><span>Grafana</span><span>OpenTelemetry</span><span>Docker Compose</span><span>GitHub Actions</span></p>
-                <p class="project__link mono" data-es="Ver repositorio ↗">View repository ↗</p>
+                <p class="project__link mono" data-es="Ver repositorio ↗" data-it="Vedi il repository ↗">View repository ↗</p>
               </div>
             </a>
 
@@ -498,9 +525,9 @@
     <!-- BEYOND -->
     <section class="section" id="beyond">
       <div class="wrap">
-        <p class="kicker mono">06 / <span data-es="más allá del código">beyond code</span></p>
+        <p class="kicker mono">06 / <span data-es="más allá del código" data-it="oltre il codice">beyond code</span></p>
         <div class="photos__head">
-          <h2 data-es="Más allá del trabajo">Beyond work</h2>
+          <h2 data-es="Más allá del trabajo" data-it="Oltre il lavoro">Beyond work</h2>
           <div class="carousel__nav">
             <button class="carousel__btn" id="photosPrev" type="button" aria-label="Previous photo">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
@@ -524,16 +551,16 @@
           </div>
           <div class="carousel__dots" id="photosDots" role="tablist" aria-label="Choose photo"></div>
         </div>
-        <h3 class="volunteer__title" data-es="Voluntariado">Volunteering</h3>
+        <h3 class="volunteer__title" data-es="Voluntariado" data-it="Volontariato">Volunteering</h3>
         <div class="volunteer">
           <!-- Logos: replace the <svg> inside .volunteer__logo with <img src="/assets/<name>.webp" alt=""> -->
           <a class="volunteer__card" href="https://www.instagram.com/salvandopeludos_elcampito/" target="_blank" rel="noopener">
             <span class="volunteer__logo"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="9" r="2"/><circle cx="10" cy="5" r="2"/><circle cx="14" cy="5" r="2"/><circle cx="18" cy="9" r="2"/><path d="M12 11c-3 0-5.5 3.5-5.5 6 0 2 1.5 3 3 3 1 0 1.6-.5 2.5-.5s1.5.5 2.5.5c1.5 0 3-1 3-3 0-2.5-2.5-6-5.5-6z"/></svg></span>
-            <span class="volunteer__text"><strong>El Campito · Salvando Peludos</strong><small data-es="Voluntario salvando peludos">Volunteer rescuing furry friends</small><em class="mono">@salvandopeludos_elcampito ↗</em></span>
+            <span class="volunteer__text"><strong>El Campito · Salvando Peludos</strong><small data-es="Voluntario salvando peludos" data-it="Volontario nel salvataggio di animali">Volunteer rescuing furry friends</small><em class="mono">@salvandopeludos_elcampito ↗</em></span>
           </a>
           <a class="volunteer__card" href="https://www.instagram.com/santuarioequino_winston/" target="_blank" rel="noopener">
             <span class="volunteer__logo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21.2l8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
-            <span class="volunteer__text"><strong>Santuario Equino Winston</strong><small data-es="Voluntario en un santuario de caballos">Volunteer at a horse sanctuary</small><em class="mono">@santuarioequino_winston ↗</em></span>
+            <span class="volunteer__text"><strong>Santuario Equino Winston</strong><small data-es="Voluntario en un santuario de caballos" data-it="Volontario in un santuario per cavalli">Volunteer at a horse sanctuary</small><em class="mono">@santuarioequino_winston ↗</em></span>
           </a>
         </div>
       </div>
@@ -542,9 +569,9 @@
     <!-- CONTACT -->
     <section class="section contact" id="contact">
       <div class="wrap contact__inner">
-        <p class="kicker mono">07 / <span data-es="contacto">contact</span></p>
-        <h2 class="contact__title" data-es="Hablemos de tu plataforma de datos">Let's talk about your data platform</h2>
-        <p class="contact__lead" data-es="Abierto a roles de Data Architect, Staff Data Engineer y Data &amp; AI Architect, y a proyectos de arquitectura como freelance a través de Malt.">Open to Data Architect, Staff Data Engineer and Data &amp; AI Architect roles, and to freelance architecture work through Malt.</p>
+        <p class="kicker mono">07 / <span data-es="contacto" data-it="contatti">contact</span></p>
+        <h2 class="contact__title" data-es="Hablemos de tu plataforma de datos" data-it="Parliamo della tua piattaforma dati">Let's talk about your data platform</h2>
+        <p class="contact__lead" data-es="Abierto a roles de Staff Data Engineer – AI Engineering y Data &amp; AI Architect, y a proyectos de arquitectura como freelance a través de Malt." data-it="Disponibile per ruoli di Staff Data Engineer – AI Engineering e Data &amp; AI Architect e per progetti di architettura come freelance tramite Malt.">Open to Staff Data Engineer – AI Engineering and Data &amp; AI Architect roles, and to freelance architecture work through Malt.</p>
         <div class="links">
           <a class="link-card" href="mailto:manugt2018@gmail.com">
             <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
@@ -560,11 +587,11 @@
           </a>
           <a class="link-card" href="https://www.malt.com/es-es/profile/manuelgutierreztorrero" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 12l9 9 9-9-9-9z"/><path d="M12 8v8M8 12h8"/></svg>
-            <span><strong>Malt</strong><small data-es="Contrátame como freelance">Hire me as a freelancer</small></span>
+            <span><strong>Malt</strong><small data-es="Contrátame como freelance" data-it="Lavora con me come freelance">Hire me as a freelancer</small></span>
           </a>
           <a class="link-card" href="/assets/Manuel-Gutierrez-Torrero-CV.pdf" download>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M12 11v6M9 14l3 3 3-3"/></svg>
-            <span><strong>CV</strong><small data-es="Descargar PDF">Download PDF</small></span>
+            <span><strong>CV</strong><small data-es="Descargar PDF" data-it="Scarica il PDF">Download PDF</small></span>
           </a>
         </div>
       </div>
@@ -574,7 +601,7 @@
   <footer class="footer">
     <div class="wrap footer__inner mono">
       <span>© <span id="year">2026</span> Manuel Gutiérrez Torrero</span>
-      <a href="#top" data-es="Volver arriba ↑">Back to top ↑</a>
+      <a href="#top" data-es="Volver arriba ↑" data-it="Torna su ↑">Back to top ↑</a>
     </div>
   </footer>
 

@@ -4,7 +4,7 @@ Personal portfolio of **Manuel Gutiérrez Torrero**: Data & AI Architect · Staf
 
 **Live:** https://personal-portfolio.mgutierrezt.workers.dev
 
-A static, bilingual (EN/ES) single page: plain HTML, CSS and vanilla JS with no build step and no runtime dependencies. It is served from `public/` by Cloudflare Workers static assets.
+A static, trilingual (EN/ES/IT) single page: plain HTML, CSS and vanilla JS with no build step and no runtime dependencies. It is served from `public/` by Cloudflare Workers static assets.
 
 ## Sections
 
@@ -23,7 +23,7 @@ A static, bilingual (EN/ES) single page: plain HTML, CSS and vanilla JS with no 
 
 ```
 public/                 # everything here is deployed
-  index.html            # all content; English in the markup, Spanish in data-es attributes
+  index.html            # all content; English in the markup, Spanish and Italian in data-es / data-it
   styles.css            # light/dark theme tokens and layout
   main.js               # theme and language toggles, scroll reveal, hero graph, expand-all
   404.html
@@ -65,7 +65,7 @@ Requires Node 22+ and has no dependencies. CI runs the same command on every pul
 |---|---|
 | `structure.test.mjs` | Required files exist; `wrangler.jsonc` serves `public/` with a 404 page; `main.js` parses; security headers; `resources/` is ignored and untracked; CODEOWNERS |
 | `links.test.mjs` | Every local `href`/`src`/`srcset` and CSS `url()` resolves; in-page anchors have targets; external links are HTTPS with `rel="noopener"`; profile links are present |
-| `content.test.mjs` | Title, description and `lang`; every `data-es` translation is filled in; elements used by `main.js` exist; images have `alt` and dimensions; no internal project names; team size wording |
+| `content.test.mjs` | Title, description and `lang`; every `data-es` and `data-it` translation is filled in; the language switcher offers EN, ES and IT; elements used by `main.js` exist; images have `alt` and dimensions; no internal project names; team size wording |
 | `sensitive.test.mjs` | No phone numbers, unexpected emails, API keys, tokens or credentials in tracked files; no `.env`/`.dev.vars`; only web file types and no source documents in `public/`; the published CV matches the verified redacted version; asset size budget |
 
 ## Deployment
@@ -86,7 +86,7 @@ To deploy by hand instead: `npx wrangler login`, then `npm run deploy`.
 
 ## Editing content
 
-- **Text** lives in `public/index.html`. Every visible string has its Spanish version in a `data-es` attribute on the same element. Keep both languages in sync; the tests fail on an empty `data-es`.
+- **Text** lives in `public/index.html`. Every visible string has its Spanish and Italian versions in `data-es` and `data-it` attributes on the same element. English is the default. Keep the three languages in sync; the tests fail on an empty `data-es` or a missing `data-it`.
 - **Images:** keep the originals in `resources/` and export web versions to `public/assets/`. Each asset must stay under 300 KB:
   ```bash
   ffmpeg -i resources/photo.png -vf scale=640:-1 -quality 78 public/assets/photo.webp
