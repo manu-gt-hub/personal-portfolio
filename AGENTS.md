@@ -24,7 +24,7 @@ A static, trilingual (EN/ES/IT) portfolio, English by default, in `public/`, dep
 
 ## Positioning
 
-- **Target roles:** Staff Data Engineer – AI Engineering, Data & AI Architect. The site shows focus areas (data engineering, data architecture, AI engineering, product ownership) rather than an explicit "open to" list of titles, so it does not box him in or signal a job search to his current employer. Frame achievements around architecture, data platforms, governance, technical leadership and generative AI.
+- **Target roles:** Staff Data Engineer – AI Engineering, Data & AI Architect. The site shows focus areas (data engineering, data architecture, solutions architecture, AI engineering, product ownership) rather than an explicit "open to" list of titles, so it does not box him in or signal a job search to his current employer. Frame achievements around architecture, data platforms, governance, technical leadership and generative AI.
 - **Do not position him as an ML engineer.** Leave out model-training and ML-engineering framing.
 - **Team leadership:** technical and methodological coordination of teams of approximately 8 people.
 - **Tone:** professional and specific. Avoid slogans and jokes in headings and stats.
