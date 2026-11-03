@@ -44,3 +44,26 @@ jobs:
         with:
           node-version: 22
       - run: node tests/external-links.mjs
+
+  # Supply chain: known vulnerabilities in the dev tooling (wrangler), and
+  # secrets committed at any point of the history
+  security:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # gitleaks scans the whole history
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # The repo keeps no lockfile (no dependencies by design), so resolve one
+      # here only to audit it; nothing is installed or committed
+      - name: npm audit
+        run: |
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          npm audit --audit-level=high
+      - name: Secret scan (gitleaks)
+        uses: gitleaks/gitleaks-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
