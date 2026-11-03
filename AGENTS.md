@@ -55,6 +55,6 @@ Never invent figures, technologies or claims that aren't in these sources. If so
 ## Working on the repo
 
 - **Branches:** `main` is protected (CODEOWNERS). Work on a branch and open a PR.
-- **Tests:** run `npm test` before pushing. CI runs it too. Fix the cause, not the test, unless the rule itself changed.
+- **Tests:** run `npm test` before pushing. CI runs it too, plus a Cloudflare dry run; both must pass to merge. Fix the cause, not the test, unless the rule itself changed. When you add a content rule here, add a check for it in `tests/rules.test.mjs`.
 - **Visual changes:** check them at 1366px and 390px, in both themes and all three languages.
 - **Replacing the CV:** follow the redaction steps in the README and update `CV_SHA256`.

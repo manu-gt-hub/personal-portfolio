@@ -4,13 +4,24 @@ on:
   pull_request:
   push:
     branches: [main]
+  # Weekly, so a demo or repo that goes down is noticed even without new PRs
+  schedule:
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+# A new push to a PR replaces the run still going for the previous one
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  # Required by the main ruleset: a PR cannot be merged unless this job passes
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,3 +29,18 @@ jobs:
           node-version: 22
       # No dependencies to install: tests use node:test only
       - run: npm test
+      # Builds the deployment Cloudflare would run, without uploading it:
+      # catches a broken wrangler.jsonc or assets directory before merge
+      - name: Cloudflare deploy dry run
+        run: npx --yes wrangler@4 deploy --dry-run
+
+  # Needs the network and third-party sites, so it reports but does not block merging
+  external-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node tests/external-links.mjs
