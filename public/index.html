@@ -467,30 +467,33 @@
               </div>
             </a>
 
-            <!-- 2. RAG System (work in progress) -->
-            <a class="project" href="https://github.com/manu-gt-hub/rag_system" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="RAG System, 2 of 3">
+            <!-- 2. RAG System (live demo) -->
+            <div class="project" aria-roledescription="slide" aria-label="RAG System, 2 of 3">
               <div class="project__preview project__preview--flow" aria-hidden="true">
                 <ol class="flow">
-                  <li><span class="mono">01</span><span data-es="Catálogo JSON → documentos" data-it="Catalogo JSON → documenti">Catalog JSON → documents</span></li>
-                  <li><span class="mono">02</span><span data-es="Embeddings → PostgreSQL + pgvector" data-it="Embedding → PostgreSQL + pgvector">Embeddings → PostgreSQL + pgvector</span></li>
-                  <li class="flow__core"><span class="mono">03</span><span data-es="Búsqueda híbrida: vectorial + texto completo (RRF)" data-it="Ricerca ibrida: vettoriale + full-text (RRF)">Hybrid search: vector + full-text (RRF)</span></li>
-                  <li><span class="mono">04</span><span data-es="Recomendación del LLM solo con ese contexto" data-it="Raccomandazione dell’LLM solo da quel contesto">LLM recommendation from that context only</span></li>
-                  <li><span class="mono">05</span><span data-es="Evaluación por rúbricas en CI" data-it="Valutazione con rubriche in CI">Rubric-based evaluation in CI</span></li>
+                  <li><span class="mono">01</span><span data-es="Catálogo JSON → 2.423 documentos" data-it="Catalogo JSON → 2.423 documenti">Catalog JSON → 2,423 documents</span></li>
+                  <li><span class="mono">02</span><span data-es="Embeddings bge-m3 → Vectorize" data-it="Embedding bge-m3 → Vectorize">bge-m3 embeddings → Vectorize</span></li>
+                  <li class="flow__core"><span class="mono">03</span><span data-es="Búsqueda híbrida: Vectorize + D1 FTS5 (RRF)" data-it="Ricerca ibrida: Vectorize + D1 FTS5 (RRF)">Hybrid search: Vectorize + D1 FTS5 (RRF)</span></li>
+                  <li><span class="mono">04</span><span data-es="Llama 3.3 en Workers AI, solo con ese contexto" data-it="Llama 3.3 su Workers AI, solo con quel contesto">Llama 3.3 on Workers AI, grounded in that context</span></li>
+                  <li><span class="mono">05</span><span data-es="Despliegue en cada push + evaluación por rúbricas en la demo" data-it="Deploy a ogni push + valutazione con rubriche sulla demo">Deploy on every push + rubric evaluation on the live demo</span></li>
                 </ol>
               </div>
               <div class="project__body">
-                <p class="project__status mono"><span class="status status--wip"></span><span data-es="Ejecutable · Docker Compose" data-it="Eseguibile · Docker Compose">Runnable · Docker Compose</span></p>
-                <h3 class="project__title">RAG System <span class="project__badge mono" data-es="En desarrollo" data-it="In sviluppo">Work in progress</span></h3>
-                <p class="project__desc" data-es="Chatbot que recomienda y responde preguntas sobre un catálogo personal de películas, series, libros, música, videojuegos y documentales. Búsqueda híbrida sobre PostgreSQL + pgvector y respuestas de OpenAI o Anthropic basadas solo en los documentos recuperados." data-it="Chatbot che consiglia e risponde a domande su un catalogo personale di film, serie, libri, musica, videogiochi e documentari. Ricerca ibrida su PostgreSQL + pgvector e risposte di OpenAI o Anthropic basate solo sui documenti recuperati.">Chatbot that recommends and answers questions about a personal catalog of movies, series, books, music, video games and documentaries. Hybrid search on PostgreSQL + pgvector, with OpenAI or Anthropic answers grounded only in the retrieved documents.</p>
+                <p class="project__status mono"><span class="status status--live"></span><span data-es="Activo · plan gratuito de Cloudflare" data-it="Attivo · piano gratuito di Cloudflare">Live · Cloudflare free tier</span></p>
+                <h3 class="project__title">RAG System</h3>
+                <p class="project__desc" data-es="Chatbot que recomienda y responde preguntas sobre un catálogo personal de películas, series, libros, música, videojuegos y documentales. Funciona íntegramente en el plan gratuito de Cloudflare: un Worker en TypeScript combina búsqueda vectorial (Vectorize) y por palabras clave (D1) y responde con Llama 3.3 basándose solo en los documentos recuperados. Cada push lo despliega y lo evalúa contra la demo en producción." data-it="Chatbot che consiglia e risponde a domande su un catalogo personale di film, serie, libri, musica, videogiochi e documentari. Funziona interamente sul piano gratuito di Cloudflare: un Worker in TypeScript combina ricerca vettoriale (Vectorize) e per parole chiave (D1) e risponde con Llama 3.3 basandosi solo sui documenti recuperati. Ogni push lo distribuisce e lo valuta sulla demo in produzione.">Chatbot that recommends and answers questions about a personal catalog of movies, series, books, music, video games and documentaries. Runs entirely on Cloudflare's free tier: a TypeScript Worker combines vector search (Vectorize) and keyword search (D1) and answers with Llama 3.3, grounded only in the retrieved documents. Every push deploys it and evaluates it against the live demo.</p>
                 <ul class="project__facts">
+                  <li><strong>91.9%</strong> <span data-es="acierto por rúbricas en la demo" data-it="accuratezza con rubriche sulla demo">rubric accuracy on the live demo</span></li>
                   <li><strong>~2,400</strong> <span data-es="documentos indexados" data-it="documenti indicizzati">documents indexed</span></li>
-                  <li><strong>6</strong> <span data-es="categorías de catálogo" data-it="categorie del catalogo">catalog categories</span></li>
-                  <li><strong>&ge;70%</strong> <span data-es="umbral de acierto en CI" data-it="soglia di accuratezza in CI">accuracy threshold in CI</span></li>
+                  <li><strong data-es="0 €" data-it="0 €">€0</strong> <span data-es="coste de operación" data-it="costo di esercizio">running cost</span></li>
                 </ul>
-                <p class="chips"><span>Python</span><span>PostgreSQL</span><span>pgvector</span><span>Flask</span><span>OpenAI</span><span>Anthropic</span><span>Docker Compose</span><span>GitHub Actions</span></p>
-                <p class="project__link mono" data-es="Ver repositorio ↗" data-it="Vedi il repository ↗">View repository ↗</p>
+                <p class="chips"><span>TypeScript</span><span>Cloudflare Workers</span><span>Vectorize</span><span>D1 (SQLite FTS5)</span><span>Workers AI</span><span>Llama 3.3</span><span>GitHub Actions</span></p>
+                <p class="project__links mono">
+                  <a class="project__link" href="https://rag-catalog.mgutierrezt.workers.dev" target="_blank" rel="noopener" data-es="Probar la demo ↗" data-it="Prova la demo ↗">Try the live demo ↗</a>
+                  <a class="project__link" href="https://github.com/manu-gt-hub/rag_system" target="_blank" rel="noopener" data-es="Ver repositorio ↗" data-it="Vedi il repository ↗">View repository ↗</a>
+                </p>
               </div>
-            </a>
+            </div>
 
             <!-- 3. LLMOps Platform (work in progress) -->
             <a class="project" href="https://github.com/manu-gt-hub/llmops-platform" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="LLMOps Platform, 3 of 3">
