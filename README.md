@@ -68,7 +68,7 @@ The `test` workflow runs on every pull request, on pushes to `main`, and weekly:
 | Job | What it does | Blocks merging |
 |---|---|---|
 | `test` | `npm test`, then `wrangler deploy --dry-run`, which builds the deployment Cloudflare would run without uploading it (catches a broken `wrangler.jsonc` or assets directory) | Yes: required by the `main` ruleset |
-| `external-links` | `node tests/external-links.mjs`: every external link on the page answers (repos, live demos, Instagram). LinkedIn and Malt are skipped because they refuse automated requests | No: it depends on third-party sites, so it reports without blocking |
+| `external-links` | `node tests/external-links.mjs`: every external link on the page answers (GitHub repos and live demos). LinkedIn, Malt and Instagram are skipped because they refuse automated requests | No: it depends on third-party sites, so it reports without blocking |
 
 ### Test files
 

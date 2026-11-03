@@ -3,8 +3,8 @@
 // Usage: node tests/external-links.mjs
 import { readPage } from './helpers.mjs';
 
-// Sites that refuse automated requests even when the page exists
-const SKIP = [/^https:\/\/www\.linkedin\.com\//, /^https:\/\/www\.malt\.com\//];
+// Sites that refuse automated requests even when the page exists (Instagram answers 429 to CI runners)
+const SKIP = [/^https:\/\/www\.linkedin\.com\//, /^https:\/\/www\.malt\.com\//, /^https:\/\/www\.instagram\.com\//];
 
 const html = readPage('index.html');
 const urls = [...new Set([...html.matchAll(/<a\b[^>]*\shref="(https:\/\/[^"]+)"/g)].map((m) => m[1]))]
@@ -30,5 +30,5 @@ async function check(url) {
 const results = await Promise.all(urls.map(check));
 for (const r of results) console.log(`${r.ok ? 'ok  ' : 'FAIL'} ${r.status}  ${r.url}`);
 const failed = results.filter((r) => !r.ok);
-console.log(`\n${results.length - failed.length}/${results.length} links answer (skipped: LinkedIn, Malt)`);
+console.log(`\n${results.length - failed.length}/${results.length} links answer (skipped: LinkedIn, Malt, Instagram)`);
 process.exit(failed.length ? 1 : 0);
