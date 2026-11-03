@@ -31,7 +31,7 @@ public/                 # everything here is deployed
   assets/               # optimised images and the redacted CV
 tests/                  # node:test suite, no dependencies
 .github/
-  workflows/test.yml    # runs the tests on every PR and on main
+  workflows/test.yml    # tests + Cloudflare dry run on every PR; weekly external link check
   CODEOWNERS
 resources/              # source material (CV, LinkedIn export, slides, photos); git-ignored
 wrangler.jsonc          # Cloudflare Worker config (name must stay "personal-portfolio")
@@ -59,7 +59,18 @@ npm run dev        # http://localhost:8787
 npm test
 ```
 
-Requires Node 22+ and has no dependencies. CI runs the same command on every pull request, so you can make the `test` check required in the `main` branch rules.
+Requires Node 22+ and has no dependencies.
+
+### In CI
+
+The `test` workflow runs on every pull request, on pushes to `main`, and weekly:
+
+| Job | What it does | Blocks merging |
+|---|---|---|
+| `test` | `npm test`, then `wrangler deploy --dry-run`, which builds the deployment Cloudflare would run without uploading it (catches a broken `wrangler.jsonc` or assets directory) | Yes: required by the `main` ruleset |
+| `external-links` | `node tests/external-links.mjs`: every external link on the page answers (GitHub repos and live demos). LinkedIn, Malt and Instagram are skipped because they refuse automated requests | No: it depends on third-party sites, so it reports without blocking |
+
+### Test files
 
 | File | What it checks |
 |---|---|
@@ -67,6 +78,8 @@ Requires Node 22+ and has no dependencies. CI runs the same command on every pul
 | `links.test.mjs` | Every local `href`/`src`/`srcset` and CSS `url()` resolves; in-page anchors have targets; external links are HTTPS with `rel="noopener"`; profile links are present |
 | `content.test.mjs` | Title, description and `lang`; every `data-es` and `data-it` translation is filled in; the language switcher offers EN, ES and IT; elements used by `main.js` exist; images have `alt` and dimensions; no internal project names; team size wording |
 | `sensitive.test.mjs` | No phone numbers, unexpected emails, API keys, tokens or credentials in tracked files; no `.env`/`.dev.vars`; only web file types and no source documents in `public/`; the published CV matches the verified redacted version; asset size budget |
+| `markup.test.mjs` | Both pages are well-formed (every tag closed in order), ids are unique, no link or button nested inside a link, buttons declare a `type`; `styles.css` has balanced braces |
+| `rules.test.mjs` | Rules from `AGENTS.md`: Trading Advisor first; each card's `aria-label` matches its position; every card has status, description, facts and technologies; a card with a demo has demo and repo links; the "Work in progress" tag goes with the amber status dot; older technology only inside *Earlier career*; link previews use the portfolio title, an absolute URL and no photo |
 
 ## Deployment
 

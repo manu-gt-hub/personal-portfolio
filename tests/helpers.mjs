@@ -43,6 +43,49 @@ export function attrValues(html, attr) {
   return [...html.matchAll(re)].map((m) => m[1]);
 }
 
+const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'source', 'track', 'wbr']);
+// Inside an <svg>, elements such as <path/> close themselves
+const SELF_CLOSING = /\/\s*>$/;
+
+/**
+ * Walk the tags of a page (comments already removed). Calls onOpen(name, tag, index, depth)
+ * and onClose(name, index, openIndex). Throws on a closing tag that does not match the open one,
+ * and returns the tags left open at the end.
+ */
+export function walkTags(html, { onOpen = () => {}, onClose = () => {} } = {}) {
+  const body = html.replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, (m) => m.replace(/[^\n]/g, ' '));
+  const stack = [];
+  for (const m of body.matchAll(/<\/?([a-zA-Z][\w-]*)\b[^>]*>/g)) {
+    const [tag, rawName] = m;
+    const name = rawName.toLowerCase();
+    if (tag.startsWith('</')) {
+      const open = stack.pop();
+      if (!open || open.name !== name) {
+        const line = body.slice(0, m.index).split('\n').length;
+        throw new Error(`line ${line}: </${name}> closes <${open ? open.name : 'nothing'}>`);
+      }
+      onClose(name, m.index, open.index);
+    } else if (name !== '!doctype' && !VOID.has(name) && !SELF_CLOSING.test(tag)) {
+      onOpen(name, tag, m.index, stack.length);
+      stack.push({ name, index: m.index });
+    }
+  }
+  return stack.map((s) => s.name);
+}
+
+/** The outer HTML of every element whose opening tag matches `re`. */
+export function elements(html, re) {
+  const found = [];
+  const starts = new Map();
+  walkTags(html, {
+    onOpen: (name, tag, index) => { if (re.test(tag)) starts.set(index, true); },
+    onClose: (name, index, openIndex) => {
+      if (starts.has(openIndex)) found.push({ start: openIndex, end: index + name.length + 3, html: html.slice(openIndex, index + name.length + 3) });
+    },
+  });
+  return found.sort((a, b) => a.start - b.start);
+}
+
 /** wrangler.jsonc is JSON with // comments. */
 export function readJsonc(path) {
   const text = read(path).replace(/^\s*\/\/.*$/gm, '');
