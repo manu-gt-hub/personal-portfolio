@@ -479,6 +479,11 @@ a.project:hover { transform: translateY(-4px); border-color: var(--sb-accent); b
 .project__facts strong { color: var(--sb-text); font: 700 1.05rem var(--display); }
 .project__link { margin: auto 0 0; padding-top: .5rem; color: var(--sb-accent); }
 .is-soon .project__link { color: var(--sb-muted); }
+/* Cards with several destinations (live demo + repository) are a div holding real links */
+.project__links { margin: auto 0 0; padding-top: .5rem; display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; }
+.project__links .project__link { margin: 0; padding: 0; text-decoration: none; }
+.project__links .project__link:hover, .project__links .project__link:focus-visible { text-decoration: underline; }
+div.project:has(.project__link:hover) { border-color: var(--sb-accent); }
 
 .carousel__dots { display: flex; gap: .5rem; justify-content: center; }
 .carousel__dots button {

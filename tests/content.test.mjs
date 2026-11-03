@@ -47,16 +47,29 @@ test('images have alt text and explicit dimensions', () => {
   }
 });
 
-test('projects carousel links each live project to its GitHub repo in a new tab', () => {
-  const slides = [...html.matchAll(/<(a|div) class="project[^"]*"[^>]*>/g)].map((m) => m[0]);
+// A card is either a link to its repo, or a div holding several links (live demo + repo)
+test('projects carousel links each project to its GitHub repo in a new tab', () => {
+  const slides = [...html.matchAll(/<(a|div) class="project(?: [^"]*)?"[^>]*>/g)].map((m) => m[0]);
   assert.ok(slides.length >= 2, 'expected several projects so the carousel makes sense');
+  const links = [...html.matchAll(/<a\b[^>]*>/g)].map((m) => m[0]);
   for (const repo of ['trading_advisor', 'rag_system', 'llmops-platform']) {
-    const card = slides.find((s) => s.includes(`github.com/manu-gt-hub/${repo}"`));
-    assert.ok(card, `missing project card for ${repo}`);
-    assert.match(card, /target="_blank"/, `${repo} should open in a new tab`);
+    const link = links.find((l) => l.includes(`href="https://github.com/manu-gt-hub/${repo}"`));
+    assert.ok(link, `missing link to the ${repo} repo`);
+    assert.match(link, /target="_blank"/, `${repo} should open in a new tab`);
   }
   for (const card of slides.filter((s) => s.startsWith('<a'))) {
-    assert.match(card, /href="https:\/\/github\.com\/manu-gt-hub\/[\w.-]+"/, `project links must point to a repo: ${card}`);
+    assert.match(card, /href="https:\/\/github\.com\/manu-gt-hub\/[\w.-]+"/, `project card links must point to a repo: ${card}`);
+  }
+});
+
+test('live project demos open over HTTPS in a new tab', () => {
+  const demos = [...html.matchAll(/<a class="project__link"[^>]*>/g)]
+    .map((m) => m[0])
+    .filter((l) => !l.includes('github.com/'));
+  assert.ok(demos.some((l) => l.includes('href="https://rag-catalog.')), 'RAG System should link its live demo');
+  for (const demo of demos) {
+    assert.match(demo, /href="https:\/\//, `demo must use HTTPS: ${demo}`);
+    assert.match(demo, /target="_blank" rel="noopener"/, `demo should open in a new tab: ${demo}`);
   }
 });
 
