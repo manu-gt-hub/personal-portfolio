@@ -495,30 +495,33 @@
               </div>
             </div>
 
-            <!-- 3. LLMOps Platform (work in progress) -->
-            <a class="project" href="https://github.com/manu-gt-hub/llmops-platform" target="_blank" rel="noopener" aria-roledescription="slide" aria-label="LLMOps Platform, 3 of 3">
+            <!-- 3. LLMOps Platform (live demo, work in progress) -->
+            <div class="project" aria-roledescription="slide" aria-label="LLMOps Platform, 3 of 3">
               <div class="project__preview project__preview--flow" aria-hidden="true">
                 <ol class="flow">
-                  <li><span class="mono">01</span><span data-es="Apps y agentes (SDK oficiales)" data-it="App e agenti (SDK ufficiali)">Apps &amp; agents (official SDKs)</span></li>
-                  <li class="flow__core"><span class="mono">02</span><span data-es="Gateway LLM: coste · presupuestos · trazas" data-it="Gateway LLM: costi · budget · trace">LLM gateway: cost · budgets · traces</span></li>
-                  <li><span class="mono">03</span><span data-es="Proveedores: Anthropic · OpenAI" data-it="Provider: Anthropic · OpenAI">Providers: Anthropic · OpenAI</span></li>
-                  <li><span class="mono">04</span><span data-es="PostgreSQL · Prometheus · Tempo" data-it="PostgreSQL · Prometheus · Tempo">PostgreSQL · Prometheus · Tempo</span></li>
-                  <li><span class="mono">05</span><span data-es="Grafana: FinOps · AgentOps · DevOps" data-it="Grafana: FinOps · AgentOps · DevOps">Grafana: FinOps · AgentOps · DevOps</span></li>
+                  <li><span class="mono">01</span><span data-es="Usuario → Worker (agente + reglas)" data-it="Utente → Worker (agente + regole)">User → Worker (agent + rules)</span></li>
+                  <li class="flow__core"><span class="mono">02</span><span data-es="Carta del agente · presupuestos · guardrails antes de cada llamada" data-it="Charter dell’agente · budget · guardrail prima di ogni chiamata">Charter · budgets · guardrails before every call</span></li>
+                  <li><span class="mono">03</span><span data-es="AI Gateway → Workers AI (Llama 3.3 70B)" data-it="AI Gateway → Workers AI (Llama 3.3 70B)">AI Gateway → Workers AI (Llama 3.3 70B)</span></li>
+                  <li><span class="mono">04</span><span data-es="Registro en D1: tokens · coste · latencia" data-it="Registro su D1: token · costi · latenza">D1 ledger: tokens · cost · latency</span></li>
+                  <li><span class="mono">05</span><span data-es="Juez LLM · evals que bloquean el despliegue" data-it="Giudice LLM · eval che bloccano il deploy">LLM judge · evals that gate each deploy</span></li>
                 </ol>
               </div>
               <div class="project__body">
-                <p class="project__status mono"><span class="status status--wip"></span><span data-es="Ejecutable · Docker Compose" data-it="Eseguibile · Docker Compose">Runnable · Docker Compose</span></p>
+                <p class="project__status mono"><span class="status status--wip"></span><span data-es="Cloudflare Workers · plan gratuito" data-it="Cloudflare Workers · piano gratuito">Cloudflare Workers · free tier</span></p>
                 <h3 class="project__title">LLMOps Platform <span class="project__badge mono" data-es="En desarrollo" data-it="In sviluppo">Work in progress</span></h3>
-                <p class="project__desc" data-es="Plataforma de referencia con un gateway LLM entre las aplicaciones y los proveedores que convierte cada llamada en datos: tokens y coste por proyecto y modelo, presupuestos que bloquean el gasto, trazas de agentes con OpenTelemetry y la versión desplegada en cada momento." data-it="Piattaforma di riferimento con un gateway LLM tra le applicazioni e i provider che trasforma ogni chiamata in dati: token e costi per progetto e modello, budget che bloccano la spesa, trace OpenTelemetry delle esecuzioni degli agenti e la release in produzione.">Reference platform with an LLM gateway between apps and model providers that turns every call into data: tokens and cost by project and model, budgets that stop spending, OpenTelemetry traces of agent runs, and which release is deployed.</p>
+                <p class="project__desc" data-es="Un agente LLM en producción con las operaciones que lo rodean: coste exacto por llamada y presupuestos que frenan el gasto, una batería de evals que decide cada despliegue y un juez LLM, guardrails contra datos personales y prompt injection, y CI/CD con análisis de seguridad. El agente es el copiloto de la propia plataforma y funciona en un único Cloudflare Worker, sin servidores." data-it="Un agente LLM in produzione con le operations che lo circondano: costo esatto per chiamata e budget che fermano la spesa, una suite di eval che decide ogni deploy e un giudice LLM, guardrail contro dati personali e prompt injection, e CI/CD con analisi di sicurezza. L’agente è il copilota della piattaforma stessa e gira su un unico Cloudflare Worker, senza server.">An LLM agent in production with the operations around it: exact cost per call and budgets that stop spending, an eval suite that gates every deploy plus an LLM judge, guardrails against personal data and prompt injection, and CI/CD with security scanning. The agent is the platform’s own copilot and runs on a single Cloudflare Worker, with no servers.</p>
                 <ul class="project__facts">
-                  <li><strong>4</strong> <span data-es="dashboards de Grafana como código" data-it="dashboard Grafana as code">Grafana dashboards as code</span></li>
-                  <li><strong>0</strong> <span data-es="API keys para el CI de extremo a extremo" data-it="API key necessarie per la CI end-to-end">API keys needed for end-to-end CI</span></li>
-                  <li><strong>30</strong> <span data-es="días de datos demo" data-it="giorni di dati demo">days of demo data</span></li>
+                  <li><strong>$0</strong> <span data-es="de coste: se detiene antes de facturar" data-it="di costo: si ferma prima di essere fatturato">running cost: it stops itself before it could be billed</span></li>
+                  <li><strong>4</strong> <span data-es="workflows de GitHub: CI · CodeQL · deploy · monitor" data-it="workflow GitHub: CI · CodeQL · deploy · monitor">GitHub workflows: CI · CodeQL · deploy · monitor</span></li>
+                  <li><strong>5</strong> <span data-es="decisiones de arquitectura documentadas (ADR)" data-it="decisioni architetturali documentate (ADR)">documented architecture decisions (ADRs)</span></li>
                 </ul>
-                <p class="chips"><span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>Prometheus</span><span>Grafana</span><span>OpenTelemetry</span><span>Docker Compose</span><span>GitHub Actions</span></p>
-                <p class="project__link mono" data-es="Ver repositorio ↗" data-it="Vedi il repository ↗">View repository ↗</p>
+                <p class="chips"><span>TypeScript</span><span>Cloudflare Workers</span><span>Workers AI</span><span>AI Gateway</span><span>D1</span><span>Anthropic</span><span>OpenAI</span><span>Vitest</span><span>GitHub Actions</span><span>CodeQL</span></p>
+                <p class="project__links mono">
+                  <a class="project__link" href="https://llmops-platform.mgutierrezt.workers.dev/" target="_blank" rel="noopener" data-es="Probar la demo ↗" data-it="Prova la demo ↗">Try the live demo ↗</a>
+                  <a class="project__link" href="https://github.com/manu-gt-hub/llmops-platform" target="_blank" rel="noopener" data-es="Ver repositorio ↗" data-it="Vedi il repository ↗">View repository ↗</a>
+                </p>
               </div>
-            </a>
+            </div>
 
           </div>
           <div class="carousel__dots" id="carouselDots" role="tablist" aria-label="Choose project"></div>
