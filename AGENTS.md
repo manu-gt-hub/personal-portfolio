@@ -42,6 +42,10 @@ These live in `resources/`, which is git-ignored and never published. In order o
 - ~5M records/month: Mercedes-Benz after-sales lakehouse.
 - 30–50K leads/month: multi-market campaigns.
 
+**Confirmed by Manuel, not in the PDFs (2026-11-04):**
+- His AI agents are in production and serve engineering teams. Say "teams", not "business teams".
+- The agents run with human review, an audit trail and access control through Unity Catalog.
+
 Never invent figures, technologies or claims that aren't in these sources. If something is missing, ask.
 
 ## Content rules
