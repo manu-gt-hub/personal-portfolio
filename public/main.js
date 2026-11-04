@@ -27,9 +27,9 @@
   /* ---------- Language (EN default, ES via data-es, IT via data-it) ---------- */
   var langButtons = document.querySelectorAll('#langToggle [data-lang]');
   var titles = {
-    en: 'Manuel Gutiérrez Torrero · Data & AI Architect',
-    es: 'Manuel Gutiérrez Torrero · Arquitecto de Datos e IA',
-    it: 'Manuel Gutiérrez Torrero · Architetto Dati e IA'
+    en: 'Manuel Gutiérrez Torrero – Personal portfolio',
+    es: 'Manuel Gutiérrez Torrero – Portfolio personal',
+    it: 'Manuel Gutiérrez Torrero – Portfolio personale'
   };
   function applyLang(lang) {
     if (!titles[lang]) lang = 'en';
