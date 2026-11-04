@@ -60,6 +60,9 @@ test('older technology stays inside Earlier career', () => {
 // What WhatsApp, LinkedIn and Slack show when the link is shared
 test('link previews show the portfolio title, an absolute URL and no photo', () => {
   assert.match(html, /<meta property="og:title" content="Manuel Gutiérrez Torrero – Personal portfolio">/);
+  // Some apps use the page title and description instead of the og: tags
+  assert.match(html, /<title>Manuel Gutiérrez Torrero – Personal portfolio<\/title>/);
+  assert.ok(!/<meta name="description" content="[^"]*Data &(amp;)? AI Architect/.test(html), 'the description should not use the "Data & AI Architect" title');
   assert.match(html, /<meta property="og:description" content="[^"]{20,}">/);
   assert.match(html, /<meta property="og:url" content="https:\/\/[^"]+\/">/);
   assert.ok(!html.includes('og:image'), 'link previews should not show a photo (og:image)');
