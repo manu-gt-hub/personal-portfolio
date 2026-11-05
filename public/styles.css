@@ -350,6 +350,7 @@ p { margin: 0 0 1rem; }
 .tile > p:not(.tile__tag) { color: var(--muted); font-size: .95rem; }
 .tile__tag { color: var(--accent); text-transform: uppercase; margin: 0; }
 @media (min-width: 700px) { .tile--wide { grid-column: span 2; } }
+@media (min-width: 1000px) { .tile--full { grid-column: 1 / -1; } }
 .tile--accent {
   background:
     radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--accent-2) 30%, transparent), transparent 55%),
@@ -383,20 +384,12 @@ p { margin: 0 0 1rem; }
 @media (min-width: 900px) { .creds { grid-template-columns: 1fr 1fr; gap: 3rem; } }
 .creds h3 { margin: 0 0 1rem; }
 .creds__col h3 + .list + h3 { margin-top: 2rem; }
-.list, .langs { list-style: none; margin: 0; padding: 0; }
-.list li, .langs li {
+.list { list-style: none; margin: 0; padding: 0; }
+.list li {
   display: flex; justify-content: space-between; gap: 1rem; align-items: baseline;
   padding: .85rem 0; border-bottom: 1px solid var(--line);
 }
 .list li .mono { color: var(--muted); white-space: nowrap; }
-.langs li { align-items: center; }
-.meter {
-  --v: 5; width: 110px; height: 8px; border-radius: 99px; background: var(--chip); position: relative; overflow: hidden; flex: none;
-}
-.meter::after {
-  content: ""; position: absolute; inset: 0; width: calc(var(--v) / 5 * 100%);
-  background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: inherit;
-}
 
 /* Projects — dark band in both themes, horizontal carousel */
 #projects {

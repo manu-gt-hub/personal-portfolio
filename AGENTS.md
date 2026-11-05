@@ -40,11 +40,14 @@ These live in `resources/`, which is git-ignored and never published. In order o
 **Data volumes:**
 - ~8M records/day: batch processing for Carrefour.
 - ~5M records/month: Mercedes-Benz after-sales lakehouse.
-- 30–50K leads/month: multi-market campaigns.
+- 100–150K leads/month: multi-market campaigns (confirmed by Manuel on 2026-11-05; the PDFs still say 30–50K).
 
-**Confirmed by Manuel, not in the PDFs (2026-11-04):**
-- His AI agents are in production and serve engineering teams. Say "teams", not "business teams".
+**Confirmed by Manuel, not in the PDFs (2026-11-04, updated 2026-11-05):**
+- His AI agents are in production. Business users use them for KPIs and reports; the team uses them to check data quality, with the data as the AI's context. In development, the harness gives the AI its context.
 - The agents run with human review, an audit trail and access control through Unity Catalog.
+- Example he allows on the site: a multi-agent system that uses YAML rules as context to flag rows in a file, correct them and verify each correction, iterating until the verifier and router agents agree the result is correct.
+- Languages: Spanish native, English C1, Italian C1.
+- He has no outcome metrics for the agents (time saved, users…). Do not add any.
 
 Never invent figures, technologies or claims that aren't in these sources. If something is missing, ask.
 
