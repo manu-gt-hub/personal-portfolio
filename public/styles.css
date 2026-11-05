@@ -432,7 +432,6 @@ p { margin: 0 0 1rem; }
   overflow: hidden; text-decoration: none; color: inherit;
   transition: transform .25s, border-color .25s, box-shadow .25s;
 }
-a.project:hover { transform: translateY(-4px); border-color: var(--sb-accent); box-shadow: 0 30px 60px -30px rgba(0,0,0,.8); }
 .project.is-soon { border-style: dashed; }
 .project__preview {
   aspect-ratio: 16 / 7; padding: 1.25rem 1.4rem; border-bottom: 1px solid var(--sb-line);

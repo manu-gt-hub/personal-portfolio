@@ -28,12 +28,18 @@ test('every project card has a status, title, description, facts and technologie
   }
 });
 
-// A card with a single destination is a link; a card with a demo is a div holding demo + repo links
-test('a project card with several destinations is a div with a demo and a repository link', () => {
-  for (const card of cards.filter((c) => c.html.startsWith('<div'))) {
+// Every card is a div holding a repository link and a docs link; the live demos add a demo link
+test('every project card links to its repository and its docs, and the live demos to the demo', () => {
+  for (const card of cards) {
+    const name = card.html.match(/<h3[^>]*>([^<]+)/)?.[1].trim();
+    assert.ok(card.html.startsWith('<div'), `${name}: a card with several links must be a div, not a link`);
     const hrefs = [...card.html.matchAll(/<a class="project__link" href="([^"]+)"/g)].map((m) => m[1]);
-    assert.ok(hrefs.some((h) => h.startsWith('https://github.com/manu-gt-hub/')), `no repository link: ${card.html.slice(0, 100)}`);
-    assert.ok(hrefs.some((h) => !h.includes('github.com')), `no demo link: ${card.html.slice(0, 100)}`);
+    const repo = hrefs.find((h) => /^https:\/\/github\.com\/manu-gt-hub\/[\w.-]+$/.test(h));
+    assert.ok(repo, `${name}: no repository link`);
+    assert.ok(hrefs.some((h) => h.startsWith(`${repo}/tree/main/doc`)), `${name}: no docs link inside its repository`);
+    if (name === 'RAG System' || name === 'LLMOps Platform') {
+      assert.ok(hrefs.some((h) => !h.includes('github.com')), `${name}: no live demo link`);
+    }
   }
 });
 
