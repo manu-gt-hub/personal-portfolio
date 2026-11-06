@@ -54,6 +54,7 @@ Never invent figures, technologies or claims that aren't in these sources. If so
 ## Content rules
 
 - **Companies and clients may be named. Internal project names may not**, for example SHERPA, MPRS, NeTAMPS or Geoban. `tests/content.test.mjs` enforces this.
+- **Experience:** each role in the timeline is a `<details>` that folds to its title, company and dates. Only the current role starts open.
 - **Older technology** (Hadoop, Cloudera, Kafka, Kudu, Sqoop, .NET…) appears only inside the collapsed *Earlier career* rows, never in the main stack.
 - **No phone number anywhere.** The only email shown is the public contact address.
 - **Translations:** every visible string needs its Spanish and Italian versions in `data-es` and `data-it` attributes on the same element. Update the three languages together.
