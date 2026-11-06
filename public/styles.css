@@ -288,7 +288,19 @@ p { margin: 0 0 1rem; }
   padding: 1.5rem; transition: transform .25s, box-shadow .25s, border-color .25s;
 }
 .job__card:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
-.job__org { color: var(--accent); font-weight: 500; margin: .35rem 0 .9rem; font-size: .95rem; }
+.job__org { display: block; color: var(--accent); font-weight: 500; margin-top: .35rem; font-size: .95rem; }
+/* Each role folds to its title, company and dates; the current one starts open */
+.job__summary {
+  display: grid; grid-template-columns: minmax(0, 1fr) 20px; column-gap: .75rem;
+  cursor: pointer; list-style: none; border-radius: 8px;
+}
+.job__summary::-webkit-details-marker { display: none; }
+.job__summary > :not(.earlier__chev) { grid-column: 1; }
+.job__summary h3 { margin: 0; }
+.job__summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+.job__details[open] > .job__summary { margin-bottom: .9rem; }
+.job__details[open] .earlier__chev { transform: rotate(-135deg); border-color: var(--accent); }
+.job__summary:hover .earlier__chev { border-color: var(--accent); }
 .job__card ul { margin: 0 0 1rem; padding-left: 1.1rem; color: var(--muted); }
 .job__card li { margin-bottom: .35rem; }
 .job__card li::marker { color: var(--accent); }

@@ -52,6 +52,19 @@ test('unfinished projects show the "Work in progress" tag in the three languages
   }
 });
 
+// Roles fold to their title, company and dates; only the current one starts open
+test('every role in the timeline is collapsible and only the current one starts open', () => {
+  const jobs = elements(html, /^<li class="job[ "]/);
+  assert.ok(jobs.length >= 2, 'expected the timeline roles');
+  jobs.forEach((job, i) => {
+    const title = job.html.match(/<h3[^>]*>([^<]+)/)?.[1].trim();
+    const details = job.html.match(/<details class="job__details"( open)?>\s*<summary class="job__summary">\s*<h3/);
+    assert.ok(details, `${title}: the role should be a details element with its title in the summary`);
+    assert.equal(Boolean(details[1]), i === 0, `${title}: only the current role starts open`);
+    assert.equal(job.html.includes('job--current'), i === 0, 'the first role is the current one');
+  });
+});
+
 // Older technology appears only inside the collapsed "Earlier career" rows
 test('older technology stays inside Earlier career', () => {
   const earlier = elements(html, /^<div class="earlier">/);
