@@ -357,7 +357,6 @@ p { margin: 0 0 1rem; }
   padding: 1.6rem; display: flex; flex-direction: column; gap: .6rem;
   transition: transform .25s, box-shadow .25s;
 }
-.tile:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .tile p:last-child { margin-bottom: 0; }
 .tile > p:not(.tile__tag) { color: var(--muted); font-size: .95rem; }
 .tile__tag { color: var(--accent); text-transform: uppercase; margin: 0; }
@@ -378,8 +377,6 @@ p { margin: 0 0 1rem; }
 .tile__impact { margin-top: auto; padding-top: .9rem; border-top: 1px dashed var(--line); font-size: .9rem; }
 .tile__impact p { margin: 0; color: var(--text); }
 .tile__impact .tile__impact-k { color: var(--accent-2); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .3rem; }
-.tile--accent .tile__chips { margin-top: .4rem; }
-.tile--accent .tile__chips span { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.3); color: #fff; }
 .tile--accent > p.tile__cert { margin: .2rem 0 0; font-size: .78rem; color: #fff; }
 .tile__cert-k { display: inline-block; margin-right: .5rem; padding: .15rem .5rem; border-radius: 999px; background: rgba(255,255,255,.9); color: color-mix(in srgb, var(--accent) 70%, #000); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; }
 .tile--accent .tile__impact { border-top-color: rgba(255,255,255,.35); }
@@ -489,6 +486,22 @@ p { margin: 0 0 1rem; }
 .project__links .project__link:hover, .project__links .project__link:focus-visible { text-decoration: underline; }
 div.project:has(.project__link:hover) { border-color: var(--sb-accent); }
 
+/* 3D reel (main.js adds .reel): every card shares one grid cell and moves by transform */
+.carousel__track.reel {
+  display: grid; justify-items: center; overflow: visible; scroll-snap-type: none;
+  padding: .5rem 0 2rem; margin: 0; perspective: 1800px; touch-action: pan-y;
+}
+.reel > .project {
+  grid-area: 1 / 1; width: min(100%, 640px);
+  transition: transform .65s cubic-bezier(.22, .8, .24, 1), opacity .5s, filter .5s, border-color .25s, box-shadow .25s;
+  backface-visibility: hidden;
+}
+.reel > .project.is-active { box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .9); }
+.reel > .project:not(.is-active) { cursor: pointer; filter: brightness(.55) saturate(.8); }
+.reel > .project:not(.is-active):hover { filter: brightness(.75); }
+/* The cards behind are one click target that brings them forward */
+.reel > .project:not(.is-active) * { pointer-events: none; }
+
 .carousel__dots { display: flex; gap: .5rem; justify-content: center; }
 .carousel__dots button {
   width: 8px; height: 8px; padding: 0; border-radius: 99px; border: 0; cursor: pointer;
@@ -553,6 +566,18 @@ div.project:has(.project__link:hover) { border-color: var(--sb-accent); }
 /* Reveal on scroll */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.is-visible { opacity: 1; transform: none; }
+
+/* About focus items, Impact tiles and Skills cards grow slightly under the pointer.
+   Declared after .reveal so the revealed state doesn't cancel the hover transform. */
+@media (hover: hover) {
+  .focus li, .tile, .tile.is-visible, .skillset, .skillset.is-visible {
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, opacity .7s ease;
+  }
+  .focus li:hover, .tile:hover, .tile.is-visible:hover, .skillset:hover, .skillset.is-visible:hover {
+    position: relative; z-index: 1; transform: scale(1.02); box-shadow: var(--shadow);
+    border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html, .carousel__track { scroll-behavior: auto; }
