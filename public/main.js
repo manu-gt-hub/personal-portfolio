@@ -148,7 +148,83 @@
     }, { passive: true });
     update();
   }
-  carousel('carousel', 'Project');
+  /* Projects: a 3D reel. The active card sits in front and the others turn away on either side.
+     Every card shares one grid cell, so moving is a transform, not a scroll that can stop halfway.
+     Without JS the track stays a plain horizontal scroller. */
+  function reel(prefix, itemLabel) {
+    var track = document.getElementById(prefix + 'Track');
+    if (!track) return;
+    var slides = Array.prototype.slice.call(track.children);
+    var n = slides.length;
+    var countEl = document.getElementById(prefix + 'Count');
+    var dotsBox = document.getElementById(prefix + 'Dots');
+    var current = 0;
+    track.classList.add('reel');
+
+    var dots = slides.map(function (slide, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', itemLabel + ' ' + (i + 1));
+      dot.addEventListener('click', function () { goTo(i); });
+      dotsBox.appendChild(dot);
+      return dot;
+    });
+
+    function render() {
+      var narrow = window.innerWidth < 640;
+      slides.forEach(function (slide, i) {
+        // Shortest way round, so the reel wraps at both ends
+        var d = i - current;
+        if (d > n / 2) d -= n;
+        if (d < -n / 2) d += n;
+        var a = Math.abs(d);
+        var active = d === 0;
+        slide.style.transform = active ? 'none' :
+          'translateX(' + (d * (narrow ? 70 : 60)) + '%) translateZ(' + (-a * (narrow ? 180 : 260)) + 'px) rotateY(' + (-d * (narrow ? 40 : 34)) + 'deg)';
+        slide.style.opacity = a > 1 ? '0' : '1';
+        slide.style.zIndex = String(10 - a);
+        slide.classList.toggle('is-active', active);
+        // Only the front card is read out and reachable with Tab; the others are a click target to bring them forward
+        slide.setAttribute('aria-hidden', String(!active));
+        slide.querySelectorAll('a, button').forEach(function (el) { el.tabIndex = active ? 0 : -1; });
+      });
+      if (countEl) countEl.textContent = (current + 1) + ' / ' + n;
+      dots.forEach(function (d, i) { d.setAttribute('aria-selected', String(i === current)); });
+    }
+
+    function goTo(i) { current = (i + n) % n; render(); }
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    document.getElementById(prefix + 'Prev').addEventListener('click', prev);
+    document.getElementById(prefix + 'Next').addEventListener('click', next);
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    });
+    slides.forEach(function (slide, i) {
+      slide.addEventListener('click', function () { if (i !== current) goTo(i); });
+    });
+
+    // Swipe (touch) or drag (mouse) sideways to turn the reel; a swipe never counts as a click on a link
+    var startX = null, startY = 0, swiped = false;
+    track.addEventListener('pointerdown', function (e) { startX = e.clientX; startY = e.clientY; swiped = false; });
+    track.addEventListener('pointercancel', function () { startX = null; });
+    track.addEventListener('pointerup', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX, dy = e.clientY - startY;
+      startX = null;
+      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { swiped = true; if (dx < 0) next(); else prev(); }
+    });
+    track.addEventListener('click', function (e) {
+      if (swiped) { e.preventDefault(); e.stopPropagation(); swiped = false; }
+    }, true);
+
+    window.addEventListener('resize', render);
+    render();
+  }
+  reel('carousel', 'Project');
   carousel('photos', 'Photo');
 
   /* ---------- Nav: scrolled state + active section ---------- */
@@ -219,7 +295,7 @@
     requestAnimationFrame(frame);
   }
 
-  var revealTargets = document.querySelectorAll('.section h2, .about__body, .job, .tile, .skillset, .creds__col, .photos, .link-card, .stat, .project, .volunteer__card');
+  var revealTargets = document.querySelectorAll('.section h2, .about__body, .job, .tile, .skillset, .creds__col, .photos, .link-card, .stat, .carousel, .volunteer__card');
   if ('IntersectionObserver' in window && !reduceMotion) {
     revealTargets.forEach(function (el) { el.classList.add('reveal'); });
     var revealObs = new IntersectionObserver(function (entries) {
