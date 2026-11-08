@@ -53,6 +53,11 @@
     });
   });
 
+  /* ---------- Current role: open on wide screens, folded on phones to keep the page short ---------- */
+  if (window.matchMedia('(max-width: 639px)').matches) {
+    document.querySelectorAll('.job__details[open]').forEach(function (d) { d.open = false; });
+  }
+
   /* ---------- Earlier career: expand / collapse all ---------- */
   var earlierBtn = document.getElementById('earlierToggle');
   var earlierItems = document.querySelectorAll('.earlier__item');

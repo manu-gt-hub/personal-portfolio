@@ -54,7 +54,7 @@ test('no env files or local config are tracked', () => {
 });
 
 test('public/ only contains web file types', () => {
-  const allowed = /\.(html|css|js|svg|webp|jpe?g|png|ico|pdf|txt|woff2?)$|^_headers$/;
+  const allowed = /\.(html|css|js|svg|webp|jpe?g|png|ico|pdf|txt|xml|woff2?)$|^_headers$/;
   for (const f of publicFiles()) assert.match(f, allowed, `unexpected file type published: ${f}`);
 });
 

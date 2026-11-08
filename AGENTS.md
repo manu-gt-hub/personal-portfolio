@@ -47,14 +47,17 @@ These live in `resources/`, which is git-ignored and never published. In order o
 - The agents run with human review, an audit trail and access control through Unity Catalog.
 - Example he allows on the site: a multi-agent system that uses YAML rules as context to flag rows in a file, correct them and verify each correction, iterating until the verifier and router agents agree the result is correct.
 - Languages: Spanish native, English C1, Italian C1.
-- He has no outcome metrics for the agents (time saved, users…). Do not add any.
+- He has no outcome metrics for the agents (time saved, users…). Do not add any, not even "realistic" estimates; describe the outcome qualitatively.
+- (2026-11-08) Data quality is centralised in a single Unity Catalog table that can be queried directly with Genie. The agents took over the manual comparison of files and the review of human errors, which saves time and reduces risk (not quantified).
+- (2026-11-08) As Technical Product Owner he turned business requirements into user stories, defined the technical roadmap and made technical decisions on architecture and code review.
+- The team size (~8 people) appears only in the hero highlights and the current role, so it isn't repeated across sections.
 
 Never invent figures, technologies or claims that aren't in these sources. If something is missing, ask.
 
 ## Content rules
 
 - **Companies and clients may be named. Internal project names may not**, for example SHERPA, MPRS, NeTAMPS or Geoban. `tests/content.test.mjs` enforces this.
-- **Experience:** each role in the timeline is a `<details>` that folds to its title, company and dates. Only the current role starts open.
+- **Experience:** each role in the timeline is a `<details>` that folds to its title, company and dates. Only the current role starts open, and only on screens 640px and wider: on phones `main.js` folds it too, to keep the page short.
 - **Older technology** (Hadoop, Cloudera, Kafka, Kudu, Sqoop, .NET…) appears only inside the collapsed *Earlier career* rows, never in the main stack.
 - **No phone number anywhere.** The only email shown is the public contact address.
 - **Translations:** every visible string needs its Spanish and Italian versions in `data-es` and `data-it` attributes on the same element. Update the three languages together.

@@ -13,6 +13,7 @@ const REQUIRED = [
   'main.js',
   'favicon.svg',
   'robots.txt',
+  'sitemap.xml',
   '_headers',
   'assets/profile.webp',
   'assets/profile.jpg',
@@ -54,4 +55,16 @@ test('source material stays out of git', () => {
 
 test('CODEOWNERS assigns an owner to the whole repo', () => {
   assert.match(read('.github/CODEOWNERS'), /^\*\s+@\S+/m);
+});
+
+// Search engines get one URL for the page: the canonical link, og:url, the sitemap and robots.txt agree
+test('canonical URL, sitemap and robots.txt point to the same address', () => {
+  const html = read('public/index.html');
+  const canonical = html.match(/<link rel="canonical" href="([^"]+)">/)?.[1];
+  assert.ok(canonical, 'index.html has no canonical link');
+  assert.match(canonical, /^https:\/\/[^"]+\/$/);
+  assert.equal(html.match(/<meta property="og:url" content="([^"]+)">/)?.[1], canonical, 'og:url and canonical differ');
+  const locs = [...read('public/sitemap.xml').matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
+  assert.deepEqual(locs, [canonical], 'the sitemap should list the canonical URL only');
+  assert.match(read('public/robots.txt'), new RegExp(`^Sitemap: ${canonical.replace(/[.]/g, '\.')}sitemap\.xml$`, 'm'));
 });
