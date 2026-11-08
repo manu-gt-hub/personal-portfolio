@@ -28,6 +28,7 @@ public/                 # everything here is deployed
   main.js               # theme and language toggles, scroll reveal, hero graph, expand-all
   404.html
   _headers              # security and cache headers (Cloudflare)
+  robots.txt, sitemap.xml # point search engines to the canonical URL
   assets/               # optimised images and the redacted CV
 tests/                  # node:test suite, no dependencies
 .github/
@@ -74,12 +75,12 @@ The `test` workflow runs on every pull request, on pushes to `main`, and weekly:
 
 | File | What it checks |
 |---|---|
-| `structure.test.mjs` | Required files exist; `wrangler.jsonc` serves `public/` with a 404 page; `main.js` parses; security headers; `resources/` is ignored and untracked; CODEOWNERS |
+| `structure.test.mjs` | Required files exist; `wrangler.jsonc` serves `public/` with a 404 page; the canonical link, `og:url`, `sitemap.xml` and `robots.txt` agree on the URL; `main.js` parses; security headers; `resources/` is ignored and untracked; CODEOWNERS |
 | `links.test.mjs` | Every local `href`/`src`/`srcset` and CSS `url()` resolves; in-page anchors have targets; external links are HTTPS with `rel="noopener"`; profile links are present |
 | `content.test.mjs` | Title, description and `lang`; every `data-es` and `data-it` translation is filled in; the language switcher offers EN, ES and IT; elements used by `main.js` exist; images have `alt` and dimensions; no internal project names; team size wording |
 | `sensitive.test.mjs` | No phone numbers, unexpected emails, API keys, tokens or credentials in tracked files; no `.env`/`.dev.vars`; only web file types and no source documents in `public/`; the published CV matches the verified redacted version; asset size budget |
 | `markup.test.mjs` | Both pages are well-formed (every tag closed in order), ids are unique, no link or button nested inside a link, buttons declare a `type`; `styles.css` has balanced braces |
-| `rules.test.mjs` | Rules from `AGENTS.md`: Trading Advisor first; each card's `aria-label` matches its position; every card has status, description, facts and technologies; every card links to its repo and docs, and the live demos to the demo; the "Work in progress" tag goes with the amber status dot; roles in the timeline fold and only the current one starts open; older technology only inside *Earlier career*; link previews use the portfolio title, an absolute URL and no photo |
+| `rules.test.mjs` | Rules from `AGENTS.md`: Trading Advisor first; each card's `aria-label` matches its position; every card has status, description, facts and technologies; every card links to its repo and docs, and the live demos to the demo; the "Work in progress" tag goes with the amber status dot; roles in the timeline fold and only the current one starts open (on phones it starts folded too); older technology only inside *Earlier career*; link previews use the portfolio title, an absolute URL and no photo |
 
 ## Deployment
 
@@ -91,7 +92,7 @@ Cloudflare **Workers Builds** is connected to this repo:
 
 To deploy by hand instead: `npx wrangler login`, then `npm run deploy`.
 
-**Custom domain:** in the Worker, go to *Settings → Domains & Routes → Add → Custom domain*. The domain must be on Cloudflare; the Free plan is enough.
+**Custom domain:** if you add one, update the canonical link, `og:url`, `sitemap.xml` and `robots.txt` to it. In the Worker, go to *Settings → Domains & Routes → Add → Custom domain*. The domain must be on Cloudflare; the Free plan is enough.
 
 ## Workflow
 
