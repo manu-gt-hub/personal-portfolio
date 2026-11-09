@@ -15,7 +15,7 @@ A static, trilingual (EN/ES/IT) single page: plain HTML, CSS and vanilla JS with
 | Experience | Mercedes-Benz roles in detail; earlier career as expandable rows |
 | Impact | Selected achievements: GenAI, data volumes, lakehouse, team leadership |
 | Skills | Current stack, certifications, education, languages |
-| My personal projects | Carousel of GitHub projects, each with repository and docs links: Trading Advisor (live, runs daily), RAG System (live demo on Cloudflare's free tier) and LLMOps Platform (live demo on Cloudflare) |
+| My personal projects | Carousel of GitHub projects, each with repository and docs links: RAG System (live demo on Cloudflare's free tier), LLMOps Platform (live demo on Cloudflare) and Trading Advisor (live, runs daily) |
 | Beyond work | Photo carousel (no captions) and volunteering |
 | Contact | Email, LinkedIn, GitHub, Malt, CV |
 
@@ -80,7 +80,7 @@ The `test` workflow runs on every pull request, on pushes to `main`, and weekly:
 | `content.test.mjs` | Title, description and `lang`; every `data-es` and `data-it` translation is filled in; the language switcher offers EN, ES and IT; elements used by `main.js` exist; images have `alt` and dimensions; no internal project names; team size wording |
 | `sensitive.test.mjs` | No phone numbers, unexpected emails, API keys, tokens or credentials in tracked files; no `.env`/`.dev.vars`; only web file types and no source documents in `public/`; the published CV matches the verified redacted version; asset size budget |
 | `markup.test.mjs` | Both pages are well-formed (every tag closed in order), ids are unique, no link or button nested inside a link, buttons declare a `type`; `styles.css` has balanced braces |
-| `rules.test.mjs` | Rules from `AGENTS.md`: Trading Advisor first; each card's `aria-label` matches its position; every card has status, description, facts and technologies; every card links to its repo and docs, and the live demos to the demo; the "Work in progress" tag goes with the amber status dot; roles in the timeline fold and only the current one starts open (on phones it starts folded too); older technology only inside *Earlier career*; link previews use the portfolio title, an absolute URL and no photo |
+| `rules.test.mjs` | Rules from `AGENTS.md`: Trading Advisor last, with its out-of-sample backtest figure and limitations; harness engineering and agentic ops explained in plain words; each card's `aria-label` matches its position; every card has status, description, facts and technologies; every card links to its repo and docs, and the live demos to the demo; the "Work in progress" tag goes with the amber status dot; roles in the timeline fold and only the current one starts open (on phones it starts folded too); older technology only inside *Earlier career*; link previews use the portfolio title, an absolute URL and no photo |
 
 ## Deployment
 

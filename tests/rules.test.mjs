@@ -6,9 +6,27 @@ import { elements, readPage } from './helpers.mjs';
 const html = readPage('index.html');
 const cards = elements(html, /^<(a|div) class="project"/);
 
-test('Trading Advisor is the first project in the carousel', () => {
+test('Trading Advisor is the last project in the carousel', () => {
   assert.ok(cards.length >= 3, 'expected at least three project cards');
-  assert.match(cards[0].html, /<h3[^>]*>Trading Advisor\b/);
+  assert.match(cards.at(-1).html, /<h3[^>]*>Trading Advisor\b/);
+});
+
+// A backtest return on its own invites scepticism: show the out-of-sample figure and its limits
+test('Trading Advisor shows its backtest with the out-of-sample figure and its limitations', () => {
+  const card = cards.find((c) => /<h3[^>]*>Trading Advisor\b/.test(c.html));
+  for (const text of ['out-of-sample', 'below buy-and-hold', 'not a promise of returns']) {
+    assert.ok(card.html.includes(text), `Trading Advisor: missing "${text}"`);
+  }
+});
+
+// Recruiters and business readers do not know the jargon: explain it in brackets where it is used
+test('harness engineering and agentic ops are explained in plain words in the three languages', () => {
+  const prose = html.replace(/<p class="chips[^"]*">[\s\S]*?<\/p>/g, '');
+  const uses = [...prose.matchAll(/(harness engineering|agentic ops)(.{0,2})/gi)];
+  assert.ok(uses.length > 0, 'expected the terms on the page');
+  for (const [, term, next] of uses) {
+    assert.ok(next.startsWith(' ('), `"${term}" is used without a plain-language explanation`);
+  }
 });
 
 test('project cards are labelled with their position, e.g. "RAG System, 2 of 3"', () => {
