@@ -1,6 +1,6 @@
 # personal-portfolio
 
-Personal portfolio of **Manuel Gutiérrez Torrero**: Data & AI Architect · Tech Lead Data Engineer at Mercedes-Benz.
+Personal portfolio of **Manuel Gutiérrez Torrero**: Data & AI Architect · Tech Lead Data & AI Engineer at Mercedes-Benz.
 
 **Live:** https://personal-portfolio.mgutierrezt.workers.dev
 
