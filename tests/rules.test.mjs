@@ -122,7 +122,8 @@ test('projects sit in a fold that starts open and names every project in its sum
     assert.ok(summary.includes(name), `the folded summary should name ${name}`);
   }
   const js = readPage('main.js');
-  assert.match(js, /max-width: 639px\)'\)\.matches\) projectsFold\.open = false/, 'main.js should fold the projects on phones');
+  assert.match(js, /projectsFold\.open = !narrow\.matches/, 'main.js should fold the projects on phones');
+  assert.match(js, /narrow\.addEventListener\('change'/, 'the fold should follow the width when the window is resized');
 });
 
 // Each fact has one home: the volume figures appear in the hero and in the role they belong to, no more

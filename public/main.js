@@ -61,7 +61,10 @@
   /* ---------- Projects: open on wide screens, folded on phones; a link to #projects opens them ---------- */
   var projectsFold = document.getElementById('projectsFold');
   if (projectsFold) {
-    if (window.matchMedia('(max-width: 639px)').matches) projectsFold.open = false;
+    // Follow the width, also when the window is resized across the breakpoint
+    var narrow = window.matchMedia('(max-width: 639px)');
+    projectsFold.open = !narrow.matches;
+    narrow.addEventListener('change', function (e) { projectsFold.open = !e.matches; });
     document.querySelectorAll('a[href="#projects"]').forEach(function (a) {
       a.addEventListener('click', function () { projectsFold.open = true; });
     });

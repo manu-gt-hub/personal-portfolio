@@ -247,7 +247,11 @@ p { margin: 0 0 1rem; }
 
 /* About */
 .about { display: grid; gap: 1rem; }
-@media (min-width: 900px) { .about { grid-template-columns: 1fr 1.3fr; gap: 4rem; } }
+@media (min-width: 900px) { .about { grid-template-columns: 1fr 1.3fr; gap: 2.5rem 4rem; } }
+/* The focus cards span both columns, so no empty column is left under the heading */
+.about > .focus { grid-column: 1 / -1; margin: 0; }
+/* The GenAI card has much more text: give it more width so both cards end up a similar height */
+@media (min-width: 900px) { .about > .focus { grid-template-columns: 2fr 3fr; } }
 .about__body > p { font-size: 1.08rem; color: var(--muted); }
 .about__body > p:first-child { color: var(--text); font-size: 1.2rem; }
 .focus { list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: .75rem; counter-reset: focus; }
@@ -434,14 +438,14 @@ p { margin: 0 0 1rem; }
 .projects__fold[open] .earlier__chev { transform: rotate(-135deg); }
 .projects__fold[open] .projects__teaser, .projects__fold[open] .projects__show,
 .projects__fold:not([open]) .projects__hide { display: none; }
+/* Open, the summary becomes a small pill button under the arrows, clearly clickable */
 .projects__fold[open] > .projects__summary {
-  justify-content: flex-end; padding: 0; border: 0; background: none; margin: -1.25rem 0 1rem;
+  width: fit-content; margin: -1rem 0 1.25rem auto; padding: .5rem .95rem; border-radius: 999px;
 }
-.projects__fold[open] > .projects__summary .projects__cta { color: var(--sb-muted); }
-.projects__fold[open] > .projects__summary:hover .projects__cta { color: var(--sb-accent); }
+.projects__fold[open] > .projects__summary .projects__cta { color: var(--sb-text); }
 #projects:has(.projects__fold:not([open])) .carousel__nav { display: none; }
 @media (max-width: 480px) {
-  .projects__summary { flex-direction: column; align-items: flex-start; }
+  .projects__fold:not([open]) > .projects__summary { flex-direction: column; align-items: flex-start; }
 }
 .carousel__count { color: var(--sb-muted); margin-right: .5rem; }
 .carousel__btn {
