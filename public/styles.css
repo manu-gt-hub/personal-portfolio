@@ -443,6 +443,23 @@ p { margin: 0 0 1rem; }
   width: fit-content; margin: -1rem 0 1.25rem auto; padding: .5rem .95rem; border-radius: 999px;
 }
 .projects__fold[open] > .projects__summary .projects__cta { color: var(--sb-text); }
+/* Folded: accent edge on the card and a filled accent button, so it reads as "tap here" */
+.projects__fold:not([open]) > .projects__summary {
+  border-color: color-mix(in srgb, var(--sb-accent) 45%, var(--sb-line));
+  background: linear-gradient(135deg, color-mix(in srgb, var(--sb-accent) 10%, var(--sb-surface)), var(--sb-surface));
+}
+.projects__fold:not([open]) .projects__cta {
+  padding: .65rem 1.1rem; border-radius: 999px; background: var(--sb-accent); color: #04211d;
+  font-size: .85rem; font-weight: 600; box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--sb-accent) 70%, transparent);
+  transition: transform .2s, box-shadow .2s; animation: cta-pulse 2.4s ease-in-out infinite;
+}
+.projects__fold:not([open]) .projects__cta .earlier__chev { border-color: #04211d; }
+.projects__fold:not([open]) > .projects__summary:hover .projects__cta { transform: translateY(-1px); box-shadow: 0 10px 26px -6px color-mix(in srgb, var(--sb-accent) 80%, transparent); }
+@keyframes cta-pulse {
+  0%, 100% { box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--sb-accent) 70%, transparent), 0 0 0 0 color-mix(in srgb, var(--sb-accent) 45%, transparent); }
+  50% { box-shadow: 0 6px 20px -6px color-mix(in srgb, var(--sb-accent) 70%, transparent), 0 0 0 7px transparent; }
+}
+@media (prefers-reduced-motion: reduce) { .projects__fold:not([open]) .projects__cta { animation: none; } }
 #projects:has(.projects__fold:not([open])) .carousel__nav { display: none; }
 @media (max-width: 480px) {
   .projects__fold:not([open]) > .projects__summary { flex-direction: column; align-items: flex-start; }
