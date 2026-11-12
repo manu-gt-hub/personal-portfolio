@@ -58,6 +58,15 @@
     document.querySelectorAll('.job__details[open]').forEach(function (d) { d.open = false; });
   }
 
+  /* ---------- Projects: open on wide screens, folded on phones; a link to #projects opens them ---------- */
+  var projectsFold = document.getElementById('projectsFold');
+  if (projectsFold) {
+    if (window.matchMedia('(max-width: 639px)').matches) projectsFold.open = false;
+    document.querySelectorAll('a[href="#projects"]').forEach(function (a) {
+      a.addEventListener('click', function () { projectsFold.open = true; });
+    });
+  }
+
   /* ---------- Earlier career: expand / collapse all ---------- */
   var earlierBtn = document.getElementById('earlierToggle');
   var earlierItems = document.querySelectorAll('.earlier__item');

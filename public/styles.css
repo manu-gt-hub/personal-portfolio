@@ -416,6 +416,33 @@ p { margin: 0 0 1rem; }
 #projects .chips span { background: rgba(255,255,255,.06); color: var(--sb-muted); }
 .projects__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
 .carousel__nav { display: flex; align-items: center; gap: .5rem; }
+/* Projects fold: open on wide screens, folded on phones (main.js). Folded, the summary still names
+   the projects so the section is not skipped; open, it shrinks to a small "Hide projects" toggle. */
+.projects__summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 1.1rem 1.25rem; border: 1px solid var(--sb-line); border-radius: var(--radius);
+  background: var(--sb-surface); cursor: pointer; list-style: none; transition: border-color .2s;
+}
+.projects__summary::-webkit-details-marker { display: none; }
+.projects__summary:hover { border-color: var(--sb-accent); }
+.projects__summary:focus-visible { outline: 2px solid var(--sb-accent); outline-offset: 4px; }
+.projects__teaser { display: grid; gap: .3rem; min-width: 0; }
+.projects__names { font: 600 1.05rem/1.3 var(--display); color: var(--sb-text); }
+.projects__pitch { font-size: .9rem; color: var(--sb-muted); }
+.projects__cta { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; font-size: .8rem; color: var(--sb-accent); white-space: nowrap; }
+.projects__cta .earlier__chev { border-color: var(--sb-accent); }
+.projects__fold[open] .earlier__chev { transform: rotate(-135deg); }
+.projects__fold[open] .projects__teaser, .projects__fold[open] .projects__show,
+.projects__fold:not([open]) .projects__hide { display: none; }
+.projects__fold[open] > .projects__summary {
+  justify-content: flex-end; padding: 0; border: 0; background: none; margin: -1.25rem 0 1rem;
+}
+.projects__fold[open] > .projects__summary .projects__cta { color: var(--sb-muted); }
+.projects__fold[open] > .projects__summary:hover .projects__cta { color: var(--sb-accent); }
+#projects:has(.projects__fold:not([open])) .carousel__nav { display: none; }
+@media (max-width: 480px) {
+  .projects__summary { flex-direction: column; align-items: flex-start; }
+}
 .carousel__count { color: var(--sb-muted); margin-right: .5rem; }
 .carousel__btn {
   width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; cursor: pointer;

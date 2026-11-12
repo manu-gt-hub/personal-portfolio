@@ -19,14 +19,20 @@ test('Trading Advisor shows its backtest with the out-of-sample figure and its l
   }
 });
 
-// Recruiters and business readers do not know the jargon: explain it in brackets where it is used
-test('harness engineering and agentic ops are explained in plain words in the three languages', () => {
+// Recruiters and business readers do not know the jargon: explain it in brackets the first time
+// it appears and again in the current role (the part most people read). Later mentions stay bare,
+// so the same explanation is not repeated across the page.
+test('harness engineering and agentic ops are explained in plain words where they first appear and in the current role', () => {
   const prose = html.replace(/<p class="chips[^"]*">[\s\S]*?<\/p>/g, '');
-  const uses = [...prose.matchAll(/(harness engineering|agentic ops)(.{0,2})/gi)];
-  assert.ok(uses.length > 0, 'expected the terms on the page');
-  for (const [, term, next] of uses) {
-    assert.ok(next.startsWith(' ('), `"${term}" is used without a plain-language explanation`);
+  const explained = (text, term) => text.toLowerCase().includes(`${term} (`);
+  for (const term of ['harness engineering', 'agentic ops']) {
+    const at = prose.toLowerCase().indexOf(term);
+    assert.ok(at >= 0, `expected "${term}" on the page`);
+    assert.ok(explained(prose.slice(at, at + term.length + 2), term), `the first "${term}" needs a plain-language explanation`);
   }
+  const current = elements(prose, /^<li class="job job--current/)[0];
+  assert.ok(current, 'expected the current role');
+  assert.ok(explained(current.html, 'harness engineering'), 'the current role should explain harness engineering');
 });
 
 test('project cards are labelled with their position, e.g. "RAG System, 2 of 3"', () => {
@@ -103,4 +109,27 @@ test('link previews show the portfolio title, an absolute URL and no photo', () 
   assert.match(html, /<meta property="og:description" content="[^"]{20,}">/);
   assert.match(html, /<meta property="og:url" content="https:\/\/[^"]+\/">/);
   assert.ok(!html.includes('og:image'), 'link previews should not show a photo (og:image)');
+});
+
+// Projects: open on wide screens, folded on phones, and the folded summary still names every project
+test('projects sit in a fold that starts open and names every project in its summary', () => {
+  const fold = elements(html, /^<details class="projects__fold" id="projectsFold" open>/)[0];
+  assert.ok(fold, 'the projects carousel should be inside <details class="projects__fold" open>');
+  assert.ok(fold.html.includes('id="carouselTrack"'), 'the carousel should be inside the fold');
+  const summary = fold.html.match(/<summary class="projects__summary">([\s\S]*?)<\/summary>/)?.[1] ?? '';
+  for (const card of cards) {
+    const name = card.html.match(/<h3[^>]*>([^<]+)/)?.[1].trim();
+    assert.ok(summary.includes(name), `the folded summary should name ${name}`);
+  }
+  const js = readPage('main.js');
+  assert.match(js, /max-width: 639px\)'\)\.matches\) projectsFold\.open = false/, 'main.js should fold the projects on phones');
+});
+
+// Each fact has one home: the volume figures appear in the hero and in the role they belong to, no more
+test('data volumes are not repeated across sections', () => {
+  const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
+  for (const [figure, max] of [['~8M', 2], ['~5M', 2], ['100–150K', 1]]) {
+    const count = text.split(figure).length - 1;
+    assert.ok(count <= max, `${figure} appears ${count} times in the English text (max ${max})`);
+  }
 });
