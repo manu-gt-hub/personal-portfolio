@@ -134,3 +134,10 @@ test('data volumes are not repeated across sections', () => {
     assert.ok(count <= max, `${figure} appears ${count} times in the English text (max ${max})`);
   }
 });
+
+// The projects section is parked (hidden, not deleted) until Manuel asks to show it again.
+// Section and nav link go together; to show them, remove both `hidden` attributes and this test.
+test('projects section and its nav link are hidden together', () => {
+  assert.match(html, /<section class="section" id="projects" hidden>/, 'the projects section should be hidden');
+  assert.match(html, /<a href="#projects"[^>]* hidden>/, 'the Projects nav link should be hidden with the section');
+});

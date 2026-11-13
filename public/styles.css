@@ -246,6 +246,8 @@ p { margin: 0 0 1rem; }
 .kicker { color: var(--accent); margin-bottom: 1rem; text-transform: uppercase; }
 
 /* About */
+/* Keep [hidden] hidden even where a rule sets display (used to park the projects section) */
+[hidden] { display: none !important; }
 .about { display: grid; gap: 1rem; }
 @media (min-width: 900px) { .about { grid-template-columns: 1fr 1.3fr; gap: 2.5rem 4rem; } }
 /* The focus cards span both columns, so no empty column is left under the heading */
